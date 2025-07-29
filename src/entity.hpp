@@ -21,21 +21,21 @@ public:
      * @brief Return the entity component
      */
     template <typename T>
-    [[nodiscard]] 
+    [[nodiscard]]
     T &get() noexcept;
 
     /**
      * @brief Return the entity component
      */
     template <typename T>
-    [[nodiscard]] 
+    [[nodiscard]]
     const T &get() const noexcept;
 
     /**
      * @brief Check if the entity has the given component type
      */
     template <typename T>
-    [[nodiscard]] 
+    [[nodiscard]]
     bool has() const noexcept;
 
     /**
@@ -47,25 +47,32 @@ public:
     /**
      * @brief Return entity's id
      */
-    [[nodiscard]] 
+    [[nodiscard]]
     size_t id() const noexcept;
 
     /**
      * @brief Check if entity is alive
      */
-    [[nodiscard]] 
+    [[nodiscard]]
     bool is_alive() const noexcept;
 
     /**
      * @brief Return entity's tag
      */
-    [[nodiscard]] 
+    [[nodiscard]]
     const std::string &tag() const noexcept;
 
     /**
      * @brief Kill / Destroy the entity
      */
     void destroy() noexcept;
+
+private:
+    /* Delete move and copy */
+    Entity(const Entity &) noexcept = delete;
+    Entity &operator=(const Entity &) noexcept = delete;
+    Entity(Entity &&) noexcept = delete;
+    Entity &operator=(Entity &&) noexcept = delete;
 
 private:
     ComponentTuple m_components{};
@@ -75,12 +82,6 @@ private:
 
     explicit Entity() noexcept = default;
     explicit Entity(std::string tag, size_t id) noexcept;
-
-    /* Delete move and copy */
-    Entity(const Entity &) noexcept = delete;
-    Entity &operator=(const Entity &) noexcept = delete;
-    Entity(Entity &&) noexcept = delete;
-    Entity &operator=(Entity &&) noexcept = delete;
 };
 
 /* TEMPLATE FUNCTIONS HERE */
