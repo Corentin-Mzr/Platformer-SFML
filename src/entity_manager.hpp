@@ -22,45 +22,48 @@ public:
 
     /**
      * @brief Add an entity with the given tag
-     * 
+     *
      * @param tag Entity's tag / name
      */
-    [[nodiscard]] 
+    [[nodiscard]]
     std::shared_ptr<Entity> add_entity(const std::string &tag) noexcept;
 
     /**
      * @brief Return all entities
      */
-    [[nodiscard]] 
+    [[nodiscard]]
     EntityVec &get_entities() noexcept;
 
     /**
      * @brief Return entities with the given tag
-     * 
+     *
      * @param tag Entities tag
      */
-    [[nodiscard]] 
+    [[nodiscard]]
     EntityVec &get_entities(const std::string &tag) noexcept;
 
     /**
      * @brief Return the entity map
      */
-    [[nodiscard]] 
-    const EntityMap &get_entity_map() const noexcept; 
-    
+    [[nodiscard]]
+    const EntityMap &get_entity_map() const noexcept;
+
     /**
      * @brief Update entities
      */
     void update() noexcept;
 
 private:
+    /**
+     * @brief Remove dead entities from the entity manager
+     * 
+     * @param vec Entities to remove
+     */
+    void remove_dead_entities(EntityVec &vec) noexcept;
+
+private:
     EntityVec m_entities{};
     EntityVec m_entities_to_add{};
     EntityMap m_entity_map{};
     size_t m_total_entities{};
-
-    /**
-     * @brief Remove dead entities from the entity manager
-     */
-    void remove_dead_entities(EntityVec &vec) noexcept;
 };
