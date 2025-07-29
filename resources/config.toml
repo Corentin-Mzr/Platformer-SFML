@@ -1,0 +1,182 @@
+title = "Configuration file for the program"
+
+[window]
+width = 1280
+height = 720
+title = "MegaMario SFML"
+framerate = 60 # FPS
+color = [30, 40, 50, 255] # Background color
+
+[player]
+x = 1.0
+y = 1.0
+speed = 5.0
+jump = 20.0
+gravity = 1.0
+
+[bullet]
+speed = 12.0
+radius = 5.0
+lifespan = 30 # Number of frames until it disappears
+
+[level]
+    [level.one]
+        name = "Level 1"
+        path = "../resources/levels/level1.data"
+    [level.debug]
+        name = "Debug"
+        path = "../resources/levels/debug.data"
+
+[font]
+    [font.consolas]
+        name = "Consolas"
+        path = "../resources/fonts/consolas.ttf"
+
+[texture]
+    [texture.idle]
+        name = "TexIdle"
+        path = "../resources/textures/megaman/idle_128x64.png"
+    [texture.idle_shoot]
+        name = "TexIdleShoot"
+        path = "../resources/textures/megaman/idle_shoot_64x64.png"
+    [texture.run]
+        name = "TexRun"
+        path = "../resources/textures/megaman/run_192x64.png"
+    [texture.run_shoot]
+        name = "TexRunShoot"
+        path = "../resources/textures/megaman/run_shoot_192x64.png"
+    [texture.jump]
+        name = "TexJump"
+        path = "../resources/textures/megaman/jump_64x82.png"
+    [texture.air_shoot]
+        name = "TexAirShoot"
+        path = "../resources/textures/megaman/air_shoot_64x70.png"
+    [texture.buster]
+        name = "TexBuster"
+        path = "../resources/textures/megaman/buster_16x16.png"
+    [texture.explode]
+        name = "TexExplode"
+        path = "../resources/textures/misc/explosion_768x64.png"
+    [texture.ground]
+        name = "TexGround"
+        path = "../resources/textures/world/ground_64x64.png"
+    [texture.brick]
+        name = "TexBrick"
+        path = "../resources/textures/world/brick_64x64.png"
+    [texture.brick_debris]
+        name = "TexBrickDebris"
+        path = "../resources/textures/world/brick_debris_64x64.png"
+    [texture.question]
+        name = "TexQuestion"
+        path = "../resources/textures/world/question_128x64.png"
+    [texture.question_hit]
+        name = "TexQuestionHit"
+        path = "../resources/textures/world/question_hit_64x64.png"
+    [texture.coin_spin]
+        name = "TexCoinSpin"
+        path = "../resources/textures/world/coin_256x64.png"
+    [texture.tree]
+        name = "TexTree"
+        path = "../resources/textures/world/tree_190x248.png"
+    [texture.castle_small]
+        name = "TexCastleSmall"
+        path = "../resources/textures/world/castle_small_161x172.png"
+    [texture.flower]
+        name = "TexFlower"
+        path = "../resources/textures/world/flower_30x32.png"
+    [texture.bush]
+        name = "TexBush"
+        path = "../resources/textures/world/bush_74x36.png"
+    
+
+[animation]
+    [animation.idle]
+        name = "Idle"
+        texture = "TexIdle"
+        frames = 2
+        speed = 30
+    [animation.idle_shoot]
+        name = "IdleShoot"
+        texture = "TexIdleShoot"
+        frames = 1
+        speed = 1
+    [animation.run]
+        name = "Run"
+        texture = "TexRun"
+        frames = 3
+        speed = 7
+    [animation.run_shoot]
+        name = "RunShoot"
+        texture = "TexRunShoot"
+        frames = 3
+        speed = 7
+    [animation.jump]
+        name = "Air"
+        texture = "TexJump"
+        frames = 1
+        speed = 1
+    [animation.air_shoot]
+        name = "AirShoot"
+        texture = "TexAirShoot"
+        frames = 1
+        speed = 1
+    [animation.buster]
+        name = "Buster"
+        texture = "TexBuster"
+        frames = 1
+        speed = 1
+    [animation.explosion]
+        name = "Explosion"
+        texture = "TexExplode"
+        frames = 12
+        speed = 2
+    [animation.ground]
+        name = "Ground"
+        texture = "TexGround"
+        frames = 1
+        speed = 1
+    [animation.brick]
+        name = "Brick"
+        texture = "TexBrick"
+        frames = 1
+        speed = 1
+    [animation.brick_debris]
+        name = "BrickDebris"
+        texture = "TexBrickDebris"
+        frames = 1
+        speed = 1
+    [animation.question]
+        name = "Question"
+        texture = "TexQuestion"
+        frames = 2
+        speed = 10
+    [animation.question_hit]
+        name = "QuestionHit"
+        texture = "TexQuestionHit"
+        frames = 1
+        speed = 1
+    [animation.coin_spin]
+        name = "CoinSpin"
+        texture = "TexCoinSpin"
+        frames = 4
+        speed = 10
+    [animation.tree]
+        name = "Tree"
+        texture = "TexTree"
+        frames = 1
+        speed = 1
+    [animation.castle_small]
+        name = "CastleSmall"
+        texture = "TexCastleSmall"
+        frames = 1
+        speed = 1
+    [animation.flower]
+        name = "Flower"
+        texture = "TexFlower"
+        frames = 1
+        speed = 1
+    [animation.bush]
+        name = "Bush"
+        texture = "TexBush"
+        frames = 1
+        speed = 1
