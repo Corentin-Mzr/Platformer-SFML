@@ -8,7 +8,23 @@ class Animation
 {
 public:
     explicit Animation() noexcept = default;
+
+    /**
+     * @brief Create an animation that has one frame
+     * 
+     * @param name Animation name
+     * @param t Texture used for the animation
+     */
     explicit Animation(const std::string &name, const sf::Texture &t);
+
+    /**
+     * @brief Create an animation that has multiple frames
+     * 
+     * @param name Animation name
+     * @param t Texture used for the animation
+     * @param frame_count Number of frames in the animation
+     * @param speed Number of in-game frames before the animation updates
+     */
     explicit Animation(std::string name, const sf::Texture &t, unsigned frame_count, unsigned speed);
 
     /**
@@ -43,6 +59,7 @@ public:
     /**
      * @brief Return the animation's sprite
      */
+    [[nodiscard]]
     sf::Sprite &get_sprite();
 
 private:

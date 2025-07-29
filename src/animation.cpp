@@ -45,5 +45,6 @@ const sf::Sprite &Animation::get_sprite() const
 
 sf::Sprite &Animation::get_sprite()
 {
+    /* Can throw error */
     return m_sprite.value();
 }
