@@ -13,7 +13,7 @@ public:
 
     /**
      * @brief Store a texture, does nothing if texture is already stored
-     * 
+     *
      * @param name Name used to store the texture in the map
      * @param path Path to the texture file
      */
@@ -21,7 +21,7 @@ public:
 
     /**
      * @brief Store an animation, does nothing if animation is already stored
-     * 
+     *
      * @param name Name used to store the animation in the map
      * @param anim Animation to store
      */
@@ -29,7 +29,7 @@ public:
 
     /**
      * Store a font, does nothing if fond is already stored
-     * 
+     *
      * @param name Name used to store the font in the map
      * @param path Path to the font file
      */
@@ -37,36 +37,37 @@ public:
 
     /**
      * @brief Return the stored texture, or a default texture if not stored
-     * 
+     *
      * @param name Texture's name
      */
-    [[nodiscard]] 
+    [[nodiscard]]
     const sf::Texture &get_texture(const std::string &name) const noexcept;
 
     /**
      * @brief Return the stored animation, or a default animation if not stored
-     * 
+     *
      * @param name Animation's name
      */
-    [[nodiscard]] 
+    [[nodiscard]]
     const Animation &get_animation(const std::string &name) const noexcept;
 
     /**
      * @brief Return the stored font, or a default font if not stored
-     * 
+     *
      * @param name Font's name
      */
-    [[nodiscard]] 
+    [[nodiscard]]
     const sf::Font &get_font(const std::string &name) const noexcept;
 
 private:
-    std::unordered_map<std::string, sf::Texture> m_textures{};
-    std::unordered_map<std::string, Animation> m_animations{};
-    std::unordered_map<std::string, sf::Font> m_fonts{};
-
     /* Delete copy */
     AssetManager(const AssetManager &) noexcept = delete;
     AssetManager &operator=(const AssetManager &) noexcept = delete;
     AssetManager(AssetManager &&) noexcept = delete;
     AssetManager &operator=(AssetManager &&) noexcept = delete;
+
+private:
+    std::unordered_map<std::string, sf::Texture> m_textures{};
+    std::unordered_map<std::string, Animation> m_animations{};
+    std::unordered_map<std::string, sf::Font> m_fonts{};
 };
