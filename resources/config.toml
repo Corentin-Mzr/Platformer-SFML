@@ -11,7 +11,7 @@ color = [30, 40, 50, 255] # Background color
 x = 1.0
 y = 1.0
 speed = 5.0
-jump = 20.0
+jump = 12.0
 gravity = 1.0
 
 [bullet]
@@ -23,6 +23,9 @@ lifespan = 30 # Number of frames until it disappears
     [level.one]
         name = "Level 1"
         path = "../resources/levels/level1.data"
+    [level.two]
+        name = "Level 2"
+        path = "../resources/levels/level2.data"
     [level.debug]
         name = "Debug"
         path = "../resources/levels/debug.data"
@@ -87,6 +90,15 @@ lifespan = 30 # Number of frames until it disappears
     [texture.bush]
         name = "TexBush"
         path = "../resources/textures/world/bush_74x36.png"
+    [texture.cloud]
+        name = "TexCloud"
+        path = "../resources/textures/world/cloud_128x60.png"
+    [texture.pipe]
+        name = "TexPipe"
+        path = "../resources/textures/world/pipe_128x128.png"
+    [texture.hill]
+        name = "TexHill"
+        path = "../resources/textures/world/hill_320x126.png"
     
 
 [animation]
@@ -178,5 +190,20 @@ lifespan = 30 # Number of frames until it disappears
     [animation.bush]
         name = "Bush"
         texture = "TexBush"
+        frames = 1
+        speed = 1
+    [animation.cloud]
+        name = "Cloud"
+        texture = "TexCloud"
+        frames = 1
+        speed = 1
+    [animation.pipe]
+        name = "Pipe"
+        texture = "TexPipe"
+        frames = 1
+        speed = 1
+    [animation.hill]
+        name = "Hill"
+        texture = "TexHill"
         frames = 1
         speed = 1
