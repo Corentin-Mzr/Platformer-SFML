@@ -13,9 +13,15 @@ class Scene
 {
 
 public:
-    explicit Scene() noexcept = default;
-    explicit Scene(GameEngine *game) noexcept;
     virtual ~Scene() noexcept = default;
+    explicit Scene() noexcept = default;
+
+    /**
+     * @brief Create a scene
+     * 
+     * @param game Pointer to the GameEngine
+     */
+    explicit Scene(GameEngine *game) noexcept;
 
     /**
      * @brief Update the scene
@@ -55,48 +61,49 @@ public:
     /**
      * @brief Return window width
      */
-    [[nodiscard]] 
+    [[nodiscard]]
     unsigned get_width() const noexcept;
 
     /**
      * @brief Return window height
      */
-    [[nodiscard]] 
+    [[nodiscard]]
     unsigned get_height() const noexcept;
 
     /**
      * @brief Return current frame
      */
-    [[nodiscard]] 
+    [[nodiscard]]
     size_t get_current_frame() const noexcept;
 
     /**
      * @brief Check if scene has ended
      */
-    [[nodiscard]] 
+    [[nodiscard]]
     bool has_ended() const noexcept;
 
     /**
      * @brief Return the scene action map
      */
-    [[nodiscard]] 
+    [[nodiscard]]
     const ActionMap &get_action_map() const noexcept;
 
 protected:
-    GameEngine* m_game{};
-    EntityManager m_entities{};
-    ActionMap m_action_map{};
-    size_t m_current_frame{};
-    bool m_paused{false};
-    bool m_has_ended{false};
-
     /**
      * @brief Handle the scene exit
      */
     virtual void on_end() noexcept = 0;
 
     /**
-     * @brief Pause or unpause the scene 
+     * @brief Pause or unpause the scene
      */
     void set_paused(bool paused) noexcept;
+
+protected:
+    GameEngine *m_game{};
+    EntityManager m_entities{};
+    ActionMap m_action_map{};
+    size_t m_current_frame{};
+    bool m_paused{false};
+    bool m_has_ended{false};
 };
