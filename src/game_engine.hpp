@@ -19,6 +19,8 @@ public:
 
     /**
      * @brief Create a GameEngine from a TOML config file
+     * 
+     * @param config_file Path to the config file
      */
     explicit GameEngine(const std::string &config_file);
 
