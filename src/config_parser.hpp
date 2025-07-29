@@ -7,6 +7,11 @@
 class ConfigParser
 {
 public:
+    /**
+     * @brief Store the config data from a TOML config file
+     * 
+     * @param config_filepath Path to the config file
+     */
     explicit ConfigParser(const std::filesystem::path &config_filepath);
 
     /**
@@ -53,7 +58,6 @@ public:
 
 private:
     std::filesystem::path m_filepath{};
-
     WindowConfig m_window_config{};
     PlayerConfig m_player_config{};
     BulletConfig m_bullet_config{};
