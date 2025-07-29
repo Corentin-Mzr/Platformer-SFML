@@ -6,20 +6,20 @@
 class ScenePlay : public Scene
 {
 public:
+    /**
+     * @brief Create a Play Scene
+     *
+     * @param game Pointer to the GameEngine
+     * @param level_path Path to the level file
+     */
     explicit ScenePlay(GameEngine *game, const std::string &level_path);
 
+    /**
+     * @brief Update the scene
+     */
     void update() noexcept override;
 
 private:
-    std::shared_ptr<Entity> m_player{};
-    std::string m_level_path{};
-    bool m_draw_textures{true};
-    bool m_draw_collision{false};
-    bool m_draw_grid{false};
-    const sf::Vector2u m_grid_size{64, 64};
-    sf::Font m_font{};
-    std::optional<sf::Text> m_grid_text{};
-
     /**
      * @brief Initialize the scene using the given level data file
      *
@@ -76,8 +76,19 @@ private:
      */
     void system_animation();
 
+    /**
+     * @brief Render the scene
+     */
     void system_render() noexcept override;
+
+    /**
+     * @brief Handle an action
+     */
     void system_do_action(const Action &action) noexcept override;
+
+    /**
+     * @brief Handle the scene exit
+     */
     void on_end() noexcept override;
 
     /**
@@ -89,17 +100,35 @@ private:
     void change_player_state_to(CState &state, const std::string &new_state) noexcept;
 
     /**
-     * @brief Change the tile animation to an explosion, and add a timer before removing it. Use this when a brick is destroyed via a bullet
+     * @brief Change the tile animation to an explosion, and add a timer before removing it. 
+     * Use this when a brick is destroyed via a bullet
+     * 
+     * @param tile Brick tile to update
      */
     void spawn_explosion(std::shared_ptr<Entity> tile);
 
     /**
-     * @brief Change the tile animation to debris, and add a timer before removing it. Use this when a brick is destroyed via the player collision
+     * @brief Change the tile animation to debris, and add a timer before removing it. 
+     * Use this when a brick is destroyed via the player collision
+     * 
+     * @param tile Brick tile to update
      */
     void spawn_debris(std::shared_ptr<Entity> tile);
 
     /**
      * @brief Spawn a spinning coin over a question mark tile
+     * 
+     * @param tile Question mark tile
      */
     void spawn_coin(std::shared_ptr<Entity> tile);
+
+private:
+    std::shared_ptr<Entity> m_player{};
+    std::string m_level_path{};
+    bool m_draw_textures{true};
+    bool m_draw_collision{false};
+    bool m_draw_grid{false};
+    const sf::Vector2u m_grid_size{64, 64};
+    sf::Font m_font{};
+    std::optional<sf::Text> m_grid_text{};
 };
