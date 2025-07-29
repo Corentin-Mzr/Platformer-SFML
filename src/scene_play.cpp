@@ -175,12 +175,13 @@ void ScenePlay::spawn_player()
     m_player = m_entities.add_entity("player");
     m_player->add<CAnimation>(m_game->get_assets().get_animation("Idle"), true);
     m_player->add<CTransform>(grid_to_mid_pixel(conf.x, conf.y, m_player)); // TODO: GridToMidPixel
-    m_player->add<CBoundingBox>(sf::Vector2f(64.0f, 64.0f));                // TODO: Replace bouding box dims
+    m_player->add<CBoundingBox>(sf::Vector2f(48.0f, 64.0f));                // TODO: Replace bouding box dims
 
     // TODO: Add remaining components
     m_player->add<CInput>();
     m_player->add<CGravity>(conf.gravity);
     m_player->add<CState>("idle");
+    m_player->add<CJump>(conf.jump, 15, 1.0f); // Jump strength and duration
 }
 
 void ScenePlay::spawn_bullet(std::shared_ptr<Entity> entity)
@@ -212,16 +213,16 @@ void ScenePlay::system_movement()
     // TODO: Implement the maximum player speed in both X and Y directions
     // NOTE: Setting an entity's scale.x to -1/1 will make it face to the left/right
     static const float speed{m_game->get_player_config().speed};
-    static const float jump{m_game->get_player_config().jump};
-    static const float max_speed{16.0f}; // TODO: Add max_speed to config file
+    static const float max_speed{20.0f}; // TODO: Add max_speed to config file
     static const float grav{m_game->get_player_config().gravity};
 
     /* Player */
-    if (m_player->has<CInput>() && m_player->has<CTransform>() && m_player->has<CGravity>()) [[likely]]
+    if (m_player->has<CInput>() && m_player->has<CTransform>() && m_player->has<CGravity>() && m_player->has<CJump>()) [[likely]]
     {
         auto &input{m_player->get<CInput>()};
         auto &transform{m_player->get<CTransform>()};
         auto &gravity{m_player->get<CGravity>()};
+        auto &jump{m_player->get<CJump>()};
 
         /* Resets player velocity and gravity */
         transform.velocity.x = 0.0f;
@@ -244,8 +245,15 @@ void ScenePlay::system_movement()
         {
             if (input.can_jump)
             {
-                transform.velocity.y = -jump;
+                transform.velocity.y = -jump.initial_strength;
                 input.can_jump = false;
+                jump.jumping = true;
+                jump.start_frame = m_current_frame;
+            }
+
+            else if (jump.jumping && m_current_frame - jump.start_frame < jump.max_duration)
+            {
+                transform.velocity.y -= jump.frame_strength;
             }
         }
 
@@ -256,6 +264,7 @@ void ScenePlay::system_movement()
             {
                 spawn_bullet(m_player);
                 input.can_shoot = false;
+                // input.shoot = false;
             }
         }
     }
@@ -285,6 +294,7 @@ void ScenePlay::system_lifespan()
 {
     /* Bullet quantity */
     auto &bullets{m_entities.get_entities("bullet")};
+    bool first_bullet{true};
     for (auto &b : bullets)
     {
         if (!b->has<CLifeSpan>()) [[unlikely]]
@@ -293,14 +303,19 @@ void ScenePlay::system_lifespan()
         }
 
         auto &ls{b->get<CLifeSpan>()};
-        if (m_current_frame - ls.frame_created == 15)
+        if (m_current_frame - ls.frame_created == 15 && first_bullet)
         {
-            if (m_player->has<CInput>()) [[likely]]
-                m_player->get<CInput>().can_shoot = true;
+            m_player->get<CInput>().can_shoot = true;
+            first_bullet = false;
         }
     }
 
-    // TODO: Check lifespan of entities the have them, and destroy them if the go over
+    if (bullets.size() == 0)
+    {
+        m_player->get<CInput>().can_shoot = true;
+    }
+
+    // TODO: Check lifespan of entities and destroy them if they go over
     for (auto &e : m_entities.get_entities())
     {
         if (!e->has<CLifeSpan>())
@@ -335,7 +350,7 @@ void ScenePlay::system_collision()
     // TODO: Check to see if the player has fallen down a hole (y > height())
     // TODO: Don't let the player walk off the left side of the map
 
-    /* Bullet - Brick tile collision */
+    /* Bullet - Tile collision */
     for (auto &bullet : m_entities.get_entities("bullet"))
     {
         for (auto &tile : m_entities.get_entities("tile"))
@@ -345,22 +360,26 @@ void ScenePlay::system_collision()
                 continue;
             }
 
+            const auto overlap{Physics::get_current_overlap(bullet, tile)};
+
+            if (overlap.x <= 0.0f || overlap.y <= 0.0f) [[likely]]
+            {
+                continue;
+            }
+
+            /* Destroy the tile if it's a brick tile */
             auto &anim{tile->get<CAnimation>()};
             if (anim.animation.get_name() == "Brick") [[unlikely]]
             {
-                const auto overlap{Physics::get_current_overlap(bullet, tile)};
-                if (overlap.x > 0 && overlap.y > 0)
-                {
-                    spawn_explosion(tile);
-                    bullet->destroy();
-                    m_player->get<CInput>().can_shoot = true;
-                }
+                spawn_explosion(tile);
             }
+
+            /* Destroy the bullet */
+            bullet->destroy();
         }
     }
 
     /* Player - tile collision */
-    // TODO: Fix
     for (auto &tile : m_entities.get_entities("tile"))
     {
         const auto overlap{Physics::get_current_overlap(m_player, tile)};
@@ -429,6 +448,7 @@ void ScenePlay::system_collision()
                 player_transform.velocity.y = 0.0f;
                 m_player->get<CInput>().can_jump = true;
                 m_player->get<CGravity>().gravity = 0.0f;
+                m_player->get<CJump>().jumping = false;
             }
         }
 
@@ -487,10 +507,10 @@ void ScenePlay::system_collision()
                     player_transform.velocity.y = 0.0f;
                     m_player->get<CInput>().can_jump = true;
                     m_player->get<CGravity>().gravity = 0.0f;
+                    m_player->get<CJump>().jumping = false;
                 }
             }
         }
-
     }
 
     /* Player - left wall collision */
@@ -512,15 +532,16 @@ void ScenePlay::system_animation()
     constexpr float eps{0.1f};
 
     /* Check player state and update it based on its movement*/
-    if (m_player->has<CTransform>() && m_player->has<CState>() && m_player->has<CInput>()) [[likely]]
+    if (m_player->has<CTransform>() && m_player->has<CState>() && m_player->has<CInput>() && m_player->has<CJump>()) [[likely]]
     {
         // Check if player is moving, jumping, shooting or air shooting
         const auto &transform{m_player->get<CTransform>()};
         const auto &input{m_player->get<CInput>()};
+        const auto &jump{m_player->get<CJump>()};
         auto &state{m_player->get<CState>()};
 
         const bool just_jumped{input.up && input.can_jump};
-        const bool in_air{std::abs(transform.velocity.y) > eps || !input.can_jump || just_jumped};
+        const bool in_air{std::abs(transform.velocity.y) > eps || !input.can_jump || just_jumped || jump.jumping};
         const bool moving{std::abs(transform.velocity.x) > eps};
 
         // Moving in the air
@@ -733,11 +754,12 @@ void ScenePlay::system_do_action(const Action &action) noexcept
 
         else if (action.name == "SHOOT")
         {
-            auto &input{m_player->get<CInput>()};
-            if (input.can_shoot)
-            {
-                input.shoot = true;
-            }
+            // auto &input{m_player->get<CInput>()};
+            // if (input.can_shoot)
+            // {
+            //     input.shoot = true;
+            // }
+            m_player->get<CInput>().shoot = true;
         }
     }
 
