@@ -16,6 +16,10 @@ class GameEngine
 {
 public:
     explicit GameEngine() noexcept = default;
+
+    /**
+     * @brief Create a GameEngine from a TOML config file
+     */
     explicit GameEngine(const std::string &config_file);
 
     void update() noexcept;
@@ -112,16 +116,6 @@ public:
     bool is_running() const noexcept;
 
 protected:
-    sf::RenderWindow m_window{};
-    SceneMap m_scenes{};
-    AssetManager m_assets{};
-    std::string m_current_scene{"NONE"};
-    unsigned m_simulation_speed{1};
-    bool m_running{true};
-
-    /* Config */
-    ConfigParser m_config;
-
     /**
      * @brief Load assets, scenes etc.
      */
@@ -150,4 +144,13 @@ protected:
     /* Movable */
     GameEngine(GameEngine &&) noexcept = default;
     GameEngine &operator=(GameEngine &&) noexcept = default;
+
+protected:
+    sf::RenderWindow m_window{};
+    SceneMap m_scenes{};
+    AssetManager m_assets{};
+    std::string m_current_scene{"NONE"};
+    unsigned m_simulation_speed{1};
+    bool m_running{true};
+    ConfigParser m_config;
 };
