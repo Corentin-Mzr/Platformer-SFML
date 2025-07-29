@@ -112,6 +112,7 @@ struct CAnimation : public Component
 struct CGravity : public Component
 {
     float gravity{};
+
     explicit CGravity() noexcept = default;
 
     /**
@@ -129,6 +130,7 @@ struct CState : public Component
     std::string state{"idle"};
     std::string previous_state{"idle"};
     bool change_animation{false};
+
     explicit CState() noexcept = default;
 
     /**
@@ -137,6 +139,28 @@ struct CState : public Component
      * @brief s State
      */
     explicit CState(std::string s) noexcept : state(std::move(s))
+    {
+    }
+};
+
+struct CJump : public Component
+{
+    bool jumping{false};
+    size_t start_frame{}; // Updated when input.up == true
+    size_t max_duration{};
+    float initial_strength{};
+    float frame_strength{};
+    
+    explicit CJump() noexcept = default;
+
+    /**
+     * @brief Create a Jump Component
+     * 
+     * @param str Jump Initial Strength
+     * @param dur Max jump duration in frames
+     * @param str_per_frame Jump strength added each frame if up key is still pressed
+     */
+    explicit CJump(float init_str, size_t dur, float str_per_frame) noexcept : max_duration(dur), initial_strength(init_str), frame_strength(str_per_frame)
     {
     }
 };
