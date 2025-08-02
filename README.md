@@ -41,7 +41,7 @@ WIP
   - [Assets file specification](#assets-file-specification)
   - [Level file specification](#level-file-specification)
   - [Assignment hints](#assignment-hints)
-  - [License](#license)
+- [License](#license)
 
 ## Installation
 
