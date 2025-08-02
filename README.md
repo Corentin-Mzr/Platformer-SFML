@@ -2,7 +2,7 @@
 
 ## Description
 
-Implementation of a platformer game using C++, SFML and ImGUI  
+Implementation of a platformer game using C++, SFML and ImGui  
 Based on [**COMP4300 - Game Programming - Lecture 11 - Assignment 3**](https://www.youtube.com/watch?v=k2ckoLsD7ZU) by Dave Churchill  
 Uses an implementation of an Entity-Component-System (ECS) architecture  
 
@@ -101,6 +101,7 @@ The following libraries have been used for this program
 
 - [**SFML 3.0**](https://github.com/SFML/SFML)
 - [**toml11**](https://github.com/ToruNiina/toml11)
+- [**ImGui**](https://github.com/ocornut/imgui)
 
 ## Controls
 
