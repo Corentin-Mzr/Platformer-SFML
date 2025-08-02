@@ -1,4 +1,4 @@
-# Mega Mario SFML C++
+# MegaMario SFML C++
 
 ## Description
 
@@ -6,9 +6,42 @@ Implementation of a platformer game using C++, SFML and ImGUI
 Based on [**COMP4300 - Game Programming - Lecture 11 - Assignment 3**](https://www.youtube.com/watch?v=k2ckoLsD7ZU) by Dave Churchill  
 Uses an implementation of an Entity-Component-System (ECS) architecture  
 
-### Gameplay
+## Gameplay
 
 WIP
+
+## Table of contents
+
+- [MegaMario SFML C++](#megamario-sfml-c)
+- [Description](#description)
+- [Gameplay](#gameplay)
+- [Table of Contents](#table-of-contents)
+- [Installation](#installation)
+  - [Prerequisites](#prerequisites)
+  - [Clone the repository](#clone-the-repository)
+  - [Build the project](#build-the-project)
+  - [Run the program](#run-the-program)
+- [Libraries](#libraries)
+- [Controls](#controls)
+- [Specifications](#specifications-may-vary-from-real-implementation)
+  - [Entities](#entities)
+  - [Assets](#assets)
+  - [Player](#player)
+  - [Animations](#animations)
+  - [Decoration entities](#decoration-entities)
+  - [Tiles](#tiles)
+    - [Brick tiles](#brick-tiles)  
+    - [Question tiles](#question-tiles)
+  - [GUI](#gui)
+  - [Rendering](#rendering)
+  - [Bonus](#bonus)
+  - [Misc](#misc)
+  - [Level creation](#level-creation)
+  - [Config files](#config-files)
+  - [Assets file specification](#assets-file-specification)
+  - [Level file specification](#level-file-specification)
+  - [Assignment hints](#assignment-hints)
+  - [License](#license)
 
 ## Installation
 
@@ -205,7 +238,7 @@ Font N P
   Font Name         N       std::string (it will have no spaces)
   Font File Path    P       std::string (it will have no spaces)
 
-### Level Specification File
+### Level File Specification
 
 Game levels will be specified by a Level file, which will contain a list of entity specifications, one per line. It will also contain a single line which specifies properties of the player in that level. In this way, you can define an entire level in the data file, rather than in programming code. The syntax of lines of the Level file are as follows.
 
