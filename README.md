@@ -83,15 +83,15 @@ Left / Right / Up / Spacebar
 
 - [x] Entities in the game will be rendered using various Textures and Animations which we will be calling Assets (along with Fonts)
 - [x] Assets are loaded once at the beginning of the program and stored in the Assets class, which is stored by the GameEngine class
-- [] All Assets are defined in assets.txt, with the syntax defined below
+- [ ] All Assets are defined in assets.txt, with the syntax defined below
 
 ### Player
 
 - [x] The player Entity in the game is represented by Megaman, which has several different Animations: Stand, Run, and Air. You must determine which state the player is currently in and assign the correct Animation.
-- [] The player moves with the following controls:
+- [ ] The player moves with the following controls:
   Left: A key, Right: D key, Jump: W key, Shoot: Space key
 - [x] The player can move left, move right, or shoot at any time during the game. This means the player can move left/right while in the air.
-- [] The player can only jump if it is currently standing on a tile
+- [ ] The player can only jump if it is currently standing on a tile
 - [x] If the jump key is held, the player should not continuously jump, but instead it should only jump once per button press. If the player lets go of the jump key mid-jump, it should start falling back down immediately
 - [x] If the player moves left/right, the player's sprite will face in that direction until the other direction has been pressed
 - [x] Bullets shot by the player travel in the direction the player is facing.
@@ -99,8 +99,8 @@ Left / Right / Up / Spacebar
 - [x] The player does not collide with 'Dec' (decoration) entities in the level
 - [x] If the player falls below the bottom of the screen, they respawn at the start of a level
 - [x] The player should have a Gravity component which constantly accelerates it downward on the screen until it collides with a tile
-- [] The player has a maximum speed specified in the Level file (see below) which it should not exceed in either x or y direction.
-- [] The player will be given a CBoundingBox of a size specified in the level file.
+- [ ] The player has a maximum speed specified in the Level file (see below) which it should not exceed in either x or y direction.
+- [ ] The player will be given a CBoundingBox of a size specified in the level file.
 - [x] The player's sprite and bounding box are centered on the player's position
 
 ### Animations
@@ -111,7 +111,7 @@ Left / Right / Up / Spacebar
 - [x] You need to implement Animation::update() to properly progress animations
 - [x] You need to implement Animation:hasEnded() which returns true if an animation has finished its last frame, false otherwise.
 - [x] Animations can be repeating (loop forever) or non-repeating (play once)
-- [] Any entity with a non-repeating animation should be destroyed once its Animation's hasEnded() returns true (has finished one cycle)
+- [ ] Any entity with a non-repeating animation should be destroyed once its Animation's hasEnded() returns true (has finished one cycle)
 
 ### Decoration Entities
 
@@ -122,13 +122,13 @@ Left / Right / Up / Spacebar
 
 - [x] Tiles are Entities that define the level geometry and interact with players
 - [x] Tiles can be given any Animation that is defined in the assets file
-- [] Tiles will be given a CBoundingBox equal to the size of the animation, which can be retrieved with:
+- [ ] Tiles will be given a CBoundingBox equal to the size of the animation, which can be retrieved with:
 
     ```cpp
     tile->get<CAnimation>().animation.getSize()
     ```
 
-- [] The current animation displayed for a tile can be retrieved with:
+- [ ] The current animation displayed for a tile can be retrieved with:
 
     ```cpp
     tile->get<CAnimation>().animation.getName()
@@ -139,24 +139,24 @@ Left / Right / Up / Spacebar
 #### Brick Tiles
 
 - [x] Brick tiles are given the 'Brick' Animation
-- [] When a brick tile collides with a bullet, or is hit by a player from below:
-  - [] Its animation should change to 'Explosion' (non-repeat)
-  - [] Non-repeating animation entities are destroyed when hasEnded() is true
-  - [] Its CBoundingBox component should be removed
+- [ ] When a brick tile collides with a bullet, or is hit by a player from below:
+  - [ ] Its animation should change to 'Explosion' (non-repeat)
+  - [ ] Non-repeating animation entities are destroyed when hasEnded() is true
+  - [ ] Its CBoundingBox component should be removed
 
 #### Question Tiles
 
 - [x] Question tiles are given the 'Question' Animation when created
-- [] When a Question tile is hit by a player from below, 2 things happen:
-  - [] A temporary lifespan entity with the 'Coin' animation should appear for 30 frames, 64 pixels above the location of the Question entity
-  - [] The player cannot interact interact anymore with the Question tile (i.e. re-trigger the coin animation) by changing its Animation component
+- [ ] When a Question tile is hit by a player from below, 2 things happen:
+  - [ ] A temporary lifespan entity with the 'Coin' animation should appear for 30 frames, 64 pixels above the location of the Question entity
+  - [ ] The player cannot interact interact anymore with the Question tile (i.e. re-trigger the coin animation) by changing its Animation component
 
 ### GUI
 
-- [] The GUI must display options to turn off each system independently
-- [] For each entity in the game, the GUI must list the ID, tag and position of that entity
-- [] You must display a list of all entities, as well as lists of entities by their tag
-- [] You must have some way of destroying a given entity by interacting with the UI element associated with it
+- [ ] The GUI must display options to turn off each system independently
+- [ ] For each entity in the game, the GUI must list the ID, tag and position of that entity
+- [ ] You must display a list of all entities, as well as lists of entities by their tag
+- [ ] You must have some way of destroying a given entity by interacting with the UI element associated with it
 
 ### Rendering
 
@@ -165,8 +165,8 @@ Left / Right / Up / Spacebar
 
 ### Bonus
 
-- [] Any special effects which do not alter game play can be added for up to 5% bonus marks on the assignment. Note that assignments cannot go above 100% total marks, but the 5% bonus can overwrite any marks lost in other areas of the assignment.
-- [] You may develop a 'special weapon' that has special effects which can also contribute to another 5% bonus marks available on the assignment.
+- [ ] Any special effects which do not alter game play can be added for up to 5% bonus marks on the assignment. Note that assignments cannot go above 100% total marks, but the 5% bonus can overwrite any marks lost in other areas of the assignment.
+- [ ] You may develop a 'special weapon' that has special effects which can also contribute to another 5% bonus marks available on the assignment.
 
 ### Misc
 
@@ -178,11 +178,11 @@ Left / Right / Up / Spacebar
 
 ### Level Creation
 
-- [] For this assignment you are also required to create your own level. This level should include some interesting gameplay
+- [ ] For this assignment you are also required to create your own level. This level should include some interesting gameplay
 
 ### Config Files
 
-- [] There will be two configuration files in this assignment. The Assets config file, and the Level configuration file.
+- [ ] There will be two configuration files in this assignment. The Assets config file, and the Level configuration file.
 
 ### Assets File Specification
 
