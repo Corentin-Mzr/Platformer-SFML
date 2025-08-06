@@ -28,19 +28,28 @@ WIP
   - [Assets](#assets)
   - [Player](#player)
   - [Animations](#animations)
-  - [Decoration entities](#decoration-entities)
+  - [Decoration Entities](#decoration-entities)
   - [Tiles](#tiles)
-    - [Brick tiles](#brick-tiles)  
-    - [Question tiles](#question-tiles)
+    - [Brick Tiles](#brick-tiles)  
+    - [Question Tiles](#question-tiles)
   - [GUI](#gui)
   - [Rendering](#rendering)
   - [Bonus](#bonus)
   - [Misc](#misc)
-  - [Level creation](#level-creation)
-  - [Config files](#config-files)
-  - [Assets file specification](#assets-file-specification)
-  - [Level file specification](#level-file-specification)
-  - [Assignment hints](#assignment-hints)
+  - [Level Creation](#level-creation)
+  - [Config File Specification](#config-file-specification)
+    - [Window Section Specification](#window-section-specification)
+    - [Bullet Section Specification](#bullet-section-specification)
+    - [Level Section Specification](#level-section-specification)
+    - [Font Section Specification](#font-section-specification)
+    - [Texture Section Specification](#texture-section-specification)
+    - [Sound Section Specification](#sound-section-specification)
+    - [Animation Section Specification](#animation-section-specification)
+  - [Level File Specification](#level-file-specification)
+    - [Tile Entity Specification](#tile-entity-specification)
+    - [Decoration Entity Specification](#decoration-entity-specification)
+    - [Player Specification](#player-specification)
+  - [Assignment Hints](#assignment-hints)
 - [License](#license)
 
 ## Installation
@@ -105,7 +114,8 @@ The following libraries have been used for this program
 
 ## Controls
 
-Left / Right / Up / Spacebar
+WASD / Arrows: Move and Jump
+Spacebar: Shoot
 
 ## Specifications (MAY VARY FROM REAL IMPLEMENTATION)
 
@@ -117,12 +127,12 @@ Left / Right / Up / Spacebar
 
 - [x] Entities in the game will be rendered using various Textures and Animations which we will be calling Assets (along with Fonts)
 - [x] Assets are loaded once at the beginning of the program and stored in the Assets class, which is stored by the GameEngine class
-- [ ] All Assets are defined in assets.txt, with the syntax defined below
+- [x] ~~All Assets are defined in assets.txt, with the syntax defined below~~ **All assets are defined in config.toml, with the keys defined below**
 
 ### Player
 
 - [x] The player Entity in the game is represented by Megaman, which has several different Animations: Stand, Run, and Air. You must determine which state the player is currently in and assign the correct Animation.
-- [ ] The player moves with the following controls:
+- [x] The player moves with the following controls:
   Left: A key, Right: D key, Jump: W key, Shoot: Space key
 - [x] The player can move left, move right, or shoot at any time during the game. This means the player can move left/right while in the air.
 - [ ] The player can only jump if it is currently standing on a tile
@@ -156,13 +166,13 @@ Left / Right / Up / Spacebar
 
 - [x] Tiles are Entities that define the level geometry and interact with players
 - [x] Tiles can be given any Animation that is defined in the assets file
-- [ ] Tiles will be given a CBoundingBox equal to the size of the animation, which can be retrieved with:
+- [x] Tiles will be given a CBoundingBox equal to the size of the animation, which can be retrieved with:
 
     ```cpp
     tile->get<CAnimation>().animation.getSize()
     ```
 
-- [ ] The current animation displayed for a tile can be retrieved with:
+- [x] The current animation displayed for a tile can be retrieved with:
 
     ```cpp
     tile->get<CAnimation>().animation.getName()
@@ -173,17 +183,17 @@ Left / Right / Up / Spacebar
 #### Brick Tiles
 
 - [x] Brick tiles are given the 'Brick' Animation
-- [ ] When a brick tile collides with a bullet, or is hit by a player from below:
-  - [ ] Its animation should change to 'Explosion' (non-repeat)
-  - [ ] Non-repeating animation entities are destroyed when hasEnded() is true
-  - [ ] Its CBoundingBox component should be removed
+- [x] When a brick tile collides with a bullet, or is hit by a player from below:
+  - [x] Its animation should change to 'Explosion' (non-repeat) **when a bullet hits the brick, or change to 'Debris' (non-repeat) when the player hit the brick from below**
+  - [x] Non-repeating animation entities are destroyed when hasEnded() is true
+  - [x] Its CBoundingBox component should be removed
 
 #### Question Tiles
 
 - [x] Question tiles are given the 'Question' Animation when created
-- [ ] When a Question tile is hit by a player from below, 2 things happen:
-  - [ ] A temporary lifespan entity with the 'Coin' animation should appear for 30 frames, 64 pixels above the location of the Question entity
-  - [ ] The player cannot interact interact anymore with the Question tile (i.e. re-trigger the coin animation) by changing its Animation component
+- [x] When a Question tile is hit by a player from below, 2 things happen:
+  - [x] A temporary lifespan entity with the 'Coin' animation should appear for 30 frames, 64 pixels above the location of the Question entity
+  - [x] **The player cannot interact interact anymore with the Question tile (i.e. re-trigger the coin animation) by changing its Animation component**
 
 ### GUI
 
@@ -214,30 +224,57 @@ Left / Right / Up / Spacebar
 
 - [ ] For this assignment you are also required to create your own level. This level should include some interesting gameplay
 
-### Config Files
+### **Config File Specification**
 
-- [ ] There will be two configuration files in this assignment. The Assets config file, and the Level configuration file.
+- [x] **The config file will be a TOML file divided in multiple sections: window, bullet, level, font, texture, sound and animation. These sections are described below**
 
-### Assets File Specification
+#### **Window Section Specification**
 
-There will be three different line types in the Assets file, each of which correspond to a different type of Asset. They are as follows:
+- [x] **The window section will contain the following:**
+  - [x] **Width: Window's width, stored as unsigned**
+  - [x] **Height: Window's height, stored as unsigned**
+  - [x] **Title: Window's title, stored as string**
+  - [x] **Framerate: Maximum framerate, stored as unsigned**
+  - [x] **Color: Window's background color, stored as array<int, 4>**
 
-Texture Asset Specification:
-Texture N P
-  Texture Name      N       std::string (it will have no spaces)
-  Texture FilePath  P       std::string (it will have no spaces)
+#### **Bullet Section Specification**
 
-Animation Asset Specification
-Animation N T F S
-  Animation Name        N   std::string (it will have no spaces)
-  Texture Name          T   std::string (refers to an existing texture)
-  Frame Count           F   int (number of frames in the Animation)
-  Animation Speed       S   int (number of game frames between animation frames)
+- [x] **The bullet section will contain the following:**
+  - [x] **Speed: Bullet's speed, stored as float**
+  - [x] **Radius: Bullet's radius, stored as float**
+  - [x] **Lifespawn: Bullet's lifespan, stored as unsigned**
 
-Font Asset Specification
-Font N P
-  Font Name         N       std::string (it will have no spaces)
-  Font File Path    P       std::string (it will have no spaces)
+#### **Level Section Specification**
+
+- [x] **The level section will contain multiple subsections of levels. Each subsection will contain the following:**
+  - [x] **Name: Level's name, stored as string**
+  - [x] **Path: Level's filepath, stored as string**
+
+#### **Font Section Specification**
+
+- [x] **The font section will contain multiple subsections of fonts. Each subsection will contain the following:**
+  - [x] **Name: Font's name, stored as string**
+  - [x] **Path: Font's filepath, stored as string**
+
+#### **Texture Section Specification**
+
+- [x] **The texture section will contain multiple subsections of textures. Each subsection will contain the following:**
+  - [x] **Name: Texture's name, stored as string**
+  - [x] **Path: Tetxure's filepath, stored as string**
+
+#### **Sound Section Specification**
+
+- [ ] **The sound section will contain multiple subsections of sounds. Each subsection will contain the following:**
+  - [ ] **Name: Sound's name, stored as string**
+  - [ ] **Path: Sound's filepath, stored as string**
+
+#### **Animation Section Specification**
+
+- [x] **The animation section will contain multiple subsections of animation. Each subsection will contain the following:**
+  - [x] **Name: Animation's name, stored as string**
+  - [x] **Texture: Texture used for the animation, stored as string**
+  - [x] **Frames: Number of frames in the animation, stored as int**
+  - [x] **Speed: Number of game frames between each animation frames, stored as int**
 
 ### Level File Specification
 
@@ -246,27 +283,30 @@ Game levels will be specified by a Level file, which will contain a list of enti
 IMPORTANT NOTE:
 All (GX, GY) positions given in the level specification file are given in 'grid' coordinates. The 'grid' cells are of size 64 by 64 pixels, and the entity should be positioned such that the bottom left corner of its texture is aligned with the bottom left corner of the given grid coordinate. The grid starts an (0,0) in the bottom-left of the screen, and can be seen by pressing the 'G' key while the game is running.
 
-Tile Entity Specification:
-Tile N GX GY
-  Animation Name    N       std::string (Animation asset name for this tile)
-  GX Grid X Pos     GX      float
-  GY Grid Y Pos     GY      float
+#### Tile Entity Specification
 
-Decoration Entity Specification:
-Dec N X Y
-  Animation Name     N      std::string (Animation asset name for this tile)
-  X Grid X Pos       X      float
-  Y Grid Y Pos       Y      float
+- Tile N GX GY  
+  - Animation Name    N       std::string (Animation asset name for this tile)  
+  - GX Grid X Pos     GX      float  
+  - GY Grid Y Pos     GY      float  
 
-Player Specification
-Player GX GY CW CH SX SY SM GY B
-  GX, GY Grid Pos       X, Y    float, float (starting position of player)
-  BoundingBox W/H       CW, CH  float, float (in pixels)
-  Left/Right Speed      SX      float
-  Jump Speed            SY      float
-  Max Speed             SM      float
-  Gravity               GY      float
-  Bullet Animation      B       std::string (Animation asset to use for bullets)
+#### Decoration Entity Specification
+
+- Dec N X Y  
+  - Animation Name     N      std::string (Animation asset name for this tile)  
+  - X Grid X Pos       X      float  
+  - Y Grid Y Pos       Y      float  
+
+#### Player Specification
+
+- Player GX GY CW CH SX SY SM GY B  
+  - GX, GY Grid Pos       X, Y    float, float (starting position of player)  
+  - BoundingBox W/H       CW, CH  float, float (in pixels)  
+  - Left/Right Speed      SX      float  
+  - Jump Speed            SY      float  
+  - Max Speed             SM      float  
+  - Gravity               GY      float  
+  - ~~Bullet Animation      B       std::string (Animation asset to use for bullets)~~
 
 ### Assignment Hints
 
