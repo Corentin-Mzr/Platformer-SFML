@@ -7,7 +7,8 @@
 
 class GameEngine;
 
-using ActionMap = std::unordered_map<sf::Keyboard::Key, std::string>;
+using Keycode = sf::Keyboard::Scancode;
+using ActionMap = std::unordered_map<Keycode, std::string>;
 
 class Scene
 {
@@ -51,7 +52,7 @@ public:
     /**
      * @brief Register an action
      */
-    void register_action(const sf::Keyboard::Key &input_key, const std::string &action_name) noexcept;
+    void register_action(const Keycode &input_key, const std::string &action_name) noexcept;
 
     /**
      * @brief Draw a line on the screen

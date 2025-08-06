@@ -14,7 +14,7 @@ void Scene::simulate(size_t frames) noexcept
 {
 }
 
-void Scene::register_action(const sf::Keyboard::Key &input_key, const std::string &action_name) noexcept
+void Scene::register_action(const Keycode &input_key, const std::string &action_name) noexcept
 {
     m_action_map[input_key] = action_name;
 }
@@ -47,7 +47,7 @@ bool Scene::has_ended() const noexcept
     return m_has_ended;
 }
 
-const std::unordered_map<sf::Keyboard::Key, std::string> &Scene::get_action_map() const noexcept
+const ActionMap &Scene::get_action_map() const noexcept
 {
     return m_action_map;
 }

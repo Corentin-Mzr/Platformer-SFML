@@ -26,17 +26,20 @@ void ScenePlay::update() noexcept
 void ScenePlay::init(const std::string &path)
 {
     /* Gameplay actions */
-    register_action(sf::Keyboard::Key::Up, "JUMP");
-    register_action(sf::Keyboard::Key::Left, "LEFT");
-    register_action(sf::Keyboard::Key::Right, "RIGHT");
-    register_action(sf::Keyboard::Key::Space, "SHOOT");
+    register_action(Keycode::Up, "JUMP");
+    register_action(Keycode::Left, "LEFT");
+    register_action(Keycode::Right, "RIGHT");
+    register_action(Keycode::Space, "SHOOT");
+    register_action(Keycode::W, "JUMP");
+    register_action(Keycode::A, "LEFT");
+    register_action(Keycode::D, "RIGHT");
 
     /* Other actions */
-    register_action(sf::Keyboard::Key::P, "PAUSE");
-    register_action(sf::Keyboard::Key::Escape, "QUIT");
-    register_action(sf::Keyboard::Key::T, "TOGGLE_TEXTURE");
-    register_action(sf::Keyboard::Key::C, "TOGGLE_COLLISION");
-    register_action(sf::Keyboard::Key::G, "TOGGLE_GRID");
+    register_action(Keycode::P, "PAUSE");
+    register_action(Keycode::Escape, "QUIT");
+    register_action(Keycode::T, "TOGGLE_TEXTURE");
+    register_action(Keycode::C, "TOGGLE_COLLISION");
+    register_action(Keycode::G, "TOGGLE_GRID");
 
     /* Load font */
     if (!m_font.openFromFile("../resources/fonts/consolas.ttf"))

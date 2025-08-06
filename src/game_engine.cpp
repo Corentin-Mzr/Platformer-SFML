@@ -100,23 +100,23 @@ void GameEngine::system_user_input() noexcept
 
         if (const auto *key_pressed = event->getIf<sf::Event::KeyPressed>())
         {
-            if (scene->get_action_map().find(key_pressed->code) == scene->get_action_map().end())
+            if (scene->get_action_map().find(key_pressed->scancode) == scene->get_action_map().end())
             {
                 continue;
             }
 
-            const Action action(scene->get_action_map().at(key_pressed->code), "START");
+            const Action action(scene->get_action_map().at(key_pressed->scancode), "START");
             scene->system_do_action(action);
         }
 
         if (const auto *key_released = event->getIf<sf::Event::KeyReleased>())
         {
-            if (scene->get_action_map().find(key_released->code) == scene->get_action_map().end())
+            if (scene->get_action_map().find(key_released->scancode) == scene->get_action_map().end())
             {
                 continue;
             }
 
-            const Action action(scene->get_action_map().at(key_released->code), "END");
+            const Action action(scene->get_action_map().at(key_released->scancode), "END");
             scene->system_do_action(action);
         }
     }

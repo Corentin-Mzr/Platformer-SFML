@@ -10,11 +10,11 @@ SceneMenu::SceneMenu(GameEngine *game) : Scene(game), m_menu_text(m_menu_font)
 void SceneMenu::init()
 {
     /* Allowed key inputs */
-    register_action(sf::Keyboard::Key::Escape, "QUIT");
-    register_action(sf::Keyboard::Key::Down, "DOWN");
-    register_action(sf::Keyboard::Key::Up, "UP");
-    register_action(sf::Keyboard::Key::Enter, "PLAY");
-    register_action(sf::Keyboard::Key::R, "REFRESH"); 
+    register_action(Keycode::Escape, "QUIT");
+    register_action(Keycode::Down, "DOWN");
+    register_action(Keycode::Up, "UP");
+    register_action(Keycode::Enter, "PLAY");
+    register_action(Keycode::R, "REFRESH"); 
 
     /* Font load */
     m_menu_font = m_game->get_assets().get_font("Consolas");
