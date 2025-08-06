@@ -68,6 +68,9 @@ public:
     void destroy() noexcept;
 
 private:
+    explicit Entity() noexcept = default;
+    explicit Entity(std::string tag, size_t id) noexcept;
+
     /* Delete move and copy */
     Entity(const Entity &) noexcept = delete;
     Entity &operator=(const Entity &) noexcept = delete;
@@ -79,9 +82,6 @@ private:
     bool m_alive{true};
     const std::string m_tag{"default"};
     const size_t m_id{};
-
-    explicit Entity() noexcept = default;
-    explicit Entity(std::string tag, size_t id) noexcept;
 };
 
 /* TEMPLATE FUNCTIONS HERE */
