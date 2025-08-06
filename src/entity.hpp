@@ -42,7 +42,7 @@ public:
      * @brief Remove a component
      */
     template <typename T>
-    void remove() const noexcept;
+    void remove() noexcept;
 
     /**
      * @brief Return entity's id
@@ -114,7 +114,7 @@ bool Entity::has() const noexcept
 }
 
 template <typename T>
-void Entity::remove() const noexcept
+void Entity::remove() noexcept
 {
     get<T>() = T();
 }

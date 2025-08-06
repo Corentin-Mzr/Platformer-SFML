@@ -7,7 +7,6 @@
 
 namespace Physics
 {
-
     /**
      * @brief Get the current overlap between two entities bounding boxes. Entities collide iff ox > 0 && oy > 0
      * 
@@ -17,7 +16,7 @@ namespace Physics
     [[nodiscard]]
     inline sf::Vector2f get_current_overlap(const std::shared_ptr<Entity> a, const std::shared_ptr<Entity> b)
     {
-        assert(a->has<CBoundingBox>() && a->has<CTransform>() && b->has<CBoundingBox>() && b->has<CTransform>());
+        // assert(a->has<CBoundingBox>() && a->has<CTransform>() && b->has<CBoundingBox>() && b->has<CTransform>());
         const auto &a_box_half_size = a->get<CBoundingBox>().half_size;
         const auto &a_current_pos = a->get<CTransform>().pos;
         const auto &b_box_half_size = b->get<CBoundingBox>().half_size;
@@ -39,7 +38,7 @@ namespace Physics
     [[nodiscard]]
     inline sf::Vector2f get_previous_overlap(const std::shared_ptr<Entity> a, const std::shared_ptr<Entity> b)
     {
-        assert(a->has<CBoundingBox>() && a->has<CTransform>() && b->has<CBoundingBox>() && b->has<CTransform>());
+        // assert(a->has<CBoundingBox>() && a->has<CTransform>() && b->has<CBoundingBox>() && b->has<CTransform>());
         const auto &a_box_half_size = a->get<CBoundingBox>().half_size;
         const auto &a_previous_pos = a->get<CTransform>().previous_pos;
         const auto &b_box_half_size = b->get<CBoundingBox>().half_size;

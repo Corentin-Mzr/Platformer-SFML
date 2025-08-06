@@ -385,6 +385,11 @@ void ScenePlay::system_collision()
     /* Player - tile collision */
     for (auto &tile : m_entities.get_entities("tile"))
     {
+        if (!m_player->has<CBoundingBox>() || !tile->has<CBoundingBox>())
+        {
+            continue;
+        }
+
         const auto overlap{Physics::get_current_overlap(m_player, tile)};
         const auto p_overlap{Physics::get_previous_overlap(m_player, tile)};
 
@@ -813,13 +818,14 @@ void ScenePlay::change_player_state_to(CState &state, const std::string &new_sta
 void ScenePlay::spawn_explosion(std::shared_ptr<Entity> tile)
 {
     tile->get<CAnimation>().animation = m_game->get_assets().get_animation("Explosion");
-    tile->add<CLifeSpan>(10, m_current_frame);
+    tile->get<CAnimation>().repeat = false;
+    tile->remove<CBoundingBox>();
 }
 
 void ScenePlay::spawn_debris(std::shared_ptr<Entity> tile)
 {
     tile->get<CAnimation>().animation = m_game->get_assets().get_animation("BrickDebris");
-    tile->add<CLifeSpan>(10, m_current_frame);
+    tile->get<CAnimation>().repeat = false;
 }
 
 void ScenePlay::spawn_coin(std::shared_ptr<Entity> tile)
