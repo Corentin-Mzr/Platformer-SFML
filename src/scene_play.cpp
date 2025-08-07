@@ -3,6 +3,8 @@
 #include "scene_menu.hpp"
 #include "physics.hpp"
 #include <iostream>
+#include <imgui.h>
+#include <imgui-SFML.h>
 
 ScenePlay::ScenePlay(GameEngine *game, const std::string &level_path) : Scene(game), m_grid_text(m_font)
 {
@@ -17,9 +19,10 @@ void ScenePlay::update() noexcept
         system_movement();
         system_lifespan();
         system_collision();
+        system_animation();
         m_current_frame++;
     }
-    system_animation();
+    system_gui();
     system_render();
 }
 
@@ -620,6 +623,12 @@ void ScenePlay::system_animation()
             anim.animation.update();
         }
     }
+}
+
+void ScenePlay::system_gui()
+{
+    ImGui::Begin("MegaMario");
+    ImGui::End();
 }
 
 void ScenePlay::system_render() noexcept

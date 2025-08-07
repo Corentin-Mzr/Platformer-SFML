@@ -91,6 +91,7 @@ void GameEngine::update() noexcept
     {
         scene->update();
     }
+    ImGui::SFML::Render(m_window);
 }
 
 void GameEngine::system_user_input() noexcept

@@ -77,6 +77,11 @@ private:
     void system_animation();
 
     /**
+     * @brief Handle ImGui
+     */
+    void system_gui();
+
+    /**
      * @brief Render the scene
      */
     void system_render() noexcept override;
