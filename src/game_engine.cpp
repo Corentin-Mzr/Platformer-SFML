@@ -12,6 +12,11 @@ GameEngine::GameEngine(const std::string &config_file) : m_config(config_file)
     init();
 }
 
+GameEngine::~GameEngine()
+{
+    ImGui::SFML::Shutdown();
+}
+
 void GameEngine::init()
 {
     /* Load assets */
@@ -67,7 +72,6 @@ void GameEngine::quit() noexcept
 {
     m_running = false;
     m_window.close();
-    ImGui::SFML::Shutdown();
 }
 
 void GameEngine::change_scene(const std::string &name, std::shared_ptr<Scene> scene, bool end_current) noexcept
@@ -85,13 +89,13 @@ void GameEngine::change_scene(const std::string &name, std::shared_ptr<Scene> sc
 
 void GameEngine::update() noexcept
 {
-    ImGui::SFML::Update(m_window, m_imgui_clock.restart());
     auto scene{get_current_scene()};
     if (scene != nullptr) [[likely]]
     {
+        ImGui::SFML::Update(m_window, m_imgui_clock.restart());
         scene->update();
+        ImGui::SFML::Render(m_window);
     }
-    ImGui::SFML::Render(m_window);
 }
 
 void GameEngine::system_user_input() noexcept

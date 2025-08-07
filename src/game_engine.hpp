@@ -16,6 +16,7 @@ class GameEngine
 {
 public:
     explicit GameEngine() noexcept = default;
+    ~GameEngine();
 
     /**
      * @brief Create a GameEngine from a TOML config file
