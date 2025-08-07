@@ -4,6 +4,8 @@
 #include "scene_menu.hpp"
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <imgui.h>
+#include <imgui-SFML.h>
 
 GameEngine::GameEngine(const std::string &config_file) : m_config(config_file)
 {
@@ -41,6 +43,12 @@ void GameEngine::init()
     m_window.setFramerateLimit(m_config.get_window_config().framerate);
     m_window.setView(sf::View{{0.0f, 0.0f}, sizes_f});
 
+    /* Init ImGui */
+    if (!ImGui::SFML::Init(m_window))
+    {
+        throw std::runtime_error("Could not initialize ImGui");
+    }
+
     /* Setup scene */
     change_scene("MENU", std::make_shared<SceneMenu>(this));
 }
@@ -59,6 +67,7 @@ void GameEngine::quit() noexcept
 {
     m_running = false;
     m_window.close();
+    ImGui::SFML::Shutdown();
 }
 
 void GameEngine::change_scene(const std::string &name, std::shared_ptr<Scene> scene, bool end_current) noexcept
@@ -76,6 +85,7 @@ void GameEngine::change_scene(const std::string &name, std::shared_ptr<Scene> sc
 
 void GameEngine::update() noexcept
 {
+    ImGui::SFML::Update(m_window, m_imgui_clock.restart());
     auto scene{get_current_scene()};
     if (scene != nullptr) [[likely]]
     {
@@ -87,6 +97,8 @@ void GameEngine::system_user_input() noexcept
 {
     while (const std::optional event = m_window.pollEvent())
     {
+        ImGui::SFML::ProcessEvent(m_window, *event);
+
         if (event->is<sf::Event::Closed>())
         {
             quit();

@@ -135,7 +135,7 @@ Spacebar: Shoot
 - [x] The player moves with the following controls:
   Left: A key, Right: D key, Jump: W key, Shoot: Space key
 - [x] The player can move left, move right, or shoot at any time during the game. This means the player can move left/right while in the air.
-- [ ] The player can only jump if it is currently standing on a tile
+- [x] ~~The player can only jump if it is currently standing on a tile~~ **The player can still jump after falling from a tile**
 - [x] If the jump key is held, the player should not continuously jump, but instead it should only jump once per button press. If the player lets go of the jump key mid-jump, it should start falling back down immediately
 - [x] If the player moves left/right, the player's sprite will face in that direction until the other direction has been pressed
 - [x] Bullets shot by the player travel in the direction the player is facing.
@@ -155,7 +155,7 @@ Spacebar: Shoot
 - [x] You need to implement Animation::update() to properly progress animations
 - [x] You need to implement Animation:hasEnded() which returns true if an animation has finished its last frame, false otherwise.
 - [x] Animations can be repeating (loop forever) or non-repeating (play once)
-- [ ] Any entity with a non-repeating animation should be destroyed once its Animation's hasEnded() returns true (has finished one cycle)
+- [x] Any entity with a non-repeating animation should be destroyed once its Animation's hasEnded() returns true (has finished one cycle)
 
 ### Decoration Entities
 

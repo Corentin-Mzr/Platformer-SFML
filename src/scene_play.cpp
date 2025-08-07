@@ -280,9 +280,9 @@ void ScenePlay::system_movement()
             continue;
         }
 
-        auto &transform = entity->get<CTransform>();
+        auto &transform{entity->get<CTransform>()};
 
-        if (entity->has<CGravity>())
+        if (entity->has<CGravity>()) [[unlikely]]
         {
             transform.velocity.y += entity->get<CGravity>().gravity;
             transform.velocity.y = std::min(transform.velocity.y, max_speed);

@@ -155,4 +155,5 @@ protected:
     unsigned m_simulation_speed{1};
     bool m_running{true};
     ConfigParser m_config;
+    sf::Clock m_imgui_clock{};
 };
