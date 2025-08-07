@@ -2,6 +2,7 @@
 
 #include "scene.hpp"
 #include "config_structs.hpp"
+#include <bitset>
 
 class ScenePlay : public Scene
 {
@@ -130,10 +131,19 @@ private:
 private:
     std::shared_ptr<Entity> m_player{};
     std::string m_level_path{};
-    bool m_draw_textures{true};
-    bool m_draw_collision{false};
-    bool m_draw_grid{false};
     const sf::Vector2u m_grid_size{64, 64};
     sf::Font m_font{};
     std::optional<sf::Text> m_grid_text{};
+
+    /* Toggle some draw things */
+    bool m_draw_textures{true};
+    bool m_draw_collision{false};
+    bool m_draw_grid{false};
+
+    /* Toggle systems */
+    bool m_movement{true};
+    bool m_lifespan{true};
+    bool m_collision{true};
+    bool m_animation{true};
+    bool m_render{true};
 };

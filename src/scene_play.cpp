@@ -214,6 +214,9 @@ void ScenePlay::spawn_bullet(std::shared_ptr<Entity> entity)
 
 void ScenePlay::system_movement()
 {
+    if (!m_movement)
+        return;
+
     // TODO: Implement player movement/jumping based on its CInput component
     // TODO: Implement gravity's effect on the player
     // TODO: Implement the maximum player speed in both X and Y directions
@@ -298,6 +301,9 @@ void ScenePlay::system_movement()
 
 void ScenePlay::system_lifespan()
 {
+    if (!m_lifespan)
+        return;
+
     /* Bullet quantity */
     auto &bullets{m_entities.get_entities("bullet")};
     bool first_bullet{true};
@@ -355,6 +361,9 @@ void ScenePlay::system_collision()
     //       used by the Animation system
     // TODO: Check to see if the player has fallen down a hole (y > height())
     // TODO: Don't let the player walk off the left side of the map
+
+    if (!m_collision)
+        return;
 
     /* Bullet - Tile collision */
     for (auto &bullet : m_entities.get_entities("bullet"))
@@ -539,8 +548,11 @@ void ScenePlay::system_collision()
 
 void ScenePlay::system_animation()
 {
+    if (!m_animation)
+        return;
+
     // TODO: Set the animation of the player based on its CState component
-    constexpr float eps{0.1f};
+    constexpr static float eps{0.1f};
 
     /* Check player state and update it based on its movement*/
     if (m_player->has<CTransform>() && m_player->has<CState>() && m_player->has<CInput>() && m_player->has<CJump>()) [[likely]]
@@ -628,6 +640,30 @@ void ScenePlay::system_animation()
 void ScenePlay::system_gui()
 {
     ImGui::Begin("MegaMario");
+
+    if (ImGui::BeginTabBar("MegaMario"))
+    {
+        if (ImGui::BeginTabItem("Basics"))
+        {
+            ImGui::Checkbox("Pause", &m_paused);
+            ImGui::Checkbox("Textures", &m_draw_textures);
+            ImGui::Checkbox("Hitboxes", &m_draw_collision);
+            ImGui::Checkbox("Grid", &m_draw_grid);
+            ImGui::EndTabItem();
+        }
+
+        if (ImGui::BeginTabItem("Systems"))
+        {
+            ImGui::Checkbox("Movement", &m_movement);
+            ImGui::Checkbox("Lifespan", &m_lifespan);
+            ImGui::Checkbox("Collision", &m_collision);
+            ImGui::Checkbox("Animation", &m_animation);
+            ImGui::Checkbox("Render", &m_render);
+            ImGui::EndTabItem();
+        }
+
+        ImGui::EndTabBar();
+    }
     ImGui::End();
 }
 
@@ -638,6 +674,9 @@ void ScenePlay::system_render() noexcept
 
     /* Change color background when game is paused */
     m_game->get_window().clear(m_paused ? background_pause : background_run);
+
+    if (!m_render)
+        return;
 
     /* Set viewport to be centered on the player if it's far enough right */
     auto &player_pos{m_player->get<CTransform>().pos};
