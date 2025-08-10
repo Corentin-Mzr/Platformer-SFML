@@ -5,6 +5,7 @@
 #include <iostream>
 #include <imgui.h>
 #include <imgui-SFML.h>
+#include <format>
 
 ScenePlay::ScenePlay(GameEngine *game, const std::string &level_path) : Scene(game), m_grid_text(m_font)
 {
@@ -78,7 +79,7 @@ void ScenePlay::load_level(const std::string &path)
     std::ifstream level(path);
     if (!level.is_open())
     {
-        std::cerr << "Could not open level file " + path + "\n";
+        std::cerr << std::format("Could not open level file {}\n", path);
         return;
     }
 
@@ -106,7 +107,7 @@ void ScenePlay::load_level(const std::string &path)
         */
         if (words.size() != 4)
         {
-            std::cerr << "Error line " + std::to_string(line_idx) + ": incorrect number of elements\n";
+            std::cerr << std::format("Error line {}: {}\n", line_idx, "incorrect number of elements");
             continue;
         }
 
@@ -133,7 +134,7 @@ void ScenePlay::load_level(const std::string &path)
             }
             catch (const std::exception &e)
             {
-                std::cerr << "Error line " + std::to_string(line_idx) + " : " + e.what() + "\n";
+                std::cerr << std::format("Error line {}: {}\n", line_idx, e.what());
                 entity->destroy();
                 continue;
             }
@@ -157,14 +158,14 @@ void ScenePlay::load_level(const std::string &path)
             }
             catch (const std::exception &e)
             {
-                std::cerr << "Error line " + std::to_string(line_idx) + " : " + e.what() + "\n";
+                std::cerr << std::format("Error line {}: {}\n", line_idx, e.what());
                 entity->destroy();
                 continue;
             }
         }
         else
         {
-            std::cerr << "Error line " + std::to_string(line_idx) + ": element must be Tile or Dec\n";
+            std::cerr << std::format("Error line {}: {}\n", line_idx, "element must be Tile or Dec");
             continue;
         }
     }

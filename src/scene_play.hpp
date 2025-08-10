@@ -2,7 +2,6 @@
 
 #include "scene.hpp"
 #include "config_structs.hpp"
-#include <bitset>
 
 class ScenePlay : public Scene
 {

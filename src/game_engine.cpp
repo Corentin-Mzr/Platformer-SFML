@@ -22,19 +22,19 @@ void GameEngine::init()
     /* Load assets */
     for (const auto &font : m_config.get_font_config())
     {
-        std::cout << "Adding font " + font.name + "\n";
+        std::cout << std::format("Adding font {}\n", font.name);
         m_assets.add_font(font.name, font.path);
     }
 
     for (const auto &texture : m_config.get_texture_config())
     {
-        std::cout << "Adding texture " + texture.name + "\n";
+        std::cout << std::format("Adding texture {}\n", texture.name);
         m_assets.add_texture(texture.name, texture.path);
     }
 
     for (const auto &animation : m_config.get_animation_config())
     {
-        std::cout << "Adding animation " + animation.name + "\n";
+        std::cout << std::format("Adding animation {}\n", animation.name);
         Animation anim(animation.name, m_assets.get_texture(animation.texture), animation.frames, animation.speed);
         m_assets.add_animation(animation.name, anim);
     }
@@ -76,7 +76,7 @@ void GameEngine::quit() noexcept
 
 void GameEngine::change_scene(const std::string &name, std::shared_ptr<Scene> scene, bool end_current) noexcept
 {
-    std::cout << "Changing from " + m_current_scene + " to " + name + "\n";
+    std::cout << std::format("Changing from {} to {}\n", m_current_scene, name);
 
     if (m_scenes.contains(name) && end_current)
     {

@@ -2,6 +2,7 @@
 #include <iostream>
 #include <sstream>
 #include <iomanip>
+#include <format>
 
 
 sf::Color array_to_color(const std::array<uint8_t, 4> &array) noexcept
@@ -11,7 +12,7 @@ sf::Color array_to_color(const std::array<uint8_t, 4> &array) noexcept
 
 void print_color(const sf::Color &color) noexcept
 {
-    std::string str = "Color(r=" + std::to_string(color.r) + ", g=" + std::to_string(color.g) + ", b=" + std::to_string(color.b) + ", a=" + std::to_string(color.a) + ")\n";
+    std::string str = std::format("Color(r={}, g={}, b={})\n", color.r, color.g, color.b);
     std::cout << str;
 }
 
