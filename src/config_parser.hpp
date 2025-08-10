@@ -1,6 +1,5 @@
 #pragma once
 
-#include <cassert>
 #include <toml.hpp>
 #include "config_structs.hpp"
 

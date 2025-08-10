@@ -1,4 +1,5 @@
 #include "config_parser.hpp"
+#include <iostream>
 
 ////////////////////////////////////////// HELPER FUNCTIONS //////////////////////////////////////////
 
@@ -6,8 +7,12 @@ template <typename T>
 [[nodiscard]]
 static T parse_section(const toml::value &data, const std::string &section_name)
 {
-    assert(data.contains(section_name));
-    return toml::find<T>(data, section_name);
+    if (data.contains(section_name))
+    {
+        return toml::find<T>(data, section_name);
+    }
+    std::cerr << std::format("Could not find {} section in the config file\n", section_name);
+    return T{};
 }
 
 template <typename T>
@@ -18,7 +23,9 @@ static std::vector<T> parse_section_with_subsections(const toml::value &data, co
     std::vector<T> subdata{};
     subdata.reserve(v.size());
     for (const auto &[key, value] : v)
+    {
         subdata.push_back(toml::get<T>(value));
+    }
     return subdata;
 }
 
