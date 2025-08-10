@@ -14,7 +14,7 @@
 
 [[nodiscard]] EntityVec &EntityManager::get_entities(const std::string &tag) noexcept
 {
-    static EntityVec empty;
+    static EntityVec empty{};
     auto it{m_entity_map.find(tag)};
     return it != m_entity_map.end() ? it->second : empty;
 }
