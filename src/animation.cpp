@@ -19,7 +19,9 @@ void Animation::update() noexcept
     const sf::IntRect rect{{anim_frame * m_size.x, 0}, m_size};
 
     if (m_sprite.has_value()) [[likely]]
+    {
         m_sprite->setTextureRect(rect);
+    }
 }
 
 bool Animation::has_ended() const noexcept
