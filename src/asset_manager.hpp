@@ -6,6 +6,10 @@
 #include <SFML/Graphics/Font.hpp>
 #include "animation.hpp"
 
+using TextureMap = std::unordered_map<std::string, sf::Texture>;
+using AnimationMap = std::unordered_map<std::string, Animation>;
+using FontMap = std::unordered_map<std::string, sf::Font>;
+
 class AssetManager
 {
 public:
@@ -67,7 +71,8 @@ private:
     AssetManager &operator=(AssetManager &&) noexcept = delete;
 
 private:
-    std::unordered_map<std::string, sf::Texture> m_textures{};
-    std::unordered_map<std::string, Animation> m_animations{};
-    std::unordered_map<std::string, sf::Font> m_fonts{};
+    TextureMap m_textures{};
+    AnimationMap m_animations{};
+    FontMap m_fonts{};
 };
+
