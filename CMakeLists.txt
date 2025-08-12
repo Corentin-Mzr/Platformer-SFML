@@ -9,7 +9,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 # Incremental linkage
-set(CMAKE_LINKER_TYPE "LLD")
+if(WIN32)
+    set(CMAKE_LINKER_TYPE LLD)
+elseif(UNIX AND NOT APPLE)
+    set(CMAKE_LINKER_TYPE GOLD)
+endif()
 
 # Fetch SFML, Dear ImGUI, ImGUI-SFML and toml
 include(FetchContent)
