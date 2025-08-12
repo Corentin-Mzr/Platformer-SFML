@@ -8,6 +8,9 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+# Incremental linkage
+set(CMAKE_LINKER_TYPE "LLD")
+
 # Fetch SFML, Dear ImGUI, ImGUI-SFML and toml
 include(FetchContent)
 FetchContent_Declare(
