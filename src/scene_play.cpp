@@ -211,6 +211,8 @@ void ScenePlay::spawn_bullet(std::shared_ptr<Entity> entity)
     bullet->add<CAnimation>(m_game->get_assets().get_animation("Buster"), true);
     bullet->add<CBoundingBox>(sf::Vector2f(bullet_config.radius, bullet_config.radius));
     bullet->add<CLifeSpan>(bullet_config.lifespan, m_current_frame);
+
+    m_bullet_count++;
 }
 
 void ScenePlay::system_movement()
@@ -268,14 +270,10 @@ void ScenePlay::system_movement()
         }
 
         /* Shoot */
-        if (input.shoot)
+        if (input.shoot && input.can_shoot)
         {
-            if (input.can_shoot)
-            {
-                spawn_bullet(m_player);
-                input.can_shoot = false;
-                // input.shoot = false;
-            }
+            spawn_bullet(m_player);
+            input.can_shoot = false;
         }
     }
 
@@ -323,7 +321,7 @@ void ScenePlay::system_lifespan()
         }
     }
 
-    if (bullets.size() == 0)
+    if (m_bullet_count == 0)
     {
         m_player->get<CInput>().can_shoot = true;
     }
@@ -340,6 +338,11 @@ void ScenePlay::system_lifespan()
         if (m_current_frame - ls.frame_created >= ls.lifespan)
         {
             e->destroy();
+
+            if (e->tag() == "bullet") [[likely]]
+            {
+                m_bullet_count--;
+            }
         }
     }
 }
@@ -392,6 +395,7 @@ void ScenePlay::system_collision()
 
             /* Destroy the bullet */
             bullet->destroy();
+            m_bullet_count--;
         }
     }
 
@@ -683,7 +687,6 @@ void ScenePlay::system_render() noexcept
     auto &player_pos{m_player->get<CTransform>().pos};
     float window_center_x{std::max(0.5f * static_cast<float>(m_game->get_window().getSize().x), player_pos.x)};
 
-    // TODO: Fix set view bug
     sf::View view{m_game->get_window().getDefaultView()};
     view.setCenter({window_center_x, static_cast<float>(m_game->get_window().getSize().y) - view.getCenter().y});
     m_game->get_window().setView(view);
@@ -811,11 +814,6 @@ void ScenePlay::system_do_action(const Action &action) noexcept
 
         else if (action.name == "SHOOT")
         {
-            // auto &input{m_player->get<CInput>()};
-            // if (input.can_shoot)
-            // {
-            //     input.shoot = true;
-            // }
             m_player->get<CInput>().shoot = true;
         }
     }
@@ -875,6 +873,7 @@ void ScenePlay::spawn_debris(std::shared_ptr<Entity> tile)
 {
     tile->get<CAnimation>().animation = m_game->get_assets().get_animation("BrickDebris");
     tile->get<CAnimation>().repeat = false;
+    tile->remove<CBoundingBox>();
 }
 
 void ScenePlay::spawn_coin(std::shared_ptr<Entity> tile)

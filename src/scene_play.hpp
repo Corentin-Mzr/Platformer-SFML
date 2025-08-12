@@ -145,4 +145,7 @@ private:
     bool m_collision{true};
     bool m_animation{true};
     bool m_render{true};
+
+    /* Count bullets to know when player can shoot */
+    size_t m_bullet_count{};
 };
