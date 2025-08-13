@@ -1,6 +1,7 @@
 #include "scene_menu.hpp"
 #include "game_engine.hpp"
 #include "scene_play.hpp"
+#include <SFML/Audio/Sound.hpp>
 
 SceneMenu::SceneMenu(GameEngine *game) : Scene(game), m_menu_text(m_menu_font)
 {
@@ -14,7 +15,7 @@ void SceneMenu::init()
     register_action(Keycode::Down, "DOWN");
     register_action(Keycode::Up, "UP");
     register_action(Keycode::Enter, "PLAY");
-    register_action(Keycode::R, "REFRESH"); 
+    register_action(Keycode::R, "REFRESH");
 
     /* Font load */
     m_menu_font = m_game->get_assets().get_font("Consolas");
@@ -63,11 +64,18 @@ void SceneMenu::init()
         level_item.setPosition(level_position);
         m_menu_items.push_back(level_item);
     }
+
+    m_selection_sound.emplace(m_game->get_assets().get_sound("Selection"));
+    m_selection_sound->setVolume(50.0f);
+
+    m_confirm_sound.emplace(m_game->get_assets().get_sound("Confirm"));
+    m_confirm_sound->setVolume(50.0f);
 }
 
 void SceneMenu::update() noexcept
 {
-    // m_entities.update();
+    system_sound();
+    system_scene();
     system_render();
 }
 
@@ -98,7 +106,29 @@ void SceneMenu::system_render() noexcept
     help_text.setFillColor(sf::Color::White);
     help_text.setPosition({view_pos.x - view_half_size.x + 24.0f, view_pos.y + 0.75f * view_half_size.y});
     m_game->get_window().draw(help_text);
+}
 
+void SceneMenu::system_sound()
+{
+    if (m_selected_menu_index != m_selected_menu_index_prev)
+    {
+        m_selected_menu_index_prev = m_selected_menu_index;
+        m_selection_sound->play();
+    }
+
+    if (m_change_scene_next_frame)
+    {
+        m_confirm_sound->play();
+    }
+}
+
+void SceneMenu::system_scene()
+{
+    if (m_change_scene_next_frame)
+    {
+        m_game->change_scene(m_next_scene_name, m_next_scene);
+        m_change_scene_next_frame = false;
+    }
 }
 
 void SceneMenu::on_end() noexcept
@@ -112,26 +142,43 @@ void SceneMenu::system_do_action(const Action &action) noexcept
     if (action.type == "START")
     {
         if (action.name == "QUIT")
+        {
             on_end();
+        }
 
         else if (action.name == "DOWN")
+        {
             m_selected_menu_index = m_selected_menu_index == m_menu_strings.size() - 1 ? m_menu_strings.size() - 1 : m_selected_menu_index + 1;
+        }
 
         else if (action.name == "UP")
+        {
             m_selected_menu_index = m_selected_menu_index == 0 ? 0 : m_selected_menu_index - 1;
+        }
 
         else if (action.name == "PLAY")
         {
             if (m_selected_menu_index != m_menu_strings.size() - 1)
-                m_game->change_scene("PLAY", std::make_shared<ScenePlay>(m_game, m_level_paths[m_selected_menu_index]));
+            {
+                m_next_scene_name = "PLAY";
+                m_next_scene = std::make_shared<ScenePlay>(m_game, m_level_paths[m_selected_menu_index]);
+                m_change_scene_next_frame = true;
+
+                // m_game->change_scene("PLAY", std::make_shared<ScenePlay>(m_game, m_level_paths[m_selected_menu_index]));
+            }
             else
+            {
                 on_end();
+            }
         }
         else if (action.name == "REFRESH")
         {
-            m_game->change_scene("MENU", std::make_shared<SceneMenu>(m_game));
+            m_next_scene_name = "MENU";
+            m_next_scene = std::make_shared<SceneMenu>(m_game);
+            m_change_scene_next_frame = true;
+
+            // m_game->change_scene("MENU", std::make_shared<SceneMenu>(m_game));
         }
-            
     }
 
     /* Key released */

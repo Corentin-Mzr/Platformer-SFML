@@ -2,6 +2,7 @@
 
 #include "scene.hpp"
 #include "misc.hpp"
+#include <SFML/Audio/Sound.hpp>
 
 class SceneMenu : public Scene
 {
@@ -35,6 +36,16 @@ private:
     void system_do_action(const Action &action) noexcept override;
 
     /**
+     * @brief Handle sounds
+     */
+    void system_sound();
+
+    /**
+     * @brief Handle changing scenes
+     */
+    void system_scene();
+
+    /**
      * @brief Handle the scene exit
      */
     void on_end() noexcept override;
@@ -47,4 +58,11 @@ private:
     std::vector<std::string> m_menu_strings{};
     std::vector<std::string> m_level_paths{};
     size_t m_selected_menu_index{};
+    size_t m_selected_menu_index_prev{};
+
+    bool m_change_scene_next_frame{false};
+    std::string m_next_scene_name{};
+    std::shared_ptr<Scene> m_next_scene{};
+    std::optional<sf::Sound> m_selection_sound{};
+    std::optional<sf::Sound> m_confirm_sound{};
 };
