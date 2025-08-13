@@ -197,10 +197,10 @@ Spacebar: Shoot
 
 ### GUI
 
-- [ ] The GUI must display options to turn off each system independently
-- [ ] For each entity in the game, the GUI must list the ID, tag and position of that entity
-- [ ] You must display a list of all entities, as well as lists of entities by their tag
-- [ ] You must have some way of destroying a given entity by interacting with the UI element associated with it
+- [x] The GUI must display options to turn off each system independently
+- [x] For each entity in the game, the GUI must list the ID, tag and position of that entity
+- [x] You must display a list of all entities, as well as lists of entities by their tag
+- [x] You must have some way of destroying a given entity by interacting with the UI element associated with it
 
 ### Rendering
 
