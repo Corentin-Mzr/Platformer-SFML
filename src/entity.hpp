@@ -4,7 +4,7 @@
 #include <string>
 #include "components.hpp"
 
-using ComponentTuple = std::tuple<CTransform, CLifeSpan, CInput, CBoundingBox, CAnimation, CGravity, CState, CJump>;
+using ComponentTuple = std::tuple<CTransform, CLifeSpan, CInput, CBoundingBox, CAnimation, CGravity, CState, CJump, CSound>;
 
 class Entity
 {

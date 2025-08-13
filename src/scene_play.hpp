@@ -2,6 +2,7 @@
 
 #include "scene.hpp"
 #include "config_structs.hpp"
+#include <SFML/Audio/Sound.hpp>
 
 class ScenePlay : public Scene
 {
@@ -35,7 +36,7 @@ private:
      * @param entity Entity you want to find the center position of
      */
     [[nodiscard]]
-    sf::Vector2f grid_to_mid_pixel(float grid_x, float grid_y, std::shared_ptr<Entity> entity);
+    sf::Vector2f grid_to_mid_pixel(float grid_x, float grid_y, std::shared_ptr<Entity> entity) noexcept;
 
     /**
      * @brief Load a level using a data file
@@ -47,39 +48,44 @@ private:
     /**
      * @brief Add player to the scene
      */
-    void spawn_player();
+    void spawn_player() noexcept;
 
     /**
      * @brief Add a bullet to the scene
      *
      * @param entity Bullet will spawn from this entity's position
      */
-    void spawn_bullet(std::shared_ptr<Entity> entity);
+    void spawn_bullet(std::shared_ptr<Entity> entity) noexcept;
 
     /**
      * @brief Handle player inputs
      */
-    void system_movement();
+    void system_movement() noexcept;
 
     /**
      * @brief Handle entities lifespan
      */
-    void system_lifespan();
+    void system_lifespan() noexcept;
 
     /**
      * @brief Handle collision between entities
      */
-    void system_collision();
+    void system_collision() noexcept;
 
     /**
      * @brief Handle animations of entities
      */
-    void system_animation();
+    void system_animation() noexcept;
 
     /**
      * @brief Handle ImGui
      */
     void system_gui();
+
+    /**
+     * @brief Handle sounds
+     */
+    void system_sound() noexcept;
 
     /**
      * @brief Render the scene
@@ -110,7 +116,7 @@ private:
      * 
      * @param tile Brick tile to update
      */
-    void spawn_explosion(std::shared_ptr<Entity> tile);
+    void spawn_explosion(std::shared_ptr<Entity> tile) noexcept;
 
     /**
      * @brief Change the tile animation to debris, and add a timer before removing it. 
@@ -118,14 +124,14 @@ private:
      * 
      * @param tile Brick tile to update
      */
-    void spawn_debris(std::shared_ptr<Entity> tile);
+    void spawn_debris(std::shared_ptr<Entity> tile) noexcept;
 
     /**
      * @brief Spawn a spinning coin over a question mark tile
      * 
      * @param tile Question mark tile
      */
-    void spawn_coin(std::shared_ptr<Entity> tile);
+    void spawn_coin(std::shared_ptr<Entity> tile) noexcept;
 
 private:
     std::shared_ptr<Entity> m_player{};
