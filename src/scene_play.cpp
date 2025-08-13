@@ -648,6 +648,7 @@ void ScenePlay::system_gui()
 
     if (ImGui::BeginTabBar("MegaMario"))
     {
+        /* Toggle pause, textures etc.*/
         if (ImGui::BeginTabItem("Basics"))
         {
             ImGui::Checkbox("Pause", &m_paused);
@@ -657,13 +658,104 @@ void ScenePlay::system_gui()
             ImGui::EndTabItem();
         }
 
+        /* Toggle systems */
         if (ImGui::BeginTabItem("Systems"))
         {
+            ImGui::Checkbox("Action", &m_action);
             ImGui::Checkbox("Movement", &m_movement);
             ImGui::Checkbox("Lifespan", &m_lifespan);
             ImGui::Checkbox("Collision", &m_collision);
             ImGui::Checkbox("Animation", &m_animation);
             ImGui::Checkbox("Render", &m_render);
+            ImGui::EndTabItem();
+        }
+
+        /* See entities */
+        if (ImGui::BeginTabItem("Entities"))
+        {
+            /* By ID */
+            if (ImGui::CollapsingHeader("All entities"))
+            {
+                if (ImGui::BeginTable("EntitiesByIDTable", 4, ImGuiTableFlags_Borders | ImGuiTableFlags_RowBg))
+                {
+                    ImGui::TableSetupColumn("ID");
+                    ImGui::TableSetupColumn("Tag");
+                    ImGui::TableSetupColumn("Position");
+                    ImGui::TableSetupColumn("Action");
+                    ImGui::TableHeadersRow();
+
+                    for (const auto &e : m_entities.get_entities())
+                    {
+                        const auto &pos{e->get<CTransform>().pos};
+                        const sf::Vector2i grid_pos{
+                            static_cast<int>(pos.x) / static_cast<int>(m_grid_size.x),
+                            (static_cast<int>(get_height()) - static_cast<int>(pos.y)) / static_cast<int>(m_grid_size.y)};
+                        size_t current_col{};
+
+                        ImGui::TableNextRow();
+
+                        ImGui::TableSetColumnIndex(current_col++);
+                        ImGui::Text("%d", e->id());
+
+                        ImGui::TableSetColumnIndex(current_col++);
+                        ImGui::Text("%s", e->tag().c_str());
+
+                        ImGui::TableSetColumnIndex(current_col++);
+
+                        ImGui::Text("(%d, %d)", grid_pos.x, grid_pos.y);
+                        ImGui::TableSetColumnIndex(current_col++);
+                        if (ImGui::Button(("Destroy##" + std::to_string(e->id())).c_str()))
+                        {
+                            e->destroy();
+                        }
+                    }
+                }
+                ImGui::EndTable();
+            }
+
+            /* By Tag */
+            for (auto &[tag, entity_vec] : m_entities.get_entity_map())
+            {
+                if (ImGui::CollapsingHeader(tag.c_str()))
+                {
+                    if (ImGui::BeginTable(tag.c_str(), 4, ImGuiTableFlags_Borders | ImGuiTableFlags_RowBg))
+                    {
+                        ImGui::TableSetupColumn("ID");
+                        ImGui::TableSetupColumn("Tag");
+                        ImGui::TableSetupColumn("Position");
+                        ImGui::TableSetupColumn("Action");
+                        ImGui::TableHeadersRow();
+
+                        for (const auto &e : entity_vec)
+                        {
+                            const auto &pos{e->get<CTransform>().pos};
+                            const sf::Vector2i grid_pos{
+                                static_cast<int>(pos.x) / static_cast<int>(m_grid_size.x),
+                                (static_cast<int>(get_height()) - static_cast<int>(pos.y)) / static_cast<int>(m_grid_size.y)};
+                            size_t current_col{};
+
+                            ImGui::TableNextRow();
+
+                            ImGui::TableSetColumnIndex(current_col++);
+                            ImGui::Text("%d", e->id());
+
+                            ImGui::TableSetColumnIndex(current_col++);
+                            ImGui::Text("%s", e->tag().c_str());
+
+                            ImGui::TableSetColumnIndex(current_col++);
+
+                            ImGui::Text("(%d, %d)", grid_pos.x, grid_pos.y);
+                            ImGui::TableSetColumnIndex(current_col++);
+                            if (ImGui::Button(("Destroy##" + std::to_string(e->id())).c_str()))
+                            {
+                                e->destroy();
+                            }
+                        }
+                    }
+                    ImGui::EndTable();
+                }
+            }
+
             ImGui::EndTabItem();
         }
 
@@ -766,6 +858,9 @@ void ScenePlay::system_render() noexcept
 
 void ScenePlay::system_do_action(const Action &action) noexcept
 {
+    if (!m_action)
+        return;
+
     if (action.type == "START")
     {
         if (action.name == "TOGGLE_TEXTURE")
