@@ -2,6 +2,7 @@
 
 #include <unordered_map>
 #include <memory>
+#include <SFML/Window/Keyboard.hpp>
 #include "entity_manager.hpp"
 #include "action.hpp"
 
