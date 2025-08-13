@@ -4,11 +4,13 @@
 #include <filesystem>
 #include <SFML/Graphics/Texture.hpp>
 #include <SFML/Graphics/Font.hpp>
+#include <SFML/Audio/SoundBuffer.hpp>
 #include "animation.hpp"
 
 using TextureMap = std::unordered_map<std::string, sf::Texture>;
 using AnimationMap = std::unordered_map<std::string, Animation>;
 using FontMap = std::unordered_map<std::string, sf::Font>;
+using SoundMap = std::unordered_map<std::string, sf::SoundBuffer>;
 
 class AssetManager
 {
@@ -16,7 +18,7 @@ public:
     explicit AssetManager() noexcept = default;
 
     /**
-     * @brief Store a texture, does nothing if texture is already stored
+     * @brief Store a texture
      *
      * @param name Name used to store the texture in the map
      * @param path Path to the texture file
@@ -24,7 +26,7 @@ public:
     void add_texture(const std::string &name, const std::filesystem::path &path) noexcept;
 
     /**
-     * @brief Store an animation, does nothing if animation is already stored
+     * @brief Store an animation
      *
      * @param name Name used to store the animation in the map
      * @param anim Animation to store
@@ -32,12 +34,20 @@ public:
     void add_animation(const std::string &name, const Animation &anim) noexcept;
 
     /**
-     * Store a font, does nothing if fond is already stored
+     * @brief Store a font
      *
      * @param name Name used to store the font in the map
      * @param path Path to the font file
      */
     void add_font(const std::string &name, const std::filesystem::path &path) noexcept;
+
+    /**
+     * @brief Store a sound
+     * 
+     * @param name Name used to store the sound in the map
+     * @param path Path to the sound file
+     */
+    void add_sound(const std::string &name, const std::filesystem::path &path) noexcept;
 
     /**
      * @brief Return the stored texture, or a default texture if not stored
@@ -63,6 +73,14 @@ public:
     [[nodiscard]]
     const sf::Font &get_font(const std::string &name) const noexcept;
 
+    /**
+     * @brief Return the stored sound, or a default sound if not stored
+     * 
+     * @param name Sound's name
+     */
+    [[nodiscard]]
+    const sf::SoundBuffer &get_sound(const std::string &name) const noexcept;
+
 private:
     /* Delete copy */
     AssetManager(const AssetManager &) noexcept = delete;
@@ -74,5 +92,6 @@ private:
     TextureMap m_textures{};
     AnimationMap m_animations{};
     FontMap m_fonts{};
+    SoundMap m_sounds{};
 };
 

@@ -39,6 +39,12 @@ void GameEngine::init()
         m_assets.add_animation(animation.name, anim);
     }
 
+    for (const auto &sound: m_config.get_sound_config())
+    {
+        std::cout << std::format("Adding sound {}\n", sound.name);
+        m_assets.add_sound(sound.name, sound.path);
+    }
+
     /* Window config */
     const sf::Vector2u sizes{m_config.get_window_config().width, m_config.get_window_config().height};
     const sf::Vector2f sizes_f{static_cast<sf::Vector2f>(sizes)};

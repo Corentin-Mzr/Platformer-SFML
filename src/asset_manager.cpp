@@ -34,6 +34,16 @@ void AssetManager::add_font(const std::string &name, const std::filesystem::path
     m_fonts[name] = font;
 }
 
+void AssetManager::add_sound(const std::string &name, const std::filesystem::path &path) noexcept
+{
+    sf::SoundBuffer sound;
+    if (!sound.loadFromFile(path))
+    {
+        std::cerr << std::format("Could not load sound {}\n", path.string());
+    }
+    m_sounds[name] = sound;
+}
+
 const sf::Texture &AssetManager::get_texture(const std::string &name) const noexcept
 {
     const static sf::Texture texture_not_found{};
@@ -43,7 +53,7 @@ const sf::Texture &AssetManager::get_texture(const std::string &name) const noex
 
 const Animation &AssetManager::get_animation(const std::string &name) const noexcept
 {
-    static const std::shared_ptr<Animation> anim_not_found{std::make_shared<Animation>()};
+    const static std::shared_ptr<Animation> anim_not_found{std::make_shared<Animation>()};
     auto it{m_animations.find(name)};
     return it != m_animations.end() ? it->second : *anim_not_found;
 }
@@ -53,4 +63,11 @@ const sf::Font &AssetManager::get_font(const std::string &name) const noexcept
     const static sf::Font font_not_found{};
     auto it{m_fonts.find(name)};
     return it != m_fonts.end() ? it->second : font_not_found;
+}
+
+const sf::SoundBuffer &AssetManager::get_sound(const std::string &name) const noexcept
+{
+    const static sf::SoundBuffer sound_not_found{};
+    auto it{m_sounds.find(name)};
+    return it != m_sounds.end() ? it->second : sound_not_found;
 }
