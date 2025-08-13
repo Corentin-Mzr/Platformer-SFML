@@ -52,7 +52,6 @@ FetchContent_Declare(
 # Build
 
 # SFML
-option(SFML_BUILD_AUDIO "Build audio" OFF)
 option(SFML_BUILD_NETWORK "Build network" OFF)
 FetchContent_MakeAvailable(sfml)
 
@@ -86,6 +85,7 @@ target_include_directories(${PROJECT_NAME}
 target_link_libraries(${PROJECT_NAME} 
 PRIVATE 
 SFML::Graphics 
+SFML::Audio
 ImGui-SFML::ImGui-SFML
 toml11::toml11
 )
