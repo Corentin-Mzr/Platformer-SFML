@@ -4,7 +4,6 @@
 #include <unordered_map>
 #include <memory>
 #include <algorithm>
-#include <cassert>
 #include "entity.hpp"
 
 using EntityVec = std::vector<std::shared_ptr<Entity>>;
