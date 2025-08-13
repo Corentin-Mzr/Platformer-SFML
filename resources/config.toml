@@ -207,3 +207,29 @@ lifespan = 30 # Number of frames until it disappears
         texture = "TexHill"
         frames = 1
         speed = 1
+
+[sound]
+    [sound.menu]
+        name = "Menu"
+        path = "sounds/menu.wav"
+    [sound.selection]
+        name = "Selection"
+        path = "sounds/selection.wav"
+    [sound.level]
+        name = "Level"
+        path = "sounds/level.wav"
+    [sound.shoot]
+        name = "Shoot"
+        path = "sounds/shoot.wav"
+    [sound.explosion]
+        name = "Explosion"
+        path = "sounds/explosion.wav"
+    [sound.debris]
+        name = "Debris"
+        path = "sounds/debris.wav"
+    [sound.jump]
+        name = "Jump"
+        path = "sounds/jump.wav"
+    [sound.coin]
+        name = "Coin"
+        path = "sounds/coin.wav"

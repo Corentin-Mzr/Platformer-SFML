@@ -76,6 +76,13 @@ static std::vector<AnimationConfig> parse_animation(const toml::value &data)
     return animations;
 }
 
+[[nodiscard]]
+static std::vector<SoundConfig> parse_sound(const toml::value &data)
+{
+    auto sounds{parse_section_with_subsections<SoundConfig>(data, "sound")};
+    return sounds;
+}
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ConfigParser::ConfigParser(const std::filesystem::path &config_filepath) : m_filepath(config_filepath)
@@ -88,6 +95,7 @@ ConfigParser::ConfigParser(const std::filesystem::path &config_filepath) : m_fil
     m_font_configs = parse_font(data);
     m_texture_configs = parse_texture(data);
     m_animation_configs = parse_animation(data);
+    m_sound_configs = parse_sound(data);
 }
 
 const WindowConfig &ConfigParser::get_window_config() const noexcept
@@ -123,4 +131,9 @@ const std::vector<TextureConfig> &ConfigParser::get_texture_config() const noexc
 const std::vector<AnimationConfig> &ConfigParser::get_animation_config() const noexcept
 {
     return m_animation_configs;
+}
+
+const std::vector<SoundConfig> &ConfigParser::get_sound_config() const noexcept
+{
+    return m_sound_configs;
 }

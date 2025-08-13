@@ -64,3 +64,10 @@ struct AnimationConfig
     int speed{};
 };
 TOML11_DEFINE_CONVERSION_NON_INTRUSIVE(AnimationConfig, name, texture, frames, speed)
+
+struct SoundConfig
+{
+    std::string name{};
+    std::string path{};
+};
+TOML11_DEFINE_CONVERSION_NON_INTRUSIVE(SoundConfig, name, path)
