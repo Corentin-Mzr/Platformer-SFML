@@ -211,25 +211,25 @@ lifespan = 30 # Number of frames until it disappears
 [sound]
     [sound.menu]
         name = "Menu"
-        path = "sounds/menu.wav"
+        path = "../resources/sounds/menu.wav"
     [sound.selection]
         name = "Selection"
-        path = "sounds/selection.wav"
+        path = "../resources/sounds/selection.wav"
     [sound.level]
         name = "Level"
-        path = "sounds/level.wav"
+        path = "../resources/sounds/level.wav"
     [sound.shoot]
         name = "Shoot"
-        path = "sounds/shoot.wav"
+        path = "../resources/sounds/shoot.wav"
     [sound.explosion]
         name = "Explosion"
-        path = "sounds/explosion.wav"
+        path = "../resources/sounds/explosion.wav"
     [sound.debris]
         name = "Debris"
-        path = "sounds/debris.wav"
+        path = "../resources/sounds/debris.wav"
     [sound.jump]
         name = "Jump"
-        path = "sounds/jump.wav"
+        path = "../resources/sounds/jump.wav"
     [sound.coin]
         name = "Coin"
-        path = "sounds/coin.wav"
+        path = "../resources/sounds/coin.wav"
