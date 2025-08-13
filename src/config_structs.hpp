@@ -71,3 +71,10 @@ struct SoundConfig
     std::string path{};
 };
 TOML11_DEFINE_CONVERSION_NON_INTRUSIVE(SoundConfig, name, path)
+
+struct MusicConfig
+{
+    std::string name{};
+    std::string path{};
+};
+TOML11_DEFINE_CONVERSION_NON_INTRUSIVE(MusicConfig, name, path)

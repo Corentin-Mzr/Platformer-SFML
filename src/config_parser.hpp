@@ -61,6 +61,12 @@ public:
     [[nodiscard]]
     const std::vector<SoundConfig> &get_sound_config() const noexcept;
 
+    /**
+     * @brief Return musics info (sound name, file)
+     */
+    [[nodiscard]]
+    const std::vector<MusicConfig> &get_music_config() const noexcept;
+
 private:
     std::filesystem::path m_filepath{};
     WindowConfig m_window_config{};
@@ -71,4 +77,5 @@ private:
     std::vector<TextureConfig> m_texture_configs{};
     std::vector<AnimationConfig> m_animation_configs{};
     std::vector<SoundConfig> m_sound_configs{};
+    std::vector<MusicConfig> m_music_configs{};
 };

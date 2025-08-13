@@ -209,15 +209,12 @@ lifespan = 30 # Number of frames until it disappears
         speed = 1
 
 [sound]
-    [sound.menu]
-        name = "Menu"
-        path = "../resources/sounds/menu.wav"
     [sound.selection]
         name = "Selection"
         path = "../resources/sounds/selection.wav"
-    [sound.level]
-        name = "Level"
-        path = "../resources/sounds/level.wav"
+    [sound.confirm]
+        name = "Confirm"
+        path = "../resources/sounds/confirm.wav"
     [sound.shoot]
         name = "Shoot"
         path = "../resources/sounds/shoot.wav"
@@ -233,3 +230,11 @@ lifespan = 30 # Number of frames until it disappears
     [sound.coin]
         name = "Coin"
         path = "../resources/sounds/coin.wav"
+    
+[music]
+    [music.menu]
+        name = "Menu"
+        path = "../resources/musics/menu.ogg"
+    [music.level]
+        name = "Level"
+        path = "../resources/musics/level.ogg"
