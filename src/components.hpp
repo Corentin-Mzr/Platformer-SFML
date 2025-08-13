@@ -1,7 +1,7 @@
 #pragma once
 
-#include <SFML/Graphics.hpp>
-
+#include <SFML/System/Vector2.hpp>
+#include <SFML/Audio/Sound.hpp>
 #include "animation.hpp"
 
 struct Component
@@ -162,5 +162,27 @@ struct CJump : public Component
      */
     explicit CJump(float init_str, size_t dur, float str_per_frame) noexcept : max_duration(dur), initial_strength(init_str), frame_strength(str_per_frame)
     {
+    }
+};
+
+struct CSound : public Component
+{
+    std::optional<sf::Sound> sound{};
+    bool loop{false};
+    bool played{false};
+
+    explicit CSound() noexcept = default;
+
+    /**
+     * @brief Create a Sound Component
+     * 
+     * @param buffer Sound Buffer 
+     * @param loop True if sound loops
+     */
+    explicit CSound(const sf::SoundBuffer &buffer, bool loop, float volume = 100.0f) noexcept : loop(loop)
+    {
+        sound.emplace(buffer);
+        sound->setLooping(loop);
+        sound->setVolume(volume);
     }
 };
