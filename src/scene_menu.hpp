@@ -3,6 +3,8 @@
 #include "scene.hpp"
 #include "misc.hpp"
 #include <SFML/Audio/Sound.hpp>
+#include <SFML/Graphics/Font.hpp>
+#include <SFML/Graphics/Text.hpp>
 
 class SceneMenu : public Scene
 {

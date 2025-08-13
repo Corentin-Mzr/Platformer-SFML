@@ -150,6 +150,11 @@ const AssetManager &GameEngine::get_assets() const noexcept
     return m_assets;
 }
 
+AssetManager &GameEngine::get_assets() noexcept
+{
+    return m_assets;
+}
+
 const sf::RenderWindow &GameEngine::get_window() const noexcept
 {
     return m_window;

@@ -53,6 +53,13 @@ public:
     const AssetManager &get_assets() const noexcept;
 
     /**
+     * @brief Return the asset manager
+     * 
+     */
+    [[nodiscard]]
+    AssetManager &get_assets() noexcept;
+
+    /**
      * @brief Return the window
      */
     [[nodiscard]]

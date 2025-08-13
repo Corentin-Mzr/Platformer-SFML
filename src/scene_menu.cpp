@@ -65,11 +65,16 @@ void SceneMenu::init()
         m_menu_items.push_back(level_item);
     }
 
+    /* Menu sounds */
     m_selection_sound.emplace(m_game->get_assets().get_sound("Selection"));
     m_selection_sound->setVolume(50.0f);
 
     m_confirm_sound.emplace(m_game->get_assets().get_sound("Confirm"));
     m_confirm_sound->setVolume(50.0f);
+
+    /* Menu music */
+    // m_game->get_assets().get_music("Menu").setVolume(50.0f);
+    // m_game->get_assets().get_music("Menu").play();
 }
 
 void SceneMenu::update() noexcept
@@ -119,6 +124,7 @@ void SceneMenu::system_sound()
     if (m_change_scene_next_frame)
     {
         m_confirm_sound->play();
+        m_game->get_assets().get_music("Menu").stop();
     }
 }
 
