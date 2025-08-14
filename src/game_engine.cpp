@@ -67,7 +67,7 @@ void GameEngine::init()
     }
 
     /* Setup scene */
-    change_scene("MENU", std::make_shared<SceneMenu>(this));
+    change_scene("MENU", std::make_shared<SceneMenu>(this), true);
 }
 
 void GameEngine::run() noexcept
@@ -94,9 +94,9 @@ void GameEngine::change_scene(const std::string &name, std::shared_ptr<Scene> sc
     {
         m_scenes.erase(m_current_scene);
     }
-
-    m_current_scene = name;
     m_scenes[name] = std::move(scene);
+    // m_scenes.try_emplace(name, std::move(scene));
+    m_current_scene = name;
 }
 
 void GameEngine::update() noexcept

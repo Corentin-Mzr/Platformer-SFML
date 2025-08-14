@@ -15,16 +15,29 @@ using SceneMap = std::unordered_map<std::string, std::shared_ptr<Scene>>;
 class GameEngine
 {
 public:
+    /* Options */
+    struct GameSettings
+    {
+        float m_music_volume{10.0f};
+        float m_sound_volume{10.0f};
+    };
+
+    GameSettings settings{};
+
+public:
     explicit GameEngine() noexcept = default;
     ~GameEngine();
 
     /**
      * @brief Create a GameEngine from a TOML config file
-     * 
+     *
      * @param config_file Path to the config file
      */
     explicit GameEngine(const std::string &config_file);
 
+    /**
+     * @brief Update the game each frame
+     */
     void update() noexcept;
 
     /**
@@ -54,7 +67,7 @@ public:
 
     /**
      * @brief Return the asset manager
-     * 
+     *
      */
     [[nodiscard]]
     AssetManager &get_assets() noexcept;
@@ -130,11 +143,6 @@ protected:
      * @brief Load assets, scenes etc.
      */
     void init();
-
-    /**
-     * @brief Update game
-     */
-    // void update() noexcept;
 
     /**
      * @brief Handle user inputs
