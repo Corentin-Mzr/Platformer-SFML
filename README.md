@@ -44,12 +44,16 @@ WIP
     - [Font Section Specification](#font-section-specification)
     - [Texture Section Specification](#texture-section-specification)
     - [Sound Section Specification](#sound-section-specification)
+    - [Music Section Specification](#music-section-specification)
     - [Animation Section Specification](#animation-section-specification)
   - [Level File Specification](#level-file-specification)
     - [Tile Entity Specification](#tile-entity-specification)
     - [Decoration Entity Specification](#decoration-entity-specification)
     - [Player Specification](#player-specification)
   - [Assignment Hints](#assignment-hints)
+- [Credits](#credits)
+  - [Musics](#musics)
+  - [Sound effects](#sound-effects)
 - [License](#license)
 
 ## Installation
@@ -59,10 +63,11 @@ WIP
 - C++/C compiler (gcc, g++, cl, clang)
 - CMake 3.28 or newer
 
-For Linux/Ubuntu, you also need to install the following dependencies:  
+For Linux/Ubuntu users, you also need to install the following dependencies:  
 
 ```bash
 sudo apt-get update
+sudo apt-get install -y build-essential cmake
 sudo apt-get install -y libx11-dev \
                         libxcursor-dev \
                         libxi-dev \
@@ -209,7 +214,7 @@ Spacebar: Shoot
 
 ### Bonus
 
-- [ ] Any special effects which do not alter game play can be added for up to 5% bonus marks on the assignment. Note that assignments cannot go above 100% total marks, but the 5% bonus can overwrite any marks lost in other areas of the assignment.
+- [x] ~~Any special effects which do not alter game play can be added for up to 5% bonus marks on the assignment.~~ **Added musics and sound effects**
 - [ ] You may develop a 'special weapon' that has special effects which can also contribute to another 5% bonus marks available on the assignment.
 
 ### Misc
@@ -264,9 +269,15 @@ Spacebar: Shoot
 
 #### **Sound Section Specification**
 
-- [ ] **The sound section will contain multiple subsections of sounds. Each subsection will contain the following:**
-  - [ ] **Name: Sound's name, stored as string**
-  - [ ] **Path: Sound's filepath, stored as string**
+- [x] **The sound section will contain multiple subsections of sounds. Each subsection will contain the following:**
+  - [x] **Name: Sound's name, stored as string**
+  - [x] **Path: Sound's filepath, stored as string**
+
+#### **Music Section Specification**
+
+- [x] **The music section will contain multiple subsections of musics. Each subsection will contain the following:**
+  - [x] **Name: Music's name, stored as string**
+  - [x] **Path: Music's filepath, stored as string**
 
 #### **Animation Section Specification**
 
@@ -344,6 +355,17 @@ I recommend approaching this assignment in the following order, which will help 
   Note: All movement logic should be in the movement system. The sDoAction system is ONLY used to set the proper CInput variables. If you modify the player's speed or position anywhere inside the sDoAction system, you will lose marks as this is potentially unsafe / produces unwanted effects.
 
 - Implement gravity such that the player falls toward the bottom of the screen and lands on tiles when it collides with a tile from above. Note that when the player lands on a tile from above, you should set its vertical speed to zero so that gravity does not continue to accelerate the player downward.
+
+## Credits
+
+### Musics
+
+- [**Menu: Koronba - Jellyfish (instrumental)**](https://www.youtube.com/watch?v=rL88w2uHlqs)
+
+### Sound effects
+
+- [**Pixabay**](https://pixabay.com/sound-effects)
+- [**jsfxr**](https://sfxr.me/)
 
 ## License
 
