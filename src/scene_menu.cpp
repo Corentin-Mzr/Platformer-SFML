@@ -2,6 +2,8 @@
 #include "game_engine.hpp"
 #include "scene_play.hpp"
 #include <SFML/Audio/Sound.hpp>
+#include <imgui.h>
+#include <imgui-SFML.h>
 
 SceneMenu::SceneMenu(GameEngine *game) : Scene(game), m_menu_text(m_menu_font)
 {
@@ -67,13 +69,13 @@ void SceneMenu::init()
 
     /* Menu sounds */
     m_selection_sound.emplace(m_game->get_assets().get_sound("Selection"));
-    m_selection_sound->setVolume(50.0f);
+    m_selection_sound->setVolume(m_game->settings.m_sound_volume);
 
     m_confirm_sound.emplace(m_game->get_assets().get_sound("Confirm"));
-    m_confirm_sound->setVolume(50.0f);
+    m_confirm_sound->setVolume(m_game->settings.m_sound_volume);
 
     /* Menu music */
-    m_game->get_assets().get_music("Menu").setVolume(25.0f);
+    m_game->get_assets().get_music("Menu").setVolume(m_game->settings.m_sound_volume);
     m_game->get_assets().get_music("Menu").setLooping(true);
 }
 
@@ -81,6 +83,7 @@ void SceneMenu::update() noexcept
 {
     system_sound();
     system_scene();
+    system_gui();
     system_render();
 }
 
@@ -115,9 +118,15 @@ void SceneMenu::system_render() noexcept
 
 void SceneMenu::system_sound()
 {
-    if (m_game->get_assets().get_music("Menu").getStatus() == sf::Music::Status::Stopped)
+    auto &menu_music{m_game->get_assets().get_music("Menu")};
+
+    menu_music.setVolume(m_game->settings.m_music_volume);
+    m_selection_sound->setVolume(m_game->settings.m_sound_volume);
+    m_confirm_sound->setVolume(m_game->settings.m_sound_volume);
+
+    if (menu_music.getStatus() == sf::Music::Status::Stopped)
     {
-        m_game->get_assets().get_music("Menu").play();
+        menu_music.play();
         m_menu_music_play = true;
     }
 
@@ -130,7 +139,7 @@ void SceneMenu::system_sound()
     if (m_change_scene_next_frame)
     {
         m_confirm_sound->play();
-        // m_game->get_assets().get_music("Menu").stop();
+        // menu_music.stop();
     }
 }
 
@@ -138,9 +147,18 @@ void SceneMenu::system_scene()
 {
     if (m_change_scene_next_frame)
     {
-        m_game->change_scene(m_next_scene_name, m_next_scene);
+        m_game->change_scene(m_next_scene_name, m_next_scene, m_end_current);
         m_change_scene_next_frame = false;
+        m_end_current = false;
     }
+}
+
+void SceneMenu::system_gui()
+{
+    ImGui::Begin("Options");
+    ImGui::SliderFloat("Music", &m_game->settings.m_music_volume, 0.0f, 100.0f, "%.0f");
+    ImGui::SliderFloat("Sound effects", &m_game->settings.m_sound_volume, 0.0f, 100.0f, "%0.f");
+    ImGui::End();
 }
 
 void SceneMenu::on_end() noexcept
@@ -175,8 +193,7 @@ void SceneMenu::system_do_action(const Action &action) noexcept
                 m_next_scene_name = "PLAY";
                 m_next_scene = std::make_shared<ScenePlay>(m_game, m_level_paths[m_selected_menu_index]);
                 m_change_scene_next_frame = true;
-
-                // m_game->change_scene("PLAY", std::make_shared<ScenePlay>(m_game, m_level_paths[m_selected_menu_index]));
+                m_end_current = true;
             }
             else
             {
@@ -188,8 +205,7 @@ void SceneMenu::system_do_action(const Action &action) noexcept
             m_next_scene_name = "MENU";
             m_next_scene = std::make_shared<SceneMenu>(m_game);
             m_change_scene_next_frame = true;
-
-            // m_game->change_scene("MENU", std::make_shared<SceneMenu>(m_game));
+            m_end_current = true;
         }
     }
 

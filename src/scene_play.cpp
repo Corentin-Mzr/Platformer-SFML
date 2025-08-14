@@ -214,7 +214,7 @@ void ScenePlay::spawn_bullet(std::shared_ptr<Entity> entity) noexcept
     bullet->add<CLifeSpan>(bullet_config.lifespan, m_current_frame);
 
     /* Player make a sound when shooting */
-    m_player->add<CSound>(m_game->get_assets().get_sound("Shoot"), false, 20.0f);
+    m_player->add<CSound>(m_game->get_assets().get_sound("Shoot"), false, m_game->settings.m_sound_volume);
 
     m_bullet_count++;
 }
@@ -265,7 +265,7 @@ void ScenePlay::system_movement() noexcept
                 input.can_jump = false;
                 jump.jumping = true;
                 jump.start_frame = m_current_frame;
-                m_player->add<CSound>(m_game->get_assets().get_sound("Jump"), false, 20.0f);
+                m_player->add<CSound>(m_game->get_assets().get_sound("Jump"), false, m_game->settings.m_sound_volume);
             }
 
             else if (jump.jumping && m_current_frame - jump.start_frame < jump.max_duration)
@@ -668,6 +668,7 @@ void ScenePlay::system_gui()
         {
             ImGui::Checkbox("Action", &m_action);
             ImGui::Checkbox("Movement", &m_movement);
+            ImGui::Checkbox("Sound Effects", &m_sound);
             ImGui::Checkbox("Lifespan", &m_lifespan);
             ImGui::Checkbox("Collision", &m_collision);
             ImGui::Checkbox("Animation", &m_animation);
@@ -771,6 +772,9 @@ void ScenePlay::system_gui()
 
 void ScenePlay::system_sound() noexcept
 {
+    if (!m_sound)
+        return;
+
     for (const auto &e : m_entities.get_entities())
     {
         if (!e->has<CSound>()) [[likely]]
@@ -991,7 +995,7 @@ void ScenePlay::spawn_explosion(std::shared_ptr<Entity> tile) noexcept
     tile->get<CAnimation>().animation = m_game->get_assets().get_animation("Explosion");
     tile->get<CAnimation>().repeat = false;
     tile->remove<CBoundingBox>();
-    tile->add<CSound>(m_game->get_assets().get_sound("Explosion"), false, 50.0f);
+    tile->add<CSound>(m_game->get_assets().get_sound("Explosion"), false, m_game->settings.m_sound_volume);
 }
 
 void ScenePlay::spawn_debris(std::shared_ptr<Entity> tile) noexcept
@@ -1001,7 +1005,7 @@ void ScenePlay::spawn_debris(std::shared_ptr<Entity> tile) noexcept
     tile->get<CAnimation>().repeat = true; 
     tile->remove<CBoundingBox>();
     tile->add<CLifeSpan>(15, m_current_frame);
-    tile->add<CSound>(m_game->get_assets().get_sound("Debris"), false, 50.0f);
+    tile->add<CSound>(m_game->get_assets().get_sound("Debris"), false, m_game->settings.m_sound_volume);
 }
 
 void ScenePlay::spawn_coin(std::shared_ptr<Entity> tile) noexcept
@@ -1010,5 +1014,5 @@ void ScenePlay::spawn_coin(std::shared_ptr<Entity> tile) noexcept
     coin->add<CAnimation>(m_game->get_assets().get_animation("CoinSpin"), true);
     coin->add<CTransform>(tile->get<CTransform>().pos + sf::Vector2f{0.0f, -static_cast<float>(m_grid_size.y)});
     coin->add<CLifeSpan>(30, m_current_frame);
-    coin->add<CSound>(m_game->get_assets().get_sound("Coin"), false, 50.0f);
+    coin->add<CSound>(m_game->get_assets().get_sound("Coin"), false, m_game->settings.m_sound_volume);
 }

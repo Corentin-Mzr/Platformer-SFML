@@ -48,6 +48,12 @@ private:
     void system_scene();
 
     /**
+     * @brief Handle GUI
+     * 
+     */
+    void system_gui();
+
+    /**
      * @brief Handle the scene exit
      */
     void on_end() noexcept override;
@@ -63,6 +69,7 @@ private:
     size_t m_selected_menu_index_prev{};
 
     bool m_change_scene_next_frame{false};
+    bool m_end_current{false};
     std::string m_next_scene_name{};
     std::shared_ptr<Scene> m_next_scene{};
     std::optional<sf::Sound> m_selection_sound{};

@@ -152,6 +152,7 @@ private:
     bool m_animation{true};
     bool m_render{true};
     bool m_action{true};
+    bool m_sound{true};
 
     /* Count bullets to know when player can shoot */
     size_t m_bullet_count{};
