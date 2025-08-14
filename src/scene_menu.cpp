@@ -73,8 +73,8 @@ void SceneMenu::init()
     m_confirm_sound->setVolume(50.0f);
 
     /* Menu music */
-    // m_game->get_assets().get_music("Menu").setVolume(50.0f);
-    // m_game->get_assets().get_music("Menu").play();
+    m_game->get_assets().get_music("Menu").setVolume(25.0f);
+    m_game->get_assets().get_music("Menu").setLooping(true);
 }
 
 void SceneMenu::update() noexcept
@@ -115,6 +115,12 @@ void SceneMenu::system_render() noexcept
 
 void SceneMenu::system_sound()
 {
+    if (m_game->get_assets().get_music("Menu").getStatus() == sf::Music::Status::Stopped)
+    {
+        m_game->get_assets().get_music("Menu").play();
+        m_menu_music_play = true;
+    }
+
     if (m_selected_menu_index != m_selected_menu_index_prev)
     {
         m_selected_menu_index_prev = m_selected_menu_index;
@@ -124,7 +130,7 @@ void SceneMenu::system_sound()
     if (m_change_scene_next_frame)
     {
         m_confirm_sound->play();
-        m_game->get_assets().get_music("Menu").stop();
+        // m_game->get_assets().get_music("Menu").stop();
     }
 }
 

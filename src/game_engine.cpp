@@ -45,6 +45,12 @@ void GameEngine::init()
         m_assets.add_sound(sound.name, sound.path);
     }
 
+    for (const auto &music: m_config.get_music_config())
+    {
+        std::cout << std::format("Adding music {}\n", music.name);
+        m_assets.add_music(music.name, music.path);
+    }
+
     /* Window config */
     const sf::Vector2u sizes{m_config.get_window_config().width, m_config.get_window_config().height};
     const sf::Vector2f sizes_f{static_cast<sf::Vector2f>(sizes)};

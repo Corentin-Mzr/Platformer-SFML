@@ -67,4 +67,5 @@ private:
     std::shared_ptr<Scene> m_next_scene{};
     std::optional<sf::Sound> m_selection_sound{};
     std::optional<sf::Sound> m_confirm_sound{};
+    bool m_menu_music_play{false};
 };
