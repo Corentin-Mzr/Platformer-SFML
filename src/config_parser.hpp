@@ -1,14 +1,31 @@
 #pragma once
 
-#include <toml.hpp>
 #include "config_structs.hpp"
 
+/**
+ * @brief Loads and stores game config data from a TOML file.
+ * 
+ * The ConfigParser reads a TOML config file and extracts structured data
+ * such as window settings, bullet parameters, level infos and assets references.
+ * 
+ * Once loaded, the config values can be accessed through dedicated getters,
+ * allowing other systems to retrieve settings without having to parse the file again.
+ * 
+ * @note This class provides read-only access to the config data, 
+ * it does not support runtime modification or saving.
+ * 
+ */
 class ConfigParser
 {
 public:
     /**
+     * @brief Default constructor
+     */
+    explicit ConfigParser() noexcept = default;
+
+    /**
      * @brief Store the config data from a TOML config file
-     * 
+     *
      * @param config_filepath Path to the config file
      */
     explicit ConfigParser(const std::filesystem::path &config_filepath);
