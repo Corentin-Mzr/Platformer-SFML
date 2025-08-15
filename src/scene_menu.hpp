@@ -6,6 +6,9 @@
 #include <SFML/Graphics/Font.hpp>
 #include <SFML/Graphics/Text.hpp>
 
+/**
+ * @brief Represents the menu scene.
+ */
 class SceneMenu : public Scene
 {
 public:

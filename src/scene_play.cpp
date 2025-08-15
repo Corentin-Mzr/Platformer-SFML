@@ -3,9 +3,10 @@
 #include "scene_menu.hpp"
 #include "physics.hpp"
 #include <iostream>
+#include <format>
 #include <imgui.h>
 #include <imgui-SFML.h>
-#include <format>
+#include <SFML/Graphics/RectangleShape.hpp>
 
 ScenePlay::ScenePlay(GameEngine *game, const std::string &level_path) : Scene(game), m_grid_text(m_font)
 {
@@ -74,7 +75,7 @@ sf::Vector2f ScenePlay::grid_to_mid_pixel(float grid_x, float grid_y, std::share
 void ScenePlay::load_level(const std::string &path)
 {
     /* New entity manager each time we load a level */
-    m_entities = EntityManager();
+    // m_entities = EntityManager();
 
     /* Load each tile from the data file */
     std::ifstream level(path);

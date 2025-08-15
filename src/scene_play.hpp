@@ -3,7 +3,12 @@
 #include "scene.hpp"
 #include "config_structs.hpp"
 #include <SFML/Audio/Sound.hpp>
+#include <SFML/Graphics/Font.hpp>
+#include <SFML/Graphics/Text.hpp>
 
+/**
+ * @brief Represents the main gameplay scene.
+ */
 class ScenePlay : public Scene
 {
 public:
