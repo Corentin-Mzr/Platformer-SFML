@@ -1,11 +1,12 @@
 #include "animation.hpp"
+#include <SFML/Graphics/Texture.hpp>
 
 Animation::Animation(const std::string &name, const sf::Texture &t) : Animation(name, t, 1, 0)
 {
 }
 
 Animation::Animation(std::string name, const sf::Texture &t, unsigned frame_count, unsigned speed)
-    : m_sprite(t), m_frame_count(frame_count), m_current_frame(0), m_speed(speed), m_name(std::move(name))
+    : m_sprite(t), m_frame_count(frame_count), m_current_frame(0), m_speed(speed == 0 ? 1 : speed), m_name(std::move(name))
 {
     m_size = {static_cast<int>(t.getSize().x) / static_cast<int>(frame_count), static_cast<int>(t.getSize().y)};
     m_sprite->setOrigin({0.5f * m_size.x, 0.5f * m_size.y});

@@ -1,12 +1,24 @@
 #pragma once
 
 #include <string>
-#include <SFML/Graphics/Texture.hpp>
 #include <SFML/Graphics/Sprite.hpp>
 
+/**
+ * @brief Represents a texture-based animation made of one or more frames.
+ * 
+ * Manages the animation state (current frame) and provides access to a sprite for rendering.
+ * 
+ * An animation can be a single frame or multiple frames arranged in the texture.
+ * The update() function changes the animation frame based on the defined speed.
+ * 
+ * @note Animation speed cannot not be zero.
+ */
 class Animation
 {
 public:
+    /**
+     * @brief Default constructor
+     */
     explicit Animation() noexcept = default;
 
     /**
@@ -66,7 +78,7 @@ private:
     std::optional<sf::Sprite> m_sprite{};
     unsigned m_frame_count{1};
     unsigned m_current_frame{};
-    unsigned m_speed{};
+    unsigned m_speed{1};
     sf::Vector2i m_size{1, 1};
     std::string m_name{"default"};
 };
