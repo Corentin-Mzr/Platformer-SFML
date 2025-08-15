@@ -84,7 +84,7 @@ public:
     /**
      * @brief Simulate the scene over multiple frames
      */
-    void simulate(size_t frames) noexcept;
+    void simulate(unsigned frames) noexcept;
 
     /**
      * @brief Register an action
@@ -141,7 +141,7 @@ protected:
     GameEngine *m_game{};
     EntityManager m_entities{};
     ActionMap m_action_map{};
-    size_t m_current_frame{};
+    unsigned m_current_frame{};
     bool m_paused{false};
     bool m_has_ended{false};
 };

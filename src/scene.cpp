@@ -10,8 +10,12 @@ void Scene::do_action(const Action &action) noexcept
     system_do_action(action);
 }
 
-void Scene::simulate(size_t frames) noexcept
+void Scene::simulate(unsigned frames) noexcept
 {
+    for (unsigned i = 0; i < frames; ++i)
+    {
+        update();
+    }
 }
 
 void Scene::register_action(const Keycode &input_key, const std::string &action_name) noexcept

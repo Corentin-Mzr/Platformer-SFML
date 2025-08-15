@@ -57,8 +57,8 @@ struct AnimationConfig
 {
     std::string name{};
     std::string texture{};
-    int frames{};
-    int speed{};
+    unsigned frames{};
+    unsigned speed{};
 };
 TOML11_DEFINE_CONVERSION_NON_INTRUSIVE(AnimationConfig, name, texture, frames, speed)
 

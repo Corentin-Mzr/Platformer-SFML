@@ -58,8 +58,8 @@ struct CTransform : public Component
  */
 struct CLifeSpan : public Component
 {
-    int lifespan{};
-    int frame_created{};
+    unsigned lifespan{};
+    unsigned frame_created{};
 
     /**
      * @brief Default constructor
@@ -72,7 +72,7 @@ struct CLifeSpan : public Component
      * @param total_lifespan Lifespan duration
      * @param frame_create Frame when the component was created
      */
-    explicit CLifeSpan(int total_lifespan, int frame_created) noexcept
+    explicit CLifeSpan(unsigned total_lifespan, unsigned frame_created) noexcept
         : lifespan(total_lifespan), frame_created(frame_created)
     {
     }
@@ -196,8 +196,8 @@ struct CState : public Component
 struct CJump : public Component
 {
     bool jumping{false};
-    size_t start_frame{}; // Updated when input.up == true
-    size_t max_duration{};
+    unsigned start_frame{}; // Updated when input.up == true
+    unsigned max_duration{};
     float initial_strength{};
     float frame_strength{};
 
