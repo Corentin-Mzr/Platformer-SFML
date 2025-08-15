@@ -1,11 +1,30 @@
 #pragma once
 
 #include <tuple>
-#include <string>
 #include "components.hpp"
 
 using ComponentTuple = std::tuple<CTransform, CLifeSpan, CInput, CBoundingBox, CAnimation, CGravity, CState, CJump, CSound>;
 
+/**
+ * @brief Represents a single entity.
+ * 
+ * Each entity can have multiple components which define its data and behavior.
+ * 
+ * The class provides methods to add, remove and access components.
+ * It also stored a unique id, a tag and an alive/dead status.
+ * 
+ * Entites are managed by the EntityManager class and are non-movable and non-copyable.
+ *
+ * Usage:
+ * 
+ * - add<T>(...) to attach a component of type T
+ * 
+ * - has<T>() to check component
+ * 
+ * - get<T>() to access a component 
+ * 
+ * - destroy() to mark the entity as dead
+ */
 class Entity
 {
     friend class EntityManager;
@@ -68,7 +87,17 @@ public:
     void destroy() noexcept;
 
 private:
+    /**
+     * @brief Default constructor
+     */
     explicit Entity() noexcept = default;
+
+    /**
+     * @brief Create a new entity
+     * 
+     * @param tag Entity's tag
+     * @param id  Entity's id
+     */
     explicit Entity(std::string tag, size_t id) noexcept;
 
     /* Delete move and copy */
