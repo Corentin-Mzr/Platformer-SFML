@@ -9,15 +9,44 @@
 using EntityVec = std::vector<std::shared_ptr<Entity>>;
 using EntityMap = std::unordered_map<std::string, EntityVec>;
 
+/**
+ * @brief Manages all entities within a scene.
+ * 
+ * The EntityManager is responsible for creating, storing, updating and removing entities.
+ * 
+ * The Manager keeps track of: 
+ * 
+ * - active entities
+ * 
+ * - entities pending addition
+ * 
+ * - a map for lookup by tag or id
+ * 
+ * Usage:
+ * 
+ * - add_entity(tag): Create and store a new entity with a unique id, and give it a tag for fast retrieval of entities of the same type
+ * 
+ * - get_entities(): Access entities, can be filtered by tag
+ * 
+ * - update(): Update entities and clean up dead ones
+ * 
+ * 
+ * @note Each scene owns it own EntityManager, copy or move this class between scenes is not possible.
+ */
 class EntityManager
 {
 
 public:
+    /**
+     * @brief Default constructor
+     */
     explicit EntityManager() noexcept = default;
-    EntityManager(const EntityManager &) noexcept = default;
-    EntityManager &operator=(const EntityManager &) noexcept = default;
-    EntityManager(EntityManager &&) noexcept = default;
-    EntityManager &operator=(EntityManager &&) noexcept = default;
+
+    /* Each scene will have its own manager, so no copy or move between scenes */
+    EntityManager(const EntityManager &) noexcept = delete;
+    EntityManager &operator=(const EntityManager &) noexcept = delete;
+    EntityManager(EntityManager &&) noexcept = delete;
+    EntityManager &operator=(EntityManager &&) noexcept = delete;
 
     /**
      * @brief Add an entity with the given tag
