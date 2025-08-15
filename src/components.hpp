@@ -4,11 +4,19 @@
 #include <SFML/Audio/Sound.hpp>
 #include "animation.hpp"
 
+/**
+ * @brief Abstract base component
+ */
 struct Component
 {
     bool exists{false};
+    virtual ~Component() noexcept = 0;
 };
+inline Component::~Component() noexcept = default;
 
+/**
+ * @brief Transform component for position, velocity, etc.
+ */
 struct CTransform : public Component
 {
     sf::Vector2f pos{};
@@ -45,6 +53,9 @@ struct CTransform : public Component
     }
 };
 
+/**
+ * @brief Lifespan component to know when to destroy an entity
+ */
 struct CLifeSpan : public Component
 {
     int lifespan{};
@@ -67,6 +78,9 @@ struct CLifeSpan : public Component
     }
 };
 
+/**
+ * @brief Input component to handle user inputs
+ */
 struct CInput : public Component
 {
     bool up{false};
@@ -83,6 +97,9 @@ struct CInput : public Component
     explicit CInput() noexcept = default;
 };
 
+/**
+ * @brief Bounding box component to know if entities collide
+ */
 struct CBoundingBox : public Component
 {
     sf::Vector2f size{};
@@ -103,6 +120,9 @@ struct CBoundingBox : public Component
     }
 };
 
+/**
+ * @brief Animation component to make an animated entity
+ */
 struct CAnimation : public Component
 {
     Animation animation{};
@@ -124,6 +144,9 @@ struct CAnimation : public Component
     }
 };
 
+/**
+ * @brief Gravity component to apply a downward force on an entity
+ */
 struct CGravity : public Component
 {
     float gravity{};
@@ -143,6 +166,9 @@ struct CGravity : public Component
     }
 };
 
+/**
+ * @brief State component to know the current state of an entity
+ */
 struct CState : public Component
 {
     std::string state{"idle"};
@@ -164,6 +190,9 @@ struct CState : public Component
     }
 };
 
+/**
+ * @brief Jump component to handle variable jump height 
+ */
 struct CJump : public Component
 {
     bool jumping{false};
@@ -189,6 +218,9 @@ struct CJump : public Component
     }
 };
 
+/**
+ * @brief Sound component to play a sound  
+ */
 struct CSound : public Component
 {
     std::optional<sf::Sound> sound{};
