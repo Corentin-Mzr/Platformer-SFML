@@ -1,8 +1,7 @@
 #include "game_engine.hpp"
-#include "config_parser.hpp"
+#include "action.hpp"
 #include "scene.hpp"
 #include "scene_menu.hpp"
-#include <SFML/Graphics.hpp>
 #include <iostream>
 #include <imgui.h>
 #include <imgui-SFML.h>
