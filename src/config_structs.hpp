@@ -2,9 +2,6 @@
 
 #include <string>
 #include <array>
-
-#include <SFML/Graphics.hpp>
-
 #include <toml.hpp>
 
 struct WindowConfig
