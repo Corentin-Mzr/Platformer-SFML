@@ -14,10 +14,32 @@ using FontMap = std::unordered_map<std::string, sf::Font>;
 using SoundMap = std::unordered_map<std::string, sf::SoundBuffer>;
 using MusicMap = std::unordered_map<std::string, sf::Music>;
 
+/**
+ * @brief Centralized storage and retrieval of game assets.
+ * 
+ * The AssetManager is resposible for loading, storing and providing access to
+ * common game resources: textures, animations, fonts, sounds and musics.
+ * 
+ * Assets are identified by string key, allowing them to be retrieved anywhere in the code without reloading them.
+ * 
+ * Each asset is loaded only once and remains available as long as the AssetManager exists.
+ * If an asset is not found, a placeholder resource is returned instead.
+ * 
+ * @note This class is non-copyable and non-movable to avoid duplication of resources.
+ */
 class AssetManager
 {
 public:
+    /**
+     * @brief Default constructor
+     */
     explicit AssetManager() noexcept = default;
+
+    /* Delete copy and move */
+    AssetManager(const AssetManager &) noexcept = delete;
+    AssetManager &operator=(const AssetManager &) noexcept = delete;
+    AssetManager(AssetManager &&) noexcept = delete;
+    AssetManager &operator=(AssetManager &&) noexcept = delete;
 
     /**
      * @brief Store a texture
@@ -98,13 +120,6 @@ public:
      */
     [[nodiscard]]
     sf::Music &get_music(const std::string &name) noexcept;
-
-private:
-    /* Delete copy */
-    AssetManager(const AssetManager &) noexcept = delete;
-    AssetManager &operator=(const AssetManager &) noexcept = delete;
-    AssetManager(AssetManager &&) noexcept = delete;
-    AssetManager &operator=(AssetManager &&) noexcept = delete;
 
 private:
     TextureMap m_textures{};
