@@ -11,6 +11,42 @@ class GameEngine;
 using Keycode = sf::Keyboard::Scancode;
 using ActionMap = std::unordered_map<Keycode, std::string>;
 
+/**
+ * @brief Abstract class representing a game scene.
+ * 
+ * A Scene manages its own entities, handle actions, updates and rendering.
+ * 
+ * It serves as a blueprint for specific scenes, such as menus or levels.
+ * 
+ * Each scene holds a pointer to the GameEngine to access global data like assets, settings or window properties.
+ * 
+ * The class provides utility functions for:
+ * 
+ * - Drawing debug lines
+ * 
+ * - Querying window size
+ * 
+ * - Checking current frame or end state
+ * 
+ * Usage: 
+ * 
+ * - update(): Update the scene logic
+ * 
+ * - system_do_action(action): Handle game actions
+ * 
+ * - system_render(): Render the scene
+ * 
+ * - do_action(): Perform an action
+ * 
+ * - simulate(frames): Run multiple update frames
+ * 
+ * - register_action(key, action_name): Map input to actions
+ * 
+ * @note Each scene has its own EntityManager
+ * @note The scene can be paused or ended
+ * @note Derived classes must implement update, system_do_action, system_render and on_end.
+ * 
+ */
 class Scene
 {
 
