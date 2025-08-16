@@ -118,7 +118,7 @@ void SceneMenu::system_render()
 
 void SceneMenu::system_sound()
 {
-    auto &menu_music{m_game->get_assets().get_music("Level")};
+    auto &menu_music{m_game->get_assets().get_music("Menu")};
 
     menu_music.setVolume(m_game->settings.m_music_volume);
     m_selection_sound->setVolume(m_game->settings.m_sound_volume);
