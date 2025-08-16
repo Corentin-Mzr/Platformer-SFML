@@ -213,7 +213,7 @@ struct CJump : public Component
      * @param dur Max jump duration in frames
      * @param str_per_frame Jump strength added each frame if up key is still pressed
      */
-    explicit CJump(float init_str, size_t dur, float str_per_frame) noexcept : max_duration(dur), initial_strength(init_str), frame_strength(str_per_frame)
+    explicit CJump(float init_str, unsigned dur, float str_per_frame) noexcept : max_duration(dur), initial_strength(init_str), frame_strength(str_per_frame)
     {
     }
 };
