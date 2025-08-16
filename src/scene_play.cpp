@@ -702,7 +702,7 @@ void ScenePlay::system_gui()
                         ImGui::TableNextRow();
 
                         ImGui::TableSetColumnIndex(current_col++);
-                        ImGui::Text("%d", e->id());
+                        ImGui::Text("%zu", e->id());
 
                         ImGui::TableSetColumnIndex(current_col++);
                         ImGui::Text("%s", e->tag().c_str());
@@ -744,7 +744,7 @@ void ScenePlay::system_gui()
                             ImGui::TableNextRow();
 
                             ImGui::TableSetColumnIndex(current_col++);
-                            ImGui::Text("%d", e->id());
+                            ImGui::Text("%zu", e->id());
 
                             ImGui::TableSetColumnIndex(current_col++);
                             ImGui::Text("%s", e->tag().c_str());
