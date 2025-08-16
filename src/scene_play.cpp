@@ -697,7 +697,7 @@ void ScenePlay::system_gui()
                         const sf::Vector2i grid_pos{
                             static_cast<int>(pos.x) / static_cast<int>(m_grid_size.x),
                             (static_cast<int>(get_height()) - static_cast<int>(pos.y)) / static_cast<int>(m_grid_size.y)};
-                        size_t current_col{};
+                        int current_col{};
 
                         ImGui::TableNextRow();
 
@@ -739,7 +739,7 @@ void ScenePlay::system_gui()
                             const sf::Vector2i grid_pos{
                                 static_cast<int>(pos.x) / static_cast<int>(m_grid_size.x),
                                 (static_cast<int>(get_height()) - static_cast<int>(pos.y)) / static_cast<int>(m_grid_size.y)};
-                            size_t current_col{};
+                            int current_col{};
 
                             ImGui::TableNextRow();
 
