@@ -99,7 +99,7 @@ public:
      * @param scene Pointer to the next scene
      * @param end_current True to end the current scene
      */
-    void change_scene(const std::string &name, std::shared_ptr<Scene> scene, bool end_current = false) noexcept;
+    void change_scene(const std::string &name, const std::shared_ptr<Scene> &scene, bool end_current = false) noexcept;
 
     /**
      * @brief Return the asset manager

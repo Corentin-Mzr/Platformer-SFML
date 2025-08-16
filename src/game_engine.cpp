@@ -85,7 +85,7 @@ void GameEngine::quit() noexcept
     m_window.close();
 }
 
-void GameEngine::change_scene(const std::string &name, std::shared_ptr<Scene> scene, bool end_current) noexcept
+void GameEngine::change_scene(const std::string &name, const std::shared_ptr<Scene> &scene, bool end_current) noexcept
 {
     std::cout << std::format("Changing from {} to {}\n", m_current_scene, name);
 
