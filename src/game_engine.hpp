@@ -80,12 +80,12 @@ public:
     /**
      * @brief Update the game each frame
      */
-    void update() noexcept;
+    void update();
 
     /**
      * @brief Run the game
      */
-    void run() noexcept;
+    void run();
 
     /**
      * Quit the game

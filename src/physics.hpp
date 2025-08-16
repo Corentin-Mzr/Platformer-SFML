@@ -13,7 +13,7 @@ namespace Physics
      * @param b Second entity
      */
     [[nodiscard]]
-    inline sf::Vector2f get_current_overlap(const std::shared_ptr<Entity> &a, const std::shared_ptr<Entity> &b)
+    inline sf::Vector2f get_current_overlap(const std::shared_ptr<Entity> &a, const std::shared_ptr<Entity> &b) noexcept
     {
         const auto &a_box_half_size = a->get<CBoundingBox>().half_size;
         const auto &a_current_pos = a->get<CTransform>().pos;
@@ -34,7 +34,7 @@ namespace Physics
      * @param b Second entity
      */
     [[nodiscard]]
-    inline sf::Vector2f get_previous_overlap(const std::shared_ptr<Entity> &a, const std::shared_ptr<Entity> &b)
+    inline sf::Vector2f get_previous_overlap(const std::shared_ptr<Entity> &a, const std::shared_ptr<Entity> &b) noexcept
     {
         const auto &a_box_half_size = a->get<CBoundingBox>().half_size;
         const auto &a_previous_pos = a->get<CTransform>().previous_pos;

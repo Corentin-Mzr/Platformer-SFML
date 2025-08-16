@@ -23,7 +23,7 @@ public:
     /**
      * @brief Update the scene
      */
-    void update() noexcept override;
+    void update() override;
 
 private:
     /**
@@ -53,34 +53,34 @@ private:
     /**
      * @brief Add player to the scene
      */
-    void spawn_player() noexcept;
+    void spawn_player();
 
     /**
      * @brief Add a bullet to the scene
      *
      * @param entity Bullet will spawn from this entity's position
      */
-    void spawn_bullet(const std::shared_ptr<Entity> &entity) noexcept;
+    void spawn_bullet(const std::shared_ptr<Entity> &entity);
 
     /**
      * @brief Handle player inputs
      */
-    void system_movement() noexcept;
+    void system_movement();
 
     /**
      * @brief Handle entities lifespan
      */
-    void system_lifespan() noexcept;
+    void system_lifespan();
 
     /**
      * @brief Handle collision between entities
      */
-    void system_collision() noexcept;
+    void system_collision();
 
     /**
      * @brief Handle animations of entities
      */
-    void system_animation() noexcept;
+    void system_animation();
 
     /**
      * @brief Handle ImGui
@@ -90,22 +90,22 @@ private:
     /**
      * @brief Handle sounds
      */
-    void system_sound() noexcept;
+    void system_sound();
 
     /**
      * @brief Render the scene
      */
-    void system_render() noexcept override;
+    void system_render() override;
 
     /**
      * @brief Handle an action
      */
-    void system_do_action(const Action &action) noexcept override;
+    void system_do_action(const Action &action) override;
 
     /**
      * @brief Handle the scene exit
      */
-    void on_end() noexcept override;
+    void on_end() override;
 
     /**
      * @brief Change the player's state
@@ -121,7 +121,7 @@ private:
      * 
      * @param tile Brick tile to update
      */
-    void spawn_explosion(const std::shared_ptr<Entity> &tile) noexcept;
+    void spawn_explosion(const std::shared_ptr<Entity> &tile);
 
     /**
      * @brief Change the tile animation to debris, and add a timer before removing it. 
@@ -129,14 +129,14 @@ private:
      * 
      * @param tile Brick tile to update
      */
-    void spawn_debris(const std::shared_ptr<Entity> &tile) noexcept;
+    void spawn_debris(const std::shared_ptr<Entity> &tile);
 
     /**
      * @brief Spawn a spinning coin over a question mark tile
      * 
      * @param tile Question mark tile
      */
-    void spawn_coin(const std::shared_ptr<Entity> &tile) noexcept;
+    void spawn_coin(const std::shared_ptr<Entity> &tile);
 
     /**
      * @brief Spawn an entity that will play the given sound at the given position
@@ -144,7 +144,7 @@ private:
      * @param name Sound's name
      * @param pos Position
      */
-    void spawn_sound(const std::string &name, const sf::Vector2f &pos) noexcept;
+    void spawn_sound(const std::string &name, const sf::Vector2f &pos);
 
 private:
     std::shared_ptr<Entity> m_player{};

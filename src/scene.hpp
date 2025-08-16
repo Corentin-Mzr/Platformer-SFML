@@ -64,27 +64,27 @@ public:
     /**
      * @brief Update the scene
      */
-    virtual void update() noexcept = 0;
+    virtual void update() = 0;
 
     /**
      * @brief Handle an action
      */
-    virtual void system_do_action(const Action &action) noexcept = 0;
+    virtual void system_do_action(const Action &action) = 0;
 
     /**
      * @brief Render the scene
      */
-    virtual void system_render() noexcept = 0;
+    virtual void system_render() = 0;
 
     /**
      * @brief Do the given action
      */
-    virtual void do_action(const Action &action) noexcept;
+    virtual void do_action(const Action &action);
 
     /**
      * @brief Simulate the scene over multiple frames
      */
-    void simulate(unsigned frames) noexcept;
+    void simulate(unsigned frames);
 
     /**
      * @brief Register an action
@@ -130,7 +130,7 @@ protected:
     /**
      * @brief Handle the scene exit
      */
-    virtual void on_end() noexcept = 0;
+    virtual void on_end() = 0;
 
     /**
      * @brief Pause or unpause the scene

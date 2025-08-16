@@ -79,7 +79,7 @@ void SceneMenu::init()
     m_game->get_assets().get_music("Menu").setLooping(true);
 }
 
-void SceneMenu::update() noexcept
+void SceneMenu::update()
 {
     system_sound();
     system_scene();
@@ -87,7 +87,7 @@ void SceneMenu::update() noexcept
     system_render();
 }
 
-void SceneMenu::system_render() noexcept
+void SceneMenu::system_render()
 {
     const sf::Color background_color{array_to_color(m_game->get_window_config().color)};
     m_game->get_window().clear(background_color);
@@ -118,7 +118,7 @@ void SceneMenu::system_render() noexcept
 
 void SceneMenu::system_sound()
 {
-    auto &menu_music{m_game->get_assets().get_music("Menu")};
+    auto &menu_music{m_game->get_assets().get_music("Level")};
 
     menu_music.setVolume(m_game->settings.m_music_volume);
     m_selection_sound->setVolume(m_game->settings.m_sound_volume);
@@ -161,12 +161,12 @@ void SceneMenu::system_gui()
     ImGui::End();
 }
 
-void SceneMenu::on_end() noexcept
+void SceneMenu::on_end()
 {
     m_game->quit();
 }
 
-void SceneMenu::system_do_action(const Action &action) noexcept
+void SceneMenu::system_do_action(const Action &action)
 {
     /* Key pressed */
     if (action.type == "START")

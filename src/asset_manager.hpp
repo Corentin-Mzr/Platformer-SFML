@@ -21,9 +21,9 @@ using MusicMap = std::unordered_map<std::string, sf::Music>;
  * common game resources: textures, animations, fonts, sounds and musics.
  * 
  * Assets are identified by string key, allowing them to be retrieved anywhere in the code without reloading them.
+ * Trying to retrieve a non-stored asset will throw an error.
  * 
  * Each asset is loaded only once and remains available as long as the AssetManager exists.
- * If an asset is not found, a placeholder resource is returned instead.
  * 
  * @note This class is non-copyable and non-movable to avoid duplication of resources.
  */
@@ -87,7 +87,7 @@ public:
      * @param name Texture's name
      */
     [[nodiscard]]
-    const sf::Texture &get_texture(const std::string &name) const noexcept;
+    const sf::Texture &get_texture(const std::string &name) const;
 
     /**
      * @brief Return the stored animation, or a default animation if not stored
@@ -95,7 +95,7 @@ public:
      * @param name Animation's name
      */
     [[nodiscard]]
-    const Animation &get_animation(const std::string &name) const noexcept;
+    const Animation &get_animation(const std::string &name) const;
 
     /**
      * @brief Return the stored font, or a default font if not stored
@@ -103,7 +103,7 @@ public:
      * @param name Font's name
      */
     [[nodiscard]]
-    const sf::Font &get_font(const std::string &name) const noexcept;
+    const sf::Font &get_font(const std::string &name) const;
 
     /**
      * @brief Return the stored sound, or a default sound if not stored
@@ -111,7 +111,7 @@ public:
      * @param name Sound's name
      */
     [[nodiscard]]
-    const sf::SoundBuffer &get_sound(const std::string &name) const noexcept;
+    const sf::SoundBuffer &get_sound(const std::string &name) const;
 
     /**
      * @brief Return the stored music, or a default music if not stored. MUSIC STATE CAN BE CHANGED
@@ -119,7 +119,7 @@ public:
      * @param name Music's name
      */
     [[nodiscard]]
-    sf::Music &get_music(const std::string &name) noexcept;
+    sf::Music &get_music(const std::string &name);
 
 private:
     TextureMap m_textures{};

@@ -5,12 +5,12 @@ Scene::Scene(GameEngine *game) noexcept : m_game(game)
 {
 }
 
-void Scene::do_action(const Action &action) noexcept
+void Scene::do_action(const Action &action)
 {
     system_do_action(action);
 }
 
-void Scene::simulate(unsigned frames) noexcept
+void Scene::simulate(unsigned frames)
 {
     for (unsigned i = 0; i < frames; ++i)
     {

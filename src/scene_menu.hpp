@@ -22,7 +22,7 @@ public:
     /**
      * @brief Render the scene
      */
-    void system_render() noexcept override;
+    void system_render() override;
 
 private:
     /**
@@ -33,12 +33,12 @@ private:
     /**
      * @brief Update the scene
      */
-    void update() noexcept override;
+    void update() override;
 
     /**
      * @brief Handle an action
      */
-    void system_do_action(const Action &action) noexcept override;
+    void system_do_action(const Action &action) override;
 
     /**
      * @brief Handle sounds
@@ -59,7 +59,7 @@ private:
     /**
      * @brief Handle the scene exit
      */
-    void on_end() noexcept override;
+    void on_end() override;
 
 private:
     std::string m_title{};

@@ -69,7 +69,7 @@ void GameEngine::init()
     change_scene("MENU", std::make_shared<SceneMenu>(this), true);
 }
 
-void GameEngine::run() noexcept
+void GameEngine::run()
 {
     while (is_running())
     {
@@ -94,11 +94,10 @@ void GameEngine::change_scene(const std::string &name, const std::shared_ptr<Sce
         m_scenes.erase(m_current_scene);
     }
     m_scenes[name] = std::move(scene);
-    // m_scenes.try_emplace(name, std::move(scene));
     m_current_scene = name;
 }
 
-void GameEngine::update() noexcept
+void GameEngine::update()
 {
     auto scene{get_current_scene()};
     if (scene != nullptr) [[likely]]
