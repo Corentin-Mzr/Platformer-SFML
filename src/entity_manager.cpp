@@ -27,7 +27,7 @@
 void EntityManager::update() noexcept
 {
     // Add entities from the queue in the main containers
-    for (const auto e : m_entities_to_add)
+    for (const auto &e : m_entities_to_add)
     {
         m_entities.push_back(e);
         m_entity_map[e->tag()].push_back(e);
