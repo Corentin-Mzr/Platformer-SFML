@@ -202,7 +202,6 @@ private:
     SceneMap m_scenes{};
     AssetManager m_assets{};
     std::string m_current_scene{"NONE"};
-    unsigned m_simulation_speed{1};
     bool m_running{true};
     ConfigParser m_config{};
     sf::Clock m_imgui_clock{};
