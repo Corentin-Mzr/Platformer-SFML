@@ -59,7 +59,7 @@ void ScenePlay::init(const std::string &path)
     load_level(path);
 }
 
-sf::Vector2f ScenePlay::grid_to_mid_pixel(float grid_x, float grid_y, std::shared_ptr<Entity> entity) noexcept
+sf::Vector2f ScenePlay::grid_to_mid_pixel(float grid_x, float grid_y, const std::shared_ptr<Entity> &entity) noexcept
 {
     sf::Vector2f result{m_grid_size.x * grid_x, m_grid_size.y * grid_y};
 
@@ -193,7 +193,7 @@ void ScenePlay::spawn_player() noexcept
     m_player->add<CJump>(conf.jump, 15, 1.0f); // Jump strength and duration
 }
 
-void ScenePlay::spawn_bullet(std::shared_ptr<Entity> entity) noexcept
+void ScenePlay::spawn_bullet(const std::shared_ptr<Entity> &entity) noexcept
 {
     // TODO: spawn a bullet at the given entity position, in the direction the entity is facing
     if (!entity->has<CTransform>())
@@ -207,7 +207,7 @@ void ScenePlay::spawn_bullet(std::shared_ptr<Entity> entity) noexcept
     const auto &transform{entity->get<CTransform>()};
     const sf::Vector2f gun_offset{24.0f * transform.scale.x, 0.0f};
 
-    // TODO: Velocity according to the orientation of the entity
+    /* Velocity according to the orientation of the entity */
     auto bullet{m_entities.add_entity("bullet")};
     bullet->add<CTransform>(transform.pos + gun_offset, sf::Vector2f(bullet_config.speed * transform.scale.x, 0.0f), transform.scale, 0.0f);
     bullet->add<CAnimation>(m_game->get_assets().get_animation("Buster"), true);
@@ -215,7 +215,7 @@ void ScenePlay::spawn_bullet(std::shared_ptr<Entity> entity) noexcept
     bullet->add<CLifeSpan>(bullet_config.lifespan, m_current_frame);
 
     /* Player make a sound when shooting */
-    m_player->add<CSound>(m_game->get_assets().get_sound("Shoot"), false, m_game->settings.m_sound_volume);
+    spawn_sound("Shoot", entity->get<CTransform>().pos);
 
     m_bullet_count++;
 }
@@ -266,7 +266,8 @@ void ScenePlay::system_movement() noexcept
                 input.can_jump = false;
                 jump.jumping = true;
                 jump.start_frame = m_current_frame;
-                m_player->add<CSound>(m_game->get_assets().get_sound("Jump"), false, m_game->settings.m_sound_volume);
+                spawn_sound("Jump", m_player->get<CTransform>().pos);
+                // m_player->add<CSound>(m_game->get_assets().get_sound("Jump"), false, m_game->settings.m_sound_volume);
             }
 
             else if (jump.jumping && m_current_frame - jump.start_frame < jump.max_duration)
@@ -791,9 +792,11 @@ void ScenePlay::system_sound() noexcept
             sound.played = true;
         }
 
+        /* Destroy entity when sound has ended (entities that have a sound component must be temporary entities) */
         if (sound.played && !sound.loop && sound.sound->getStatus() == sf::Sound::Status::Stopped)
         {
-            e->remove<CSound>();
+            // e->remove<CSound>();
+            e->destroy();
         }
     }
 }
@@ -991,29 +994,35 @@ void ScenePlay::change_player_state_to(CState &state, const std::string &new_sta
     }
 }
 
-void ScenePlay::spawn_explosion(std::shared_ptr<Entity> tile) noexcept
+void ScenePlay::spawn_explosion(const std::shared_ptr<Entity> &tile) noexcept
 {
     tile->get<CAnimation>().animation = m_game->get_assets().get_animation("Explosion");
     tile->get<CAnimation>().repeat = false;
     tile->remove<CBoundingBox>();
-    tile->add<CSound>(m_game->get_assets().get_sound("Explosion"), false, m_game->settings.m_sound_volume);
+    spawn_sound("Explosion", tile->get<CTransform>().pos);
 }
 
-void ScenePlay::spawn_debris(std::shared_ptr<Entity> tile) noexcept
+void ScenePlay::spawn_debris(const std::shared_ptr<Entity> &tile) noexcept
 {
-    // Not satisfactory solution, but to make sound play add a lifespan and make anim repeat (because animation is only one frame)
     tile->get<CAnimation>().animation = m_game->get_assets().get_animation("BrickDebris");
-    tile->get<CAnimation>().repeat = true; 
+    tile->get<CAnimation>().repeat = false;
     tile->remove<CBoundingBox>();
-    tile->add<CLifeSpan>(15, m_current_frame);
-    tile->add<CSound>(m_game->get_assets().get_sound("Debris"), false, m_game->settings.m_sound_volume);
+    spawn_sound("Debris", tile->get<CTransform>().pos);
 }
 
-void ScenePlay::spawn_coin(std::shared_ptr<Entity> tile) noexcept
+void ScenePlay::spawn_coin(const std::shared_ptr<Entity> &tile) noexcept
 {
+    // Coin animation should not be repeated but it does not play correctly, so keep lifespan for now
     auto coin{m_entities.add_entity("coin")};
     coin->add<CAnimation>(m_game->get_assets().get_animation("CoinSpin"), true);
     coin->add<CTransform>(tile->get<CTransform>().pos + sf::Vector2f{0.0f, -static_cast<float>(m_grid_size.y)});
     coin->add<CLifeSpan>(30, m_current_frame);
-    coin->add<CSound>(m_game->get_assets().get_sound("Coin"), false, m_game->settings.m_sound_volume);
+    spawn_sound("Coin", coin->get<CTransform>().pos);
+}
+
+void ScenePlay::spawn_sound(const std::string &name, const sf::Vector2f &pos) noexcept
+{
+    auto sound{m_entities.add_entity("sound")};
+    sound->add<CSound>(m_game->get_assets().get_sound(name), false, m_game->settings.m_sound_volume);
+    sound->add<CTransform>(pos);
 }

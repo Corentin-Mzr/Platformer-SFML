@@ -41,7 +41,7 @@ private:
      * @param entity Entity you want to find the center position of
      */
     [[nodiscard]]
-    sf::Vector2f grid_to_mid_pixel(float grid_x, float grid_y, std::shared_ptr<Entity> entity) noexcept;
+    sf::Vector2f grid_to_mid_pixel(float grid_x, float grid_y, const std::shared_ptr<Entity> &entity) noexcept;
 
     /**
      * @brief Load a level using a data file
@@ -60,7 +60,7 @@ private:
      *
      * @param entity Bullet will spawn from this entity's position
      */
-    void spawn_bullet(std::shared_ptr<Entity> entity) noexcept;
+    void spawn_bullet(const std::shared_ptr<Entity> &entity) noexcept;
 
     /**
      * @brief Handle player inputs
@@ -121,7 +121,7 @@ private:
      * 
      * @param tile Brick tile to update
      */
-    void spawn_explosion(std::shared_ptr<Entity> tile) noexcept;
+    void spawn_explosion(const std::shared_ptr<Entity> &tile) noexcept;
 
     /**
      * @brief Change the tile animation to debris, and add a timer before removing it. 
@@ -129,14 +129,22 @@ private:
      * 
      * @param tile Brick tile to update
      */
-    void spawn_debris(std::shared_ptr<Entity> tile) noexcept;
+    void spawn_debris(const std::shared_ptr<Entity> &tile) noexcept;
 
     /**
      * @brief Spawn a spinning coin over a question mark tile
      * 
      * @param tile Question mark tile
      */
-    void spawn_coin(std::shared_ptr<Entity> tile) noexcept;
+    void spawn_coin(const std::shared_ptr<Entity> &tile) noexcept;
+
+    /**
+     * @brief Spawn an entity that will play the given sound at the given position
+     * 
+     * @param name Sound's name
+     * @param pos Position
+     */
+    void spawn_sound(const std::string &name, const sf::Vector2f &pos) noexcept;
 
 private:
     std::shared_ptr<Entity> m_player{};
