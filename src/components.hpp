@@ -245,3 +245,30 @@ struct CSound : public Component
         sound->setVolume(volume);
     }
 };
+
+/**
+ * @brief Convex Hitbox component
+ * 
+ * @note Points must be given in local space
+ */
+struct CBoundingConvex : public Component
+{
+    std::vector<sf::Vector2f> points{};
+    sf::Vector2f scale{1.0f, 1.0f};
+    size_t count{};
+
+    /**
+     * @brief Default constructor
+     */
+    explicit CBoundingConvex() noexcept = default;
+
+    /**
+     * @brief Create a BoundingConvex component
+     * 
+     * @param p Points representing the convex shape, in local space
+     * @param s Scaling factor, equivalent of "size" for CBoundingBox
+     */
+    explicit CBoundingConvex(const std::vector<sf::Vector2f> &p, const sf::Vector2f &s) noexcept : points(std::move(p)), scale(s), count(p.size())
+    {
+    }
+};
