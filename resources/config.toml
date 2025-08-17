@@ -99,6 +99,9 @@ lifespan = 30 # Number of frames until it disappears
     [texture.hill]
         name = "TexHill"
         path = "../resources/textures/world/hill_320x126.png"
+    [texture.spike]
+        name = "TexSpike"
+        path = "../resources/textures/world/spike_64x64.png"
     
 
 [animation]
@@ -207,6 +210,11 @@ lifespan = 30 # Number of frames until it disappears
         texture = "TexHill"
         frames = 1
         speed = 1
+    [animation.spike]
+        name = "Spike"
+        texture = "TexSpike"
+        frames = 1
+        speed = 1
 
 [sound]
     [sound.selection]
@@ -230,11 +238,11 @@ lifespan = 30 # Number of frames until it disappears
     [sound.coin]
         name = "Coin"
         path = "../resources/sounds/coin.wav"
+    [sound.hurt]
+        name = "Hurt"
+        path = "../resources/sounds/hurt.wav"
     
 [music]
     [music.menu]
         name = "Menu"
         path = "../resources/musics/menu.ogg"
-    [music.level]
-        name = "Level"
-        path = "../resources/musics/level.ogg"

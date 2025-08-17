@@ -9,6 +9,8 @@ Tile Ground 7 0
 Tile Ground 8 0
 Tile Ground 9 0
 Tile Ground 10 0
+Spike Spike 9 1
+Spike Spike 10 1
 Tile Brick 11 2
 Tile Brick 12 2
 Tile Brick 13 2
@@ -21,6 +23,6 @@ Dec Flower 2 1
 Dec Cloud 4 8
 Dec Cloud 8 6
 Dec Bush 5 1
-Dec Tree 8 1
+Dec Tree 6 1
 Dec Hill 3 5
 Player 1 1 64 64 5 15 20 1 Buster

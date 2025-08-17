@@ -7,6 +7,7 @@
 #include <imgui.h>
 #include <imgui-SFML.h>
 #include <SFML/Graphics/RectangleShape.hpp>
+#include <SFML/Graphics/ConvexShape.hpp>
 
 ScenePlay::ScenePlay(GameEngine *game, const std::string &level_path) : Scene(game), m_grid_text(m_font)
 {
@@ -122,7 +123,7 @@ void ScenePlay::load_level(const std::string &path)
             std::string animation_name{words[1]};
             entity->add<CAnimation>(m_game->get_assets().get_animation(animation_name), true);
 
-            // Hitbox
+            // Hitbox -> BoundingBox if tile
             entity->add<CBoundingBox>(static_cast<sf::Vector2f>(m_game->get_assets().get_animation(animation_name).get_size()));
 
             /* Position, convert coords */
@@ -164,12 +165,45 @@ void ScenePlay::load_level(const std::string &path)
                 continue;
             }
         }
+        else if (element_type == "Spike")
+        {
+            auto entity{m_entities.add_entity("spike")};
+
+            /* AnimationName first, we use it for hitbox */
+            std::string animation_name{words[1]};
+            entity->add<CAnimation>(m_game->get_assets().get_animation(animation_name), true);
+
+            // Hitbox -> BoundingConvex if spike
+            const std::vector<sf::Vector2f> tri{{sf::Vector2f{-0.5f, 0.5f}, sf::Vector2f{0.0f, -0.5f}, sf::Vector2f{0.5f, 0.5f}}};
+            entity->add<CBoundingConvex>(tri, static_cast<sf::Vector2f>(m_game->get_assets().get_animation(animation_name).get_size()));
+
+            /* Position, convert coords */
+            float x{}, y{};
+            try
+            {
+                x = std::stof(words[2]);
+                y = std::stof(words[3]);
+                entity->add<CTransform>(grid_to_mid_pixel(x, y, entity));
+            }
+            catch (const std::exception &e)
+            {
+                std::cerr << std::format("Error line {}: {}\n", line_idx, e.what());
+                entity->destroy();
+                continue;
+            }
+        }
         else
         {
             std::cerr << std::format("Error line {}: {}\n", line_idx, "element must be Tile or Dec");
             continue;
         }
     }
+
+    // std::vector<sf::Vector2f> tri{{sf::Vector2f{-0.5f, 0.5f}, sf::Vector2f{0.0f, -0.5f}, sf::Vector2f{0.5f, 0.5f}}};
+    // auto entity{m_entities.add_entity("spike")};
+    // entity->add<CAnimation>(m_game->get_assets().get_animation("Spike"), true);
+    // entity->add<CTransform>(grid_to_mid_pixel(5, 1, entity));
+    // entity->add<CBoundingConvex>(tri, static_cast<sf::Vector2f>(m_game->get_assets().get_animation("Spike").get_size()));
 
     /* Spawn player in the scene */
     spawn_player();
@@ -183,7 +217,7 @@ void ScenePlay::spawn_player()
     m_player = m_entities.add_entity("player");
     m_player->add<CAnimation>(m_game->get_assets().get_animation("Idle"), true);
     m_player->add<CTransform>(grid_to_mid_pixel(conf.x, conf.y, m_player)); // TODO: GridToMidPixel
-    m_player->add<CBoundingBox>(sf::Vector2f(48.0f, 64.0f));                // TODO: Replace bouding box dims
+    m_player->add<CBoundingBox>(sf::Vector2f(32.0f, 64.0f));                // TODO: Replace bouding box dims
 
     // TODO: Add remaining components
     m_player->add<CInput>();
@@ -284,18 +318,18 @@ void ScenePlay::system_movement()
     }
 
     /* Update entities based on velocity */
-    for (auto entity : m_entities.get_entities())
+    for (const auto &e : m_entities.get_entities())
     {
-        if (!entity->has<CTransform>()) [[unlikely]]
+        if (!e->has<CTransform>()) [[unlikely]]
         {
             continue;
         }
 
-        auto &transform{entity->get<CTransform>()};
+        auto &transform{e->get<CTransform>()};
 
-        if (entity->has<CGravity>()) [[unlikely]]
+        if (e->has<CGravity>()) [[unlikely]]
         {
-            transform.velocity.y += entity->get<CGravity>().gravity;
+            transform.velocity.y += e->get<CGravity>().gravity;
             transform.velocity.y = std::min(transform.velocity.y, max_speed);
         }
 
@@ -312,7 +346,7 @@ void ScenePlay::system_lifespan()
     /* Bullet quantity */
     auto &bullets{m_entities.get_entities("bullet")};
     bool first_bullet{true};
-    for (auto &b : bullets)
+    for (const auto &b : bullets)
     {
         if (!b->has<CLifeSpan>()) [[unlikely]]
         {
@@ -333,7 +367,7 @@ void ScenePlay::system_lifespan()
     }
 
     // TODO: Check lifespan of entities and destroy them if they go over
-    for (auto &e : m_entities.get_entities())
+    for (const auto &e : m_entities.get_entities())
     {
         if (!e->has<CLifeSpan>())
         {
@@ -376,7 +410,7 @@ void ScenePlay::system_collision()
         return;
 
     /* Bullet - Tile collision */
-    for (auto &bullet : m_entities.get_entities("bullet"))
+    for (const auto &bullet : m_entities.get_entities("bullet"))
     {
         for (auto &tile : m_entities.get_entities("tile"))
         {
@@ -406,7 +440,7 @@ void ScenePlay::system_collision()
     }
 
     /* Player - tile collision */
-    for (auto &tile : m_entities.get_entities("tile"))
+    for (const auto &tile : m_entities.get_entities("tile"))
     {
         if (!m_player->has<CBoundingBox>() || !tile->has<CBoundingBox>())
         {
@@ -544,6 +578,24 @@ void ScenePlay::system_collision()
         }
     }
 
+    /* Player - Spike collision */
+    for (const auto &spike : m_entities.get_entities("spike"))
+    {
+        if (!spike->has<CBoundingConvex>() || !m_player->has<CBoundingBox>()) [[unlikely]]
+        {
+            continue;
+        }
+
+        const auto overlap{Physics::get_current_overlap_between_convex_and_box(spike, m_player)};
+
+        constexpr float hit_spike_threshold{8.0f};
+        if (abs(overlap.x) >= hit_spike_threshold || abs(overlap.y) >= hit_spike_threshold)
+        {
+            m_player->get<CTransform>().pos = grid_to_mid_pixel(m_game->get_player_config().x, m_game->get_player_config().y, m_player);
+            spawn_sound("Hurt", m_player->get<CTransform>().pos);
+        }
+    }
+
     /* Player - left wall collision */
     if (m_player->get<CTransform>().pos.x < m_player->get<CBoundingBox>().half_size.x)
     {
@@ -554,6 +606,7 @@ void ScenePlay::system_collision()
     if (m_player->get<CTransform>().pos.y > m_game->get_window().getSize().y)
     {
         m_player->get<CTransform>().pos = grid_to_mid_pixel(m_game->get_player_config().x, m_game->get_player_config().y, m_player);
+        spawn_sound("Hurt", m_player->get<CTransform>().pos);
     }
 }
 
@@ -627,7 +680,7 @@ void ScenePlay::system_animation()
     }
 
     /* Update animations */
-    for (auto &e : m_entities.get_entities())
+    for (const auto &e : m_entities.get_entities())
     {
         if (!e->has<CAnimation>()) [[unlikely]]
         {
@@ -845,7 +898,7 @@ void ScenePlay::system_render()
             {
                 auto &box{e->get<CBoundingBox>()};
                 auto &transform{e->get<CTransform>()};
-                sf::RectangleShape rect;
+                sf::RectangleShape rect{};
                 rect.setSize(box.size - sf::Vector2f{1.0, 1.0});
                 rect.setOrigin(box.half_size);
                 rect.setPosition(transform.pos);
@@ -853,6 +906,23 @@ void ScenePlay::system_render()
                 rect.setOutlineColor(sf::Color::White);
                 rect.setOutlineThickness(1.0f);
                 m_game->get_window().draw(rect);
+            }
+
+            if (e->has<CBoundingConvex>())
+            {
+                auto &conv{e->get<CBoundingConvex>()};
+                auto &transform{e->get<CTransform>()};
+                sf::ConvexShape shape{};
+                shape.setPointCount(conv.count);
+                for (size_t i = 0; i < conv.count; ++i)
+                {
+                    shape.setPoint(i, conv.points[i] * conv.scale);
+                }
+                shape.setPosition(transform.pos);
+                shape.setFillColor({0, 0, 0, 0});
+                shape.setOutlineColor(sf::Color::Red);
+                shape.setOutlineThickness(1.0f);
+                m_game->get_window().draw(shape);
             }
         }
     }

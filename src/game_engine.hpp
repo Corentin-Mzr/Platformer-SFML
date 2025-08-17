@@ -44,7 +44,9 @@ using SceneMap = std::unordered_map<std::string, std::shared_ptr<Scene>>;
 class GameEngine
 {
 public:
-    /* Options */
+    /**
+     * @brief Basic options struct
+     */
     struct GameSettings
     {
         float m_music_volume{10.0f};
@@ -88,7 +90,7 @@ public:
     void run();
 
     /**
-     * Quit the game
+     * @brief Quit the game
      */
     void quit() noexcept;
 
