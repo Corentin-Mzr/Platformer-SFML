@@ -589,7 +589,7 @@ void ScenePlay::system_collision()
         const auto overlap{Physics::get_current_overlap_between_convex_and_box(spike, m_player)};
 
         constexpr float hit_spike_threshold{8.0f};
-        if (abs(overlap.x) >= hit_spike_threshold || abs(overlap.y) >= hit_spike_threshold)
+        if (std::abs(overlap.x) >= hit_spike_threshold || std::abs(overlap.y) >= hit_spike_threshold)
         {
             m_player->get<CTransform>().pos = grid_to_mid_pixel(m_game->get_player_config().x, m_game->get_player_config().y, m_player);
             spawn_sound("Hurt", m_player->get<CTransform>().pos);
