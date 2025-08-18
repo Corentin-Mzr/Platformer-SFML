@@ -22,7 +22,7 @@ lifespan = 30 # Number of frames until it disappears
 [level]
     [level.one]
         name = "Level 1"
-        path = "../resources/levels/level1.data"
+        path = "../resources/levels/mario_1_1.data"
     [level.two]
         name = "Level 2"
         path = "../resources/levels/level2.data"
@@ -96,6 +96,9 @@ lifespan = 30 # Number of frames until it disappears
     [texture.pipe]
         name = "TexPipe"
         path = "../resources/textures/world/pipe_128x128.png"
+    [texture.pipe_sub]
+        name = "TexPipeSub"
+        path = "../resources/textures/world/pipesub_128x64.png"
     [texture.hill]
         name = "TexHill"
         path = "../resources/textures/world/hill_320x126.png"
@@ -203,6 +206,11 @@ lifespan = 30 # Number of frames until it disappears
     [animation.pipe]
         name = "Pipe"
         texture = "TexPipe"
+        frames = 1
+        speed = 1
+    [animation.pipe_sub]
+        name = "PipeSub"
+        texture = "TexPipeSub"
         frames = 1
         speed = 1
     [animation.hill]
