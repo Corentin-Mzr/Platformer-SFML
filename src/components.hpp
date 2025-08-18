@@ -268,7 +268,7 @@ struct CBoundingConvex : public Component
      * @param p Points representing the convex shape, in local space
      * @param s Scaling factor, equivalent of "size" for CBoundingBox
      */
-    explicit CBoundingConvex(const std::vector<sf::Vector2f> &p, const sf::Vector2f &s) noexcept : points(std::move(p)), scale(s), count(p.size())
+    explicit CBoundingConvex(const std::vector<sf::Vector2f> &p, const sf::Vector2f &s) noexcept : points(p), scale(s), count(p.size())
     {
     }
 };
