@@ -7,12 +7,13 @@ title = "MegaMario SFML"
 framerate = 60 # FPS
 color = [30, 40, 50, 255] # Background color
 
-[player]
-x = 1.0
-y = 1.0
-speed = 5.0
-jump = 12.0
-gravity = 1.0
+# Moved to the level data file
+# [player]
+# x = 1.0
+# y = 1.0
+# speed = 5.0
+# jump = 12.0
+# gravity = 1.0
 
 [bullet]
 speed = 12.0
@@ -26,6 +27,9 @@ lifespan = 30 # Number of frames until it disappears
     [level.two]
         name = "Level 2"
         path = "../resources/levels/level2.data"
+    [level.three]
+        name = "Level 3"
+        path = "../resources/levels/level3.data"
     [level.debug]
         name = "Debug"
         path = "../resources/levels/debug.data"
@@ -78,33 +82,45 @@ lifespan = 30 # Number of frames until it disappears
     [texture.coin_spin]
         name = "TexCoinSpin"
         path = "../resources/textures/world/coin_256x64.png"
-    [texture.tree]
-        name = "TexTree"
-        path = "../resources/textures/world/tree_190x248.png"
     [texture.castle_small]
         name = "TexCastleSmall"
-        path = "../resources/textures/world/castle_small_161x172.png"
-    [texture.flower]
-        name = "TexFlower"
-        path = "../resources/textures/world/flower_30x32.png"
-    [texture.bush]
-        name = "TexBush"
-        path = "../resources/textures/world/bush_74x36.png"
-    [texture.cloud]
-        name = "TexCloud"
-        path = "../resources/textures/world/cloud_128x60.png"
+        path = "../resources/textures/world/castle_80x80.png"
+    [texture.bush_small]
+        name = "TexBushSmall"
+        path = "../resources/textures/world/bush_48x16.png"
+    [texture.bush_medium]
+        name = "TexBushMedium"
+        path = "../resources/textures/world/bush_64x16.png"
+    [texture.bush_big]
+        name = "TexBushBig"
+        path = "../resources/textures/world/bush_80x16.png"
+    [texture.cloud_small]
+        name = "TexCloudSmall"
+        path = "../resources/textures/world/cloud_48x32.png"
+    [texture.cloud_medium]
+        name = "TexCloudMedium"
+        path = "../resources/textures/world/cloud_64x32.png"
+    [texture.cloud_big]
+        name = "TexCloudBig"
+        path = "../resources/textures/world/cloud_80x32.png"
     [texture.pipe]
         name = "TexPipe"
         path = "../resources/textures/world/pipe_128x128.png"
     [texture.pipe_sub]
         name = "TexPipeSub"
         path = "../resources/textures/world/pipesub_128x64.png"
-    [texture.hill]
-        name = "TexHill"
-        path = "../resources/textures/world/hill_320x126.png"
+    [texture.hill_small]
+        name = "TexHillSmall"
+        path = "../resources/textures/world/hill_48x32.png"
+    [texture.hill_big]
+        name = "TexHillBig"
+        path = "../resources/textures/world/hill_80x48.png"
     [texture.spike]
         name = "TexSpike"
         path = "../resources/textures/world/spike_64x64.png"
+    [texture.flagpole]
+        name = "TexFlagpole"
+        path = "../resources/textures/world/flagpole_64x704.png"
     
 
 [animation]
@@ -178,29 +194,39 @@ lifespan = 30 # Number of frames until it disappears
         texture = "TexCoinSpin"
         frames = 4
         speed = 10
-    [animation.tree]
-        name = "Tree"
-        texture = "TexTree"
-        frames = 1
-        speed = 1
     [animation.castle_small]
         name = "CastleSmall"
         texture = "TexCastleSmall"
         frames = 1
         speed = 1
-    [animation.flower]
-        name = "Flower"
-        texture = "TexFlower"
+    [animation.bush_small]
+        name = "BushSmall"
+        texture = "TexBushSmall"
         frames = 1
         speed = 1
-    [animation.bush]
-        name = "Bush"
-        texture = "TexBush"
+    [animation.bush_medium]
+        name = "BushMedium"
+        texture = "TexBushMedium"
         frames = 1
         speed = 1
-    [animation.cloud]
-        name = "Cloud"
-        texture = "TexCloud"
+    [animation.bush_big]
+        name = "BushBig"
+        texture = "TexBushBig"
+        frames = 1
+        speed = 1
+    [animation.cloud_small]
+        name = "CloudSmall"
+        texture = "TexCloudSmall"
+        frames = 1
+        speed = 1
+    [animation.cloud_medium]
+        name = "CloudMedium"
+        texture = "TexCloudMedium"
+        frames = 1
+        speed = 1
+    [animation.cloud_big]
+        name = "CloudBig"
+        texture = "TexCloudBig"
         frames = 1
         speed = 1
     [animation.pipe]
@@ -213,14 +239,24 @@ lifespan = 30 # Number of frames until it disappears
         texture = "TexPipeSub"
         frames = 1
         speed = 1
-    [animation.hill]
-        name = "Hill"
-        texture = "TexHill"
+    [animation.hill_small]
+        name = "HillSmall"
+        texture = "TexHillSmall"
+        frames = 1
+        speed = 1
+    [animation.hill_big]
+        name = "HillBig"
+        texture = "TexHillBig"
         frames = 1
         speed = 1
     [animation.spike]
         name = "Spike"
         texture = "TexSpike"
+        frames = 1
+        speed = 1
+    [animation.flagpole]
+        name = "Flagpole"
+        texture = "TexFlagpole"
         frames = 1
         speed = 1
 
@@ -249,6 +285,9 @@ lifespan = 30 # Number of frames until it disappears
     [sound.hurt]
         name = "Hurt"
         path = "../resources/sounds/hurt.wav"
+    [sound.win]
+        name = "Win"
+        path = "../resources/sounds/win.wav"
     
 [music]
     [music.menu]
