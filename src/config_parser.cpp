@@ -36,11 +36,11 @@ static WindowConfig parse_window(const toml::value &data)
     return parse_section<WindowConfig>(data, "window");
 }
 
-[[nodiscard]]
-static PlayerConfig parse_player(const toml::value &data)
-{
-    return parse_section<PlayerConfig>(data, "player");
-}
+// [[nodiscard]]
+// static PlayerConfig parse_player(const toml::value &data)
+// {
+//     return parse_section<PlayerConfig>(data, "player");
+// }
 
 [[nodiscard]]
 static BulletConfig parse_bullet(const toml::value &data)
@@ -97,7 +97,7 @@ ConfigParser::ConfigParser(const std::filesystem::path &config_filepath) : m_fil
 {
     const auto data = toml::parse(m_filepath);
     m_window_config = parse_window(data);
-    m_player_config = parse_player(data);
+    // m_player_config = parse_player(data);
     m_bullet_config = parse_bullet(data);
     m_level_configs = parse_level(data);
     m_font_configs = parse_font(data);
@@ -112,10 +112,10 @@ const WindowConfig &ConfigParser::get_window_config() const noexcept
     return m_window_config;
 }
 
-const PlayerConfig &ConfigParser::get_player_config() const noexcept
-{
-    return m_player_config;
-}
+// const PlayerConfig &ConfigParser::get_player_config() const noexcept
+// {
+//     return m_player_config;
+// }
 
 const BulletConfig &ConfigParser::get_bullet_config() const noexcept
 {

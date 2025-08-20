@@ -36,11 +36,11 @@ public:
     [[nodiscard]]
     const WindowConfig &get_window_config() const noexcept;
 
-    /**
-     * @brief Return player stats (speed etc.)
-     */
-    [[nodiscard]]
-    const PlayerConfig &get_player_config() const noexcept;
+    // /**
+    //  * @brief Return player stats (speed etc.)
+    //  */
+    // [[nodiscard]]
+    // const PlayerConfig &get_player_config() const noexcept;
 
     /**
      * @brief Return bullets stats (speed, lifespan etc.)
@@ -87,7 +87,7 @@ public:
 private:
     std::filesystem::path m_filepath{};
     WindowConfig m_window_config{};
-    PlayerConfig m_player_config{};
+    // PlayerConfig m_player_config{};
     BulletConfig m_bullet_config{};
     std::vector<LevelConfig> m_level_configs{};
     std::vector<FontConfig> m_font_configs{};

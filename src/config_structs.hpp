@@ -14,15 +14,15 @@ struct WindowConfig
 };
 TOML11_DEFINE_CONVERSION_NON_INTRUSIVE(WindowConfig, width, height, title, framerate, color)
 
-struct PlayerConfig
-{
-    float x{};
-    float y{};
-    float speed{};
-    float jump{};
-    float gravity{};
-};
-TOML11_DEFINE_CONVERSION_NON_INTRUSIVE(PlayerConfig, x, y, speed, jump, gravity)
+// struct PlayerConfig
+// {
+//     float x{};
+//     float y{};
+//     float speed{};
+//     float jump{};
+//     float gravity{};
+// };
+// TOML11_DEFINE_CONVERSION_NON_INTRUSIVE(PlayerConfig, x, y, speed, jump, gravity)
 
 struct BulletConfig
 {
