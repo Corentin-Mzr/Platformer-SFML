@@ -12,6 +12,22 @@
 class ScenePlay : public Scene
 {
 public:
+    struct PlayerConfig
+    {
+        float x{};
+        float y{};
+        float cx{};
+        float cy{};
+        float speed{};
+        float jump{};
+        float max_speed{};
+        float gravity{};
+        std::string bullet{};
+    };
+
+    PlayerConfig m_player_conf{};
+
+public:
     /**
      * @brief Create a Play Scene
      *
@@ -146,6 +162,12 @@ private:
      */
     void spawn_sound(const std::string &name, const sf::Vector2f &pos);
 
+    /**
+     * @brief Respawn player at its initial position
+     * 
+     */
+    void reset_player();
+
 private:
     std::shared_ptr<Entity> m_player{};
     std::string m_level_path{};
@@ -157,6 +179,7 @@ private:
     bool m_draw_textures{true};
     bool m_draw_collision{false};
     bool m_draw_grid{false};
+    bool m_draw_victory_text{false};
 
     /* Toggle systems */
     bool m_movement{true};
@@ -169,4 +192,7 @@ private:
 
     /* Count bullets to know when player can shoot */
     size_t m_bullet_count{};
+
+    /* Victory */
+    std::optional<sf::Text> m_victory_text{};
 };

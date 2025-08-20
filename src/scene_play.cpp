@@ -54,9 +54,15 @@ void ScenePlay::init(const std::string &path)
         throw std::runtime_error("Could not open font");
     }
 
-    m_grid_text = sf::Text(m_font);
+    m_grid_text.emplace(m_font);
     m_grid_text->setCharacterSize(12);
-    m_grid_text->setFont(m_font);
+    // m_grid_text->setFont(m_font);
+
+    m_victory_text.emplace(m_font);
+    m_victory_text->setCharacterSize(36);
+    m_victory_text->setString("Congratulations, you won ! Press ESC to go back to the menu");
+    m_victory_text->setOrigin(0.5f * m_victory_text->getLocalBounds().size);
+    m_victory_text->setPosition(0.5f * static_cast<sf::Vector2f>(m_game->get_window().getSize()));
 
     /* Load level */
     load_level(path);
@@ -69,7 +75,10 @@ sf::Vector2f ScenePlay::grid_to_mid_pixel(float grid_x, float grid_y, const std:
     if (entity->has<CAnimation>()) [[likely]]
     {
         const auto &animation{entity->get<CAnimation>()};
-        result += 0.5f * static_cast<sf::Vector2f>(animation.animation.get_size());
+        const auto &transform{entity->get<CTransform>()};
+        auto size{static_cast<sf::Vector2f>(animation.animation.get_size())};
+        size *= transform.scale;
+        result += 0.5f * size;
     }
     result.y = m_game->get_window().getSize().y - result.y;
     return result;
@@ -100,14 +109,16 @@ void ScenePlay::load_level(const std::string &path)
         }
 
         /*
-        A line is:
+        A line is either:
         ElementType AnimationName X Y
+        Player X Y CX CY SPD JMP MAX_SPD GRAV BULLET
 
-        Two types of elemnts: Tile and Decorator
+        Three types of elemnts: Tile, Decorator, Spike
         Ground => there is a bounding box
         Dec => No bounding box
+        Spike => Convex
         */
-        if (words.size() != 4)
+        if (words.size() != 4 && words.size() != 10)
         {
             std::cerr << std::format("Error line {}: {}\n", line_idx, "incorrect number of elements");
             continue;
@@ -118,18 +129,23 @@ void ScenePlay::load_level(const std::string &path)
         if (element_type == "Tile")
         {
             auto entity{m_entities.add_entity("tile")};
-
-            /* AnimationName first, we use it for hitbox */
-            std::string animation_name{words[1]};
-            entity->add<CAnimation>(m_game->get_assets().get_animation(animation_name), true);
-
-            // Hitbox -> BoundingBox if tile
-            entity->add<CBoundingBox>(static_cast<sf::Vector2f>(m_game->get_assets().get_animation(animation_name).get_size()));
-
-            /* Position, convert coords */
-            float x{}, y{};
             try
             {
+                /* AnimationName first, we use it for hitbox */
+                std::string animation_name{words[1]};
+                entity->add<CAnimation>(m_game->get_assets().get_animation(animation_name), true);
+
+                // Hitbox -> BoundingBox if tile
+                if (animation_name == "Flagpole")
+                {
+                    entity->add<CBoundingBox>(sf::Vector2f{64.0f, 64.0f}, sf::Vector2f{0.0f, 320.0f});
+                }
+                else
+                {
+                    entity->add<CBoundingBox>(static_cast<sf::Vector2f>(m_game->get_assets().get_animation(animation_name).get_size()));
+                }
+                /* Position, convert coords */
+                float x{}, y{};
                 x = std::stof(words[2]);
                 y = std::stof(words[3]);
                 entity->add<CTransform>(grid_to_mid_pixel(x, y, entity));
@@ -145,18 +161,21 @@ void ScenePlay::load_level(const std::string &path)
         {
             // No hitbox
             auto entity{m_entities.add_entity("dec")};
-
-            /* AnimationName first, we use it for hitbox */
-            std::string animation_name{words[1]};
-            entity->add<CAnimation>(m_game->get_assets().get_animation(animation_name), true);
-
-            /* Position, convert coords */
-            float x{}, y{};
             try
             {
+                /* AnimationName first */
+                std::string animation_name{words[1]};
+                entity->add<CAnimation>(m_game->get_assets().get_animation(animation_name), true);
+                // entity->get<CAnimation>().animation.set_origin(OriginAnchor::BottomLeft);
+
+                /* Position, convert coords */
+                float x{}, y{};
+
                 x = std::stof(words[2]);
                 y = std::stof(words[3]);
-                entity->add<CTransform>(grid_to_mid_pixel(x, y, entity));
+                entity->add<CTransform>();
+                entity->get<CTransform>().scale *= 4.0f;
+                entity->get<CTransform>().pos = grid_to_mid_pixel(x, y, entity);
             }
             catch (const std::exception &e)
             {
@@ -168,19 +187,19 @@ void ScenePlay::load_level(const std::string &path)
         else if (element_type == "Spike")
         {
             auto entity{m_entities.add_entity("spike")};
-
-            /* AnimationName first, we use it for hitbox */
-            std::string animation_name{words[1]};
-            entity->add<CAnimation>(m_game->get_assets().get_animation(animation_name), true);
-
-            // Hitbox -> BoundingConvex if spike
-            const std::vector<sf::Vector2f> tri{{sf::Vector2f{-0.5f, 0.5f}, sf::Vector2f{0.0f, -0.5f}, sf::Vector2f{0.5f, 0.5f}}};
-            entity->add<CBoundingConvex>(tri, static_cast<sf::Vector2f>(m_game->get_assets().get_animation(animation_name).get_size()));
-
-            /* Position, convert coords */
-            float x{}, y{};
             try
             {
+                /* AnimationName first, we use it for hitbox */
+                std::string animation_name{words[1]};
+                entity->add<CAnimation>(m_game->get_assets().get_animation(animation_name), true);
+
+                // Hitbox -> BoundingConvex if spike
+                const std::vector<sf::Vector2f> tri{{sf::Vector2f{-0.5f, 0.5f}, sf::Vector2f{0.0f, -0.5f}, sf::Vector2f{0.5f, 0.5f}}};
+                entity->add<CBoundingConvex>(tri, static_cast<sf::Vector2f>(m_game->get_assets().get_animation(animation_name).get_size()));
+
+                /* Position, convert coords */
+                float x{}, y{};
+
                 x = std::stof(words[2]);
                 y = std::stof(words[3]);
                 entity->add<CTransform>(grid_to_mid_pixel(x, y, entity));
@@ -192,38 +211,51 @@ void ScenePlay::load_level(const std::string &path)
                 continue;
             }
         }
+        else if (element_type == "Player")
+        {
+            try
+            {
+                m_player_conf.x = std::stof(words[1]);
+                m_player_conf.y = std::stof(words[2]);
+                m_player_conf.cx = std::stof(words[3]);
+                m_player_conf.cy = std::stof(words[4]);
+                m_player_conf.speed = std::stof(words[5]);
+                m_player_conf.jump = std::stof(words[6]);
+                m_player_conf.max_speed = std::stof(words[7]);
+                m_player_conf.gravity = std::stof(words[8]);
+                m_player_conf.bullet = words[9];
+            }
+            catch (const std::exception &e)
+            {
+                std::cerr << std::format("Error line {}: {}\n", line_idx, e.what());
+            }
+        }
         else
         {
-            std::cerr << std::format("Error line {}: {}\n", line_idx, "element must be Tile or Dec");
+            std::cerr << std::format("Error line {}: {}\n", line_idx, "element must be Tile, Dec or Spike");
             continue;
         }
     }
 
-    // std::vector<sf::Vector2f> tri{{sf::Vector2f{-0.5f, 0.5f}, sf::Vector2f{0.0f, -0.5f}, sf::Vector2f{0.5f, 0.5f}}};
-    // auto entity{m_entities.add_entity("spike")};
-    // entity->add<CAnimation>(m_game->get_assets().get_animation("Spike"), true);
-    // entity->add<CTransform>(grid_to_mid_pixel(5, 1, entity));
-    // entity->add<CBoundingConvex>(tri, static_cast<sf::Vector2f>(m_game->get_assets().get_animation("Spike").get_size()));
-
     /* Spawn player in the scene */
     spawn_player();
+
+    /* Dont forget to close file */
+    level.close();
 }
 
 void ScenePlay::spawn_player()
 {
-    /* Player config */
-    const auto &conf{m_game->get_player_config()};
-
     m_player = m_entities.add_entity("player");
     m_player->add<CAnimation>(m_game->get_assets().get_animation("Idle"), true);
-    m_player->add<CTransform>(grid_to_mid_pixel(conf.x, conf.y, m_player)); // TODO: GridToMidPixel
-    m_player->add<CBoundingBox>(sf::Vector2f(32.0f, 64.0f));                // TODO: Replace bouding box dims
+    m_player->add<CTransform>(grid_to_mid_pixel(m_player_conf.x, m_player_conf.y, m_player)); // TODO: GridToMidPixel
+    m_player->add<CBoundingBox>(sf::Vector2f{m_player_conf.cx, m_player_conf.cy});            // TODO: Replace bouding box dims
 
     // TODO: Add remaining components
     m_player->add<CInput>();
-    m_player->add<CGravity>(conf.gravity);
+    m_player->add<CGravity>(m_player_conf.gravity);
     m_player->add<CState>("idle");
-    m_player->add<CJump>(conf.jump, 15, 1.0f); // Jump strength and duration
+    m_player->add<CJump>(m_player_conf.jump, 20, 1.0f); // Jump strength and duration
 }
 
 void ScenePlay::spawn_bullet(const std::shared_ptr<Entity> &entity)
@@ -243,7 +275,7 @@ void ScenePlay::spawn_bullet(const std::shared_ptr<Entity> &entity)
     /* Velocity according to the orientation of the entity */
     auto bullet{m_entities.add_entity("bullet")};
     bullet->add<CTransform>(transform.pos + gun_offset, sf::Vector2f(bullet_config.speed * transform.scale.x, 0.0f), transform.scale, 0.0f);
-    bullet->add<CAnimation>(m_game->get_assets().get_animation("Buster"), true);
+    bullet->add<CAnimation>(m_game->get_assets().get_animation(m_player_conf.bullet), true);
     bullet->add<CBoundingBox>(sf::Vector2f(bullet_config.radius, bullet_config.radius));
     bullet->add<CLifeSpan>(bullet_config.lifespan, m_current_frame);
 
@@ -262,9 +294,10 @@ void ScenePlay::system_movement()
     // TODO: Implement gravity's effect on the player
     // TODO: Implement the maximum player speed in both X and Y directions
     // NOTE: Setting an entity's scale.x to -1/1 will make it face to the left/right
-    static const float speed{m_game->get_player_config().speed};
-    static const float max_speed{20.0f}; // TODO: Add max_speed to config file
-    static const float grav{m_game->get_player_config().gravity};
+    // TODO: Add max_speed to config file
+    static const float speed{m_player_conf.speed};
+    static const float max_speed{m_player_conf.max_speed}; 
+    static const float grav{m_player_conf.gravity};
 
     /* Player */
     if (m_player->has<CInput>() && m_player->has<CTransform>() && m_player->has<CGravity>() && m_player->has<CJump>()) [[likely]]
@@ -300,7 +333,6 @@ void ScenePlay::system_movement()
                 jump.jumping = true;
                 jump.start_frame = m_current_frame;
                 spawn_sound("Jump", m_player->get<CTransform>().pos);
-                // m_player->add<CSound>(m_game->get_assets().get_sound("Jump"), false, m_game->settings.m_sound_volume);
             }
 
             else if (jump.jumping && m_current_frame - jump.start_frame < jump.max_duration)
@@ -435,7 +467,10 @@ void ScenePlay::system_collision()
 
             /* Destroy the bullet */
             bullet->destroy();
-            m_bullet_count--;
+            if (m_bullet_count > 0)
+            {
+                m_bullet_count--;
+            }
         }
     }
 
@@ -451,39 +486,73 @@ void ScenePlay::system_collision()
         const auto p_overlap{Physics::get_previous_overlap(m_player, tile)};
 
         /* No collision */
-        if (overlap.x <= 0.0f || overlap.y <= 0.0f) [[likely]]
+        if (overlap.x == 0.0f || overlap.y == 0.0f) [[likely]]
         {
             continue;
         }
 
-        // sf::Vector2f resolution{};
         auto &player_transform{m_player->get<CTransform>()};
         auto &tile_transform{tile->get<CTransform>()};
-        const sf::Vector2f dpos{player_transform.pos - tile_transform.pos};
+        auto &offset{tile->get<CBoundingBox>().offset};
 
-        /* Resolution on X */
-        if (p_overlap.x <= 0.0f && p_overlap.y > 0.0f)
+        // Relative position for collision direction
+        const sf::Vector2f player_center{player_transform.pos + m_player->get<CBoundingBox>().half_size};
+        const sf::Vector2f tile_center{tile_transform.pos + offset + tile->get<CBoundingBox>().half_size};
+        const sf::Vector2f relative_pos{player_center - tile_center};
+
+        // Collision axis based on previous frame
+        static constexpr float epsilon{2.0f};
+        bool was_separated_x{std::abs(p_overlap.x) <= epsilon};
+        bool was_separated_y{std::abs(p_overlap.y) <= epsilon};
+
+        // Collision direction
+        float collision_direction_x{(relative_pos.x > 0.0f) ? 1.0f : -1.0f};
+        float collision_direction_y{(relative_pos.y > 0.0f) ? 1.0f : -1.0f};
+
+        // Primary collision detection
+        bool collision_on_x{was_separated_x && !was_separated_y};
+        bool collision_on_y{was_separated_y && !was_separated_x};
+
+        /* Solve on the X-axis */
+        if (collision_on_x)
         {
-            /* Tile on the left */
-            if (dpos.x > 0.0f)
-            {
-                player_transform.pos.x += overlap.x;
-            }
-
-            /* Tile on the right */
-            else
-            {
-                player_transform.pos.x -= overlap.x;
-            }
+            /* Add epsilon to fix issues with stacked entities */
+            player_transform.pos.x += (overlap.x + epsilon) * collision_direction_x;
         }
 
-        /* Resolution on Y */
-        else if (p_overlap.y <= 0.0f && p_overlap.x > 0.0f)
+        /* Solve on the Y-axis */
+        else if (collision_on_y)
         {
-            /* Tile over player */
-            if (dpos.y > 0.0f)
+            player_transform.pos.y += overlap.y * collision_direction_y;
+
+            /* Tile is below the player */
+            if (collision_direction_y < 0.0f && player_transform.velocity.y >= 0.0f)
             {
-                player_transform.pos.y += overlap.y;
+                player_transform.velocity.y = 0.0f;
+                m_player->get<CInput>().can_jump = true;
+                m_player->get<CGravity>().gravity = 0.0f;
+                m_player->get<CJump>().jumping = false;
+
+                if (!tile->has<CAnimation>()) [[unlikely]]
+                {
+                    continue;
+                }
+
+                /* Tile is a flagpole -> Player wins ! */
+                auto &anim{tile->get<CAnimation>()};
+
+                /* Send back to the start of the level */
+                if (anim.animation.get_name() == "Flagpole")
+                {
+                    m_draw_victory_text = true;
+                    reset_player();
+                    spawn_sound("Win", m_player->get<CTransform>().pos);
+                }
+            }
+
+            /* Tile is above the player */
+            else if (collision_direction_y > 0.0f && player_transform.velocity.y <= 0.0f)
+            {
                 player_transform.velocity.y = 0.0f;
 
                 /* Check if player can interact with tile */
@@ -499,50 +568,54 @@ void ScenePlay::system_collision()
                     spawn_debris(tile);
                 }
 
-                if (anim.animation.get_name() == "Question")
+                else if (anim.animation.get_name() == "Question")
                 {
                     tile->get<CAnimation>().animation = m_game->get_assets().get_animation("QuestionHit");
                     spawn_coin(tile);
                 }
             }
-
-            /* Tile under player */
-            else
-            {
-                player_transform.pos.y -= overlap.y;
-                player_transform.velocity.y = 0.0f;
-                m_player->get<CInput>().can_jump = true;
-                m_player->get<CGravity>().gravity = 0.0f;
-                m_player->get<CJump>().jumping = false;
-            }
         }
 
-        /* Choose on which axis to do resolution */
+        /* Ambiguous case */
         else
         {
-            /* Resolution on X */
             if (overlap.x < overlap.y)
             {
-                /* Tile on the left */
-                if (dpos.x > 0.0f)
-                {
-                    player_transform.pos.x += overlap.x;
-                }
-
-                /* Tile on the right */
-                else
-                {
-                    player_transform.pos.x -= overlap.x;
-                }
+                /* Add epsilon to fix issues with stacked entities */
+                player_transform.pos.x += (overlap.x + epsilon) * collision_direction_x;
             }
-
-            /* Resolution on Y */
             else
             {
-                /* Tile over player */
-                if (dpos.y > 0.0f)
+                player_transform.pos.y += overlap.y * collision_direction_y;
+
+                /* Tile under player */
+                if (collision_direction_y < 0.0f && player_transform.velocity.y >= 0.0f)
                 {
-                    player_transform.pos.y += overlap.y;
+                    player_transform.velocity.y = 0.0f;
+                    m_player->get<CInput>().can_jump = true;
+                    m_player->get<CGravity>().gravity = 0.0f;
+                    m_player->get<CJump>().jumping = false;
+
+                    if (!tile->has<CAnimation>()) [[unlikely]]
+                    {
+                        continue;
+                    }
+
+                    /* Tile is a flagpole -> Player wins ! */
+                    auto &anim{tile->get<CAnimation>()};
+
+                    /* Send back to the start of the level */
+                    if (anim.animation.get_name() == "Flagpole")
+                    {
+                        m_draw_victory_text = true;
+                        reset_player();
+                        spawn_sound("Win", m_player->get<CTransform>().pos);
+                    }
+                }
+
+                /* Tile above player */
+                else if (collision_direction_y > 0.0f && player_transform.velocity.y <= 0.0f)
+                {
                     player_transform.velocity.y = 0.0f;
 
                     /* Check if player can interact with tile */
@@ -558,21 +631,11 @@ void ScenePlay::system_collision()
                         spawn_debris(tile);
                     }
 
-                    if (anim.animation.get_name() == "Question")
+                    else if (anim.animation.get_name() == "Question")
                     {
                         tile->get<CAnimation>().animation = m_game->get_assets().get_animation("QuestionHit");
                         spawn_coin(tile);
                     }
-                }
-
-                /* Tile under player */
-                else
-                {
-                    player_transform.pos.y -= overlap.y;
-                    player_transform.velocity.y = 0.0f;
-                    m_player->get<CInput>().can_jump = true;
-                    m_player->get<CGravity>().gravity = 0.0f;
-                    m_player->get<CJump>().jumping = false;
                 }
             }
         }
@@ -591,7 +654,7 @@ void ScenePlay::system_collision()
         constexpr float hit_spike_threshold{8.0f};
         if (std::abs(overlap.x) >= hit_spike_threshold || std::abs(overlap.y) >= hit_spike_threshold)
         {
-            m_player->get<CTransform>().pos = grid_to_mid_pixel(m_game->get_player_config().x, m_game->get_player_config().y, m_player);
+            reset_player();
             spawn_sound("Hurt", m_player->get<CTransform>().pos);
         }
     }
@@ -605,7 +668,7 @@ void ScenePlay::system_collision()
     /* Player - fall of the map, restart to beginning */
     if (m_player->get<CTransform>().pos.y > m_game->get_window().getSize().y)
     {
-        m_player->get<CTransform>().pos = grid_to_mid_pixel(m_game->get_player_config().x, m_game->get_player_config().y, m_player);
+        reset_player();
         spawn_sound("Hurt", m_player->get<CTransform>().pos);
     }
 }
@@ -714,6 +777,7 @@ void ScenePlay::system_gui()
             ImGui::Checkbox("Textures", &m_draw_textures);
             ImGui::Checkbox("Hitboxes", &m_draw_collision);
             ImGui::Checkbox("Grid", &m_draw_grid);
+            ImGui::Checkbox("Victory Text", &m_draw_victory_text);
             ImGui::EndTabItem();
         }
 
@@ -901,7 +965,7 @@ void ScenePlay::system_render()
                 sf::RectangleShape rect{};
                 rect.setSize(box.size - sf::Vector2f{1.0, 1.0});
                 rect.setOrigin(box.half_size);
-                rect.setPosition(transform.pos);
+                rect.setPosition(transform.pos + box.offset);
                 rect.setFillColor({0, 0, 0, 0});
                 rect.setOutlineColor(sf::Color::White);
                 rect.setOutlineThickness(1.0f);
@@ -959,6 +1023,12 @@ void ScenePlay::system_render()
                 }
             }
         }
+    }
+
+    /* Draw win text */
+    if (m_draw_victory_text)
+    {
+        m_game->get_window().draw(m_victory_text.value());
     }
 }
 
@@ -1094,4 +1164,11 @@ void ScenePlay::spawn_sound(const std::string &name, const sf::Vector2f &pos)
     auto sound{m_entities.add_entity("sound")};
     sound->add<CSound>(m_game->get_assets().get_sound(name), false, m_game->settings.m_sound_volume);
     sound->add<CTransform>(pos);
+}
+
+void ScenePlay::reset_player()
+{
+    auto &transform{m_player->get<CTransform>()};
+    transform.pos = grid_to_mid_pixel(m_player_conf.x, m_player_conf.y, m_player);
+    transform.velocity = {0.0f, 0.0f};
 }
