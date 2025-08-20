@@ -1,0 +1,5 @@
+<map id="GameEngine::get_player_config" name="GameEngine::get_player_config">
+<area shape="rect" id="Node000001" title="Return player info." alt="" coords="5,5,170,48"/>
+<area shape="rect" id="Node000002" href="$class_config_parser.html#a417a8b8f6ad34e4b3176b377aa910a2e" title="Return player stats (speed etc.)" alt="" coords="218,5,383,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="170,24,202,24,202,29,170,29"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="ScenePlay::update" name="ScenePlay::update">
+<area shape="rect" id="Node000001" title="Update the scene." alt="" coords="5,5,137,32"/>
+<area shape="rect" id="Node000002" href="$class_entity_manager.html#ac1bc153fbb5cb74286d2eccb4fcdbaa0" title="Update entities." alt="" coords="185,5,337,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="137,16,169,16,169,21,137,21"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="parse_player" name="parse_player">
+<area shape="rect" id="Node000001" title=" " alt="" coords="235,5,330,32"/>
+<area shape="rect" id="Node000002" href="$class_config_parser.html#a9a399c2009bb3429a209e32fa46100a8" title="Store the config data from a TOML config file." alt="" coords="5,5,187,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="219,21,187,21,187,16,219,16"/>
+</map>

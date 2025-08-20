@@ -1,0 +1,9 @@
+<map id="GameEngine::get_window" name="GameEngine::get_window">
+<area shape="rect" id="Node000001" title="Return the window." alt="" coords="238,56,411,83"/>
+<area shape="rect" id="Node000002" href="$class_scene.html#acbf022ecd556f3a726c8a3c60889b7eb" title="Return window height." alt="" coords="34,5,161,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="246,55,160,35,161,30,247,49"/>
+<area shape="rect" id="Node000003" href="$class_scene.html#a8bc14c97745aa2e7a89114927b618ea1" title="Return window width." alt="" coords="36,56,159,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="223,72,159,72,159,67,223,67"/>
+<area shape="rect" id="Node000004" href="$class_scene_menu.html#a9ca07d2318fef6ad426d31ccb0f3118c" title="Render the scene." alt="" coords="5,107,190,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="247,89,161,109,160,103,246,84"/>
+</map>

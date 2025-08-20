@@ -1,0 +1,7 @@
+<map id="ConfigParser::get_window_config" name="ConfigParser::get_window_config">
+<area shape="rect" id="Node000001" title="Return window configuration (size, title etc.)" alt="" coords="459,5,633,48"/>
+<area shape="rect" id="Node000002" href="$class_game_engine.html#ac10a8a32240768ca5af7d5769748651c" title="Return the window configuration (size, title etc.)" alt="" coords="238,5,411,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="444,29,411,29,411,24,444,24"/>
+<area shape="rect" id="Node000003" href="$class_scene_menu.html#a9ca07d2318fef6ad426d31ccb0f3118c" title="Render the scene." alt="" coords="5,13,190,40"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="223,29,190,29,190,24,223,24"/>
+</map>

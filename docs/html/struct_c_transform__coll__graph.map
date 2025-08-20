@@ -1,0 +1,5 @@
+<map id="CTransform" name="CTransform">
+<area shape="rect" id="Node000001" title="Transform component for position, velocity, etc." alt="" coords="5,80,96,107"/>
+<area shape="rect" id="Node000002" href="$struct_component.html" title="Abstract base component." alt="" coords="6,5,95,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="53,48,53,80,48,80,48,48"/>
+</map>

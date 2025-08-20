@@ -1,0 +1,7 @@
+<map id="CAnimation" name="CAnimation">
+<area shape="rect" id="Node000001" title="Animation component to make an animated entity." alt="" coords="58,96,148,123"/>
+<area shape="rect" id="Node000002" href="$struct_component.html" title="Abstract base component." alt="" coords="5,5,94,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="67,44,97,94,93,97,63,47"/>
+<area shape="rect" id="Node000003" href="$class_animation.html" title="Represents a texture&#45;based animation made of one or more frames." alt="" coords="118,5,197,32"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="144,47,113,97,108,94,139,44"/>
+</map>

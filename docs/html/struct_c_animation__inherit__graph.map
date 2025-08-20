@@ -1,0 +1,5 @@
+<map id="CAnimation" name="CAnimation">
+<area shape="rect" id="Node000001" title="Animation component to make an animated entity." alt="" coords="5,80,95,107"/>
+<area shape="rect" id="Node000002" href="$struct_component.html" title="Abstract base component." alt="" coords="6,5,94,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="53,48,53,80,47,80,47,48"/>
+</map>

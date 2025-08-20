@@ -1,0 +1,7 @@
+<map id="Scene" name="Scene">
+<area shape="rect" id="Node000001" title="Abstract class representing a game scene." alt="" coords="77,5,136,32"/>
+<area shape="rect" id="Node000002" href="$class_scene_menu.html" title="Represents the menu scene." alt="" coords="5,80,96,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="90,46,62,81,58,78,85,43"/>
+<area shape="rect" id="Node000003" href="$class_scene_play.html" title="Represents the main gameplay scene." alt="" coords="120,80,205,107"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="128,43,155,78,151,81,123,46"/>
+</map>

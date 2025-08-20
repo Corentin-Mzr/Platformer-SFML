@@ -1,0 +1,5 @@
+<map id="GameEngine::get_font_config" name="GameEngine::get_font_config">
+<area shape="rect" id="Node000001" title="Return fonts info." alt="" coords="5,5,157,48"/>
+<area shape="rect" id="Node000002" href="$class_config_parser.html#a788b06fbf99fc9d7c35b0f52d4eaf004" title="Return fonts info (font name, file)" alt="" coords="205,5,357,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="157,24,189,24,189,29,157,29"/>
+</map>

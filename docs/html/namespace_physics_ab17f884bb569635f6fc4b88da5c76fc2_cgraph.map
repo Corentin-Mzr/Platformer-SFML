@@ -1,0 +1,5 @@
+<map id="Physics::get_current_overlap" name="Physics::get_current_overlap">
+<area shape="rect" id="Node000001" title="Get the current overlap between two entities bounding boxes. Entities collide iff ox &gt; 0 &amp;&amp; oy &gt; 0." alt="" coords="5,5,147,48"/>
+<area shape="rect" id="Node000002" href="$misc_8cpp.html#af436bd8ff60f6035c205dfbbe54932e0" title="Absolute value of each element of a vector." alt="" coords="195,13,293,40"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="147,24,179,24,179,29,147,29"/>
+</map>

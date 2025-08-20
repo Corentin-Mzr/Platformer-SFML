@@ -1,0 +1,5 @@
+<map id="GameEngine::get_window_config" name="GameEngine::get_window_config">
+<area shape="rect" id="Node000001" title="Return the window configuration (size, title etc.)" alt="" coords="5,5,179,48"/>
+<area shape="rect" id="Node000002" href="$class_config_parser.html#a03c08a6751ea04dd1e8a3d9149e91712" title="Return window configuration (size, title etc.)" alt="" coords="227,5,401,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="179,24,211,24,211,29,179,29"/>
+</map>

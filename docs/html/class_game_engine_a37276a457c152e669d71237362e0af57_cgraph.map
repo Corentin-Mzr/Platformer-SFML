@@ -1,0 +1,5 @@
+<map id="GameEngine::get_bullet_config" name="GameEngine::get_bullet_config">
+<area shape="rect" id="Node000001" title="Return bullet info." alt="" coords="5,5,166,48"/>
+<area shape="rect" id="Node000002" href="$class_config_parser.html#a907f3bcb7762d870e5cd34afb467925e" title="Return bullets stats (speed, lifespan etc.)" alt="" coords="214,5,375,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="166,24,198,24,198,29,166,29"/>
+</map>

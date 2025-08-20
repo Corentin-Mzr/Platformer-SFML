@@ -1,0 +1,5 @@
+<map id="GameEngine::get_animation_config" name="GameEngine::get_animation_config">
+<area shape="rect" id="Node000001" title="Return animations info." alt="" coords="5,5,191,48"/>
+<area shape="rect" id="Node000002" href="$class_config_parser.html#acfb20110537b3b57a67e63d28c79c8ab" title="Return animation info (anim name, frames, speed)" alt="" coords="239,5,425,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="191,24,223,24,223,29,191,29"/>
+</map>

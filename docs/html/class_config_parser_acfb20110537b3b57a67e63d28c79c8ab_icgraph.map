@@ -1,0 +1,5 @@
+<map id="ConfigParser::get_animation_config" name="ConfigParser::get_animation_config">
+<area shape="rect" id="Node000001" title="Return animation info (anim name, frames, speed)" alt="" coords="239,5,425,48"/>
+<area shape="rect" id="Node000002" href="$class_game_engine.html#a78de9e66e8194d9ccbb0bedd3f809c92" title="Return animations info." alt="" coords="5,5,191,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="223,29,191,29,191,24,223,24"/>
+</map>

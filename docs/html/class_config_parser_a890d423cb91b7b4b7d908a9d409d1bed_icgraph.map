@@ -1,0 +1,5 @@
+<map id="ConfigParser::get_texture_config" name="ConfigParser::get_texture_config">
+<area shape="rect" id="Node000001" title="Return textures info (texture name, file)" alt="" coords="223,5,393,48"/>
+<area shape="rect" id="Node000002" href="$class_game_engine.html#ada57db57dbf65f5d876ec71b5cc05fbf" title="Return textures info." alt="" coords="5,5,175,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="207,29,175,29,175,24,207,24"/>
+</map>

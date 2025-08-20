@@ -1,0 +1,13 @@
+<map id="SceneMenu::system_render" name="SceneMenu::system_render">
+<area shape="rect" id="Node000001" title="Render the scene." alt="" coords="5,81,190,108"/>
+<area shape="rect" id="Node000002" href="$misc_8cpp.html#ab1b3d4fa86a6508ba5d1bea7af0b9806" title="Convert an uint8_t array to sf::Color." alt="" coords="273,5,376,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="134,78,237,41,259,34,261,39,239,47,136,83"/>
+<area shape="rect" id="Node000003" href="$class_game_engine.html#a3055449e25d04a5406d55060b5bdc210" title="Return current window&#39;s view." alt="" coords="246,56,402,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="190,82,230,77,231,82,190,87"/>
+<area shape="rect" id="Node000004" href="$class_game_engine.html#a579d9fb224e4d14e3a6cdc7b9536f9f3" title="Return the window." alt="" coords="238,107,411,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="190,102,223,106,222,111,190,108"/>
+<area shape="rect" id="Node000005" href="$class_game_engine.html#ac10a8a32240768ca5af7d5769748651c" title="Return the window configuration (size, title etc.)" alt="" coords="238,157,411,200"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="137,106,251,149,249,154,135,111"/>
+<area shape="rect" id="Node000006" href="$class_config_parser.html#a03c08a6751ea04dd1e8a3d9149e91712" title="Return window configuration (size, title etc.)" alt="" coords="459,157,633,200"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="412,176,443,176,443,181,412,181"/>
+</map>

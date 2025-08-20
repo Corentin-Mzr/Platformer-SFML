@@ -1,0 +1,5 @@
+<map id="ConfigParser::get_player_config" name="ConfigParser::get_player_config">
+<area shape="rect" id="Node000001" title="Return player stats (speed etc.)" alt="" coords="218,5,383,48"/>
+<area shape="rect" id="Node000002" href="$class_game_engine.html#a7a311a72f0cf35ef89e5565a7ba1e3c1" title="Return player info." alt="" coords="5,5,170,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="202,29,170,29,170,24,202,24"/>
+</map>

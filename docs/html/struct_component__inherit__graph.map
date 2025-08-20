@@ -1,0 +1,21 @@
+<map id="Component" name="Component">
+<area shape="rect" id="Node000001" title="Abstract base component." alt="" coords="419,5,508,32"/>
+<area shape="rect" id="Node000002" href="$struct_c_animation.html" title="Animation component to make an animated entity." alt="" coords="5,80,95,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="404,32,106,83,96,85,95,80,106,77,403,27"/>
+<area shape="rect" id="Node000003" href="$struct_c_bounding_box.html" title="Bounding box component to know if entities collide." alt="" coords="118,80,227,107"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="405,37,224,82,223,77,403,32"/>
+<area shape="rect" id="Node000004" href="$struct_c_gravity.html" title="Gravity component to apply a downward force on an entity." alt="" coords="251,80,324,107"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="420,41,319,82,317,77,418,36"/>
+<area shape="rect" id="Node000005" href="$struct_c_input.html" title="Input component to handle user inputs." alt="" coords="348,80,408,107"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="439,44,394,82,391,78,435,40"/>
+<area shape="rect" id="Node000006" href="$struct_c_jump.html" title="Jump component to handle variable jump height." alt="" coords="432,80,495,107"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="466,48,466,80,461,80,461,48"/>
+<area shape="rect" id="Node000007" href="$struct_c_life_span.html" title="Lifespan component to know when to destroy an entity." alt="" coords="520,80,602,107"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="494,39,545,77,542,82,491,44"/>
+<area shape="rect" id="Node000008" href="$struct_c_sound.html" title="Sound component to play a sound" alt="" coords="626,80,695,107"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="513,35,627,77,625,82,511,40"/>
+<area shape="rect" id="Node000009" href="$struct_c_state.html" title="State component to know the current state of an entity." alt="" coords="719,80,781,107"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="523,31,708,77,719,80,718,86,707,83,522,37"/>
+<area shape="rect" id="Node000010" href="$struct_c_transform.html" title="Transform component for position, velocity, etc." alt="" coords="805,80,895,107"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="524,28,793,77,805,80,804,85,792,83,523,33"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="ConfigParser::get_level_config" name="ConfigParser::get_level_config">
+<area shape="rect" id="Node000001" title="Return levels info (level name, data file)" alt="" coords="210,5,367,48"/>
+<area shape="rect" id="Node000002" href="$class_game_engine.html#a4a3ceacb299953bceb1e07859130c3a9" title="Return levels info (name, data file)" alt="" coords="5,5,162,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="194,29,162,29,162,24,194,24"/>
+</map>
