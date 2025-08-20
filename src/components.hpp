@@ -104,6 +104,7 @@ struct CBoundingBox : public Component
 {
     sf::Vector2f size{};
     sf::Vector2f half_size{};
+    sf::Vector2f offset{};
 
     /**
      * @brief Default constructor
@@ -114,8 +115,9 @@ struct CBoundingBox : public Component
      * @brief Create a BoundingBox Component
      *
      * @param s Box size
+     * @param o Box offset, relative to the sprite origin
      */
-    explicit CBoundingBox(const sf::Vector2f &s) noexcept : size(s), half_size(0.5f * s)
+    explicit CBoundingBox(const sf::Vector2f &s, const sf::Vector2f &o = {0.0f, 0.0f}) noexcept : size(s), half_size(0.5f * s), offset(o)
     {
     }
 };
