@@ -180,10 +180,10 @@ const WindowConfig &GameEngine::get_window_config() const noexcept
     return m_config.get_window_config();
 }
 
-const PlayerConfig &GameEngine::get_player_config() const noexcept
-{
-    return m_config.get_player_config();
-}
+// const PlayerConfig &GameEngine::get_player_config() const noexcept
+// {
+//     return m_config.get_player_config();
+// }
 
 const BulletConfig &GameEngine::get_bullet_config() const noexcept
 {

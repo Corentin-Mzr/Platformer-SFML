@@ -49,8 +49,8 @@ public:
      */
     struct GameSettings
     {
-        float m_music_volume{10.0f};
-        float m_sound_volume{10.0f};
+        float m_music_volume{5.0f};
+        float m_sound_volume{5.0f};
     };
 
     GameSettings settings{};
@@ -134,11 +134,11 @@ public:
     [[nodiscard]]
     const WindowConfig &get_window_config() const noexcept;
 
-    /**
-     * @brief Return player info
-     */
-    [[nodiscard]]
-    const PlayerConfig &get_player_config() const noexcept;
+    // /**
+    //  * @brief Return player info
+    //  */
+    // [[nodiscard]]
+    // const PlayerConfig &get_player_config() const noexcept;
 
     /**
      * @brief Return bullet info
