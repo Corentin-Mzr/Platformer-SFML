@@ -94,8 +94,8 @@ The following libraries have been used for this program
 
 ## Controls
 
-WASD / Arrows: Move and Jump
-Spacebar: Shoot
+- WASD / Arrows: Move and Jump
+- Spacebar: Shoot
 
 ## Specifications
 
