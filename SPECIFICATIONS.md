@@ -24,7 +24,7 @@ The following file presents a list of specifications related to gameplay, data l
 - [Bonus](#bonus)
 - [Misc](#misc)
 - [Level Creation](#level-creation)
-  - [Config File Specification](#config-file-specification)
+- [Config File Specification](#config-file-specification)
   - [Window Section Specification](#window-section-specification)
   - [Bullet Section Specification](#bullet-section-specification)
   - [Level Section Specification](#level-section-specification)
