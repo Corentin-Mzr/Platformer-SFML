@@ -8,7 +8,13 @@
 namespace Physics
 {
     /**
-     * @brief Get the current overlap between two entities bounding boxes. Entities collide iff ox > 0 && oy > 0
+     * @brief Get the current overlap between two entities that have a BoundingBox component.
+     * 
+     * Uses the Axis-Aligned Bounding Box method (AABB).
+     * 
+     * Entities collide iff ox > 0 && oy > 0.
+     * 
+     * Return (ox, oy) if entities collide, else (0, 0).
      *
      * @param a First entity
      * @param b Second entity
@@ -22,19 +28,26 @@ namespace Physics
         }
 
         const auto &a_box_half_size{a->get<CBoundingBox>().half_size};
+        const auto &a_offset{a->get<CBoundingBox>().offset};
         const auto &a_current_pos{a->get<CTransform>().pos};
         const auto &b_box_half_size{b->get<CBoundingBox>().half_size};
+        const auto &b_offset{b->get<CBoundingBox>().offset};
         const auto &b_current_pos{b->get<CTransform>().pos};
 
-        const auto delta{absolute_vec(a_current_pos - b_current_pos)};
+        const auto delta{absolute_vec((a_current_pos + a_offset) - (b_current_pos + b_offset))};
         const float ox{a_box_half_size.x + b_box_half_size.x - delta.x};
         const float oy{a_box_half_size.y + b_box_half_size.y - delta.y};
 
-        return sf::Vector2f{ox, oy};
+
+        return (ox > 0.0f && oy > 0.0f) ? sf::Vector2f{ox, oy} : sf::Vector2f{0.0f, 0.0f};
     }
 
     /**
-     * @brief Get the previous overlap between two entities bounding boxes. Entities collide iff ox > 0 && oy > 0
+     * @brief Get the previous overlap between two entities that have a BoundingBox component.
+     * 
+     * Entities collide iff ox > 0 && oy > 0.
+     * 
+     * Return (ox, oy) if entities collide, else (0, 0).
      *
      * @param a First entity
      * @param b Second entity
@@ -48,21 +61,27 @@ namespace Physics
         }
 
         const auto &a_box_half_size{a->get<CBoundingBox>().half_size};
+        const auto &a_offset{a->get<CBoundingBox>().offset};
         const auto &a_previous_pos{a->get<CTransform>().previous_pos};
         const auto &b_box_half_size{b->get<CBoundingBox>().half_size};
+        const auto &b_offset{b->get<CBoundingBox>().offset};
         const auto &b_previous_pos{b->get<CTransform>().previous_pos};
 
-        const auto delta{absolute_vec(a_previous_pos - b_previous_pos)};
+        const auto delta{absolute_vec((a_previous_pos + a_offset) - (b_previous_pos + b_offset))};
         const float ox{a_box_half_size.x + b_box_half_size.x - delta.x};
         const float oy{a_box_half_size.y + b_box_half_size.y - delta.y};
 
-        return sf::Vector2f{ox, oy};
+        return ox > 0.0f && oy > 0.0f ? sf::Vector2f{ox, oy} : sf::Vector2f{0.0f, 0.0f};
     }
 
     /**
-     * @brief Get the current overlap between two entities that have a BoundingConvex component using the Separated-Axis-Theorem (SAT).
+     * @brief Get the current overlap between two entities that have a BoundingConvex component.
+     * 
+     * Uses the Separated-Axis-Theorem (SAT).
      *
-     * Entities collide iff ox != 0 && oy != 0
+     * Entities collide iff ox > 0 && oy > 0.
+     * 
+     * Return (ox, oy) if entities collide, else (0, 0).
      *
      * @param a First entity
      * @param b Second entity
@@ -214,9 +233,11 @@ namespace Physics
     /**
      * @brief Get the current overlap between two entities, one has a BoundingConvex component, the other has a BoundingBox component.
      *
-     *  Uses the Separated-Axis-Theorem (SAT).
+     * Uses the Separated-Axis-Theorem (SAT).
      *
-     * Entities collide iff ox > 0 && oy > 0
+     * Entities collide iff ox > 0 && oy > 0.
+     * 
+     * Return (ox, oy) if entities collide, else (0, 0).
      *
      * @param a First entity with the BoundingConvex component
      * @param b Second entity with the BoundingBox component
