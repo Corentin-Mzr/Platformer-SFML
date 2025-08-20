@@ -23,13 +23,10 @@ lifespan = 30 # Number of frames until it disappears
 [level]
     [level.one]
         name = "Level 1"
-        path = "../resources/levels/mario_1_1.data"
+        path = "../resources/levels/level1.data"
     [level.two]
         name = "Level 2"
         path = "../resources/levels/level2.data"
-    [level.three]
-        name = "Level 3"
-        path = "../resources/levels/level3.data"
     [level.debug]
         name = "Debug"
         path = "../resources/levels/debug.data"
@@ -121,6 +118,9 @@ lifespan = 30 # Number of frames until it disappears
     [texture.flagpole]
         name = "TexFlagpole"
         path = "../resources/textures/world/flagpole_64x704.png"
+    [texture.block]
+        name = "TexBlock"
+        path = "../resources/textures/world/block_64x64.png"
     
 
 [animation]
@@ -257,6 +257,11 @@ lifespan = 30 # Number of frames until it disappears
     [animation.flagpole]
         name = "Flagpole"
         texture = "TexFlagpole"
+        frames = 1
+        speed = 1
+    [animation.block]
+        name = "Block"
+        texture = "TexBlock"
         frames = 1
         speed = 1
 
