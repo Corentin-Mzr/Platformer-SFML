@@ -148,8 +148,8 @@ Spacebar: Shoot
 - [x] The player does not collide with 'Dec' (decoration) entities in the level
 - [x] If the player falls below the bottom of the screen, they respawn at the start of a level
 - [x] The player should have a Gravity component which constantly accelerates it downward on the screen until it collides with a tile
-- [ ] The player has a maximum speed specified in the Level file (see below) which it should not exceed in either x or y direction.
-- [ ] The player will be given a CBoundingBox of a size specified in the level file.
+- [x] The player has a maximum speed specified in the Level file (see below) which it should not exceed in either x or y direction.
+- [x] The player will be given a CBoundingBox of a size specified in the level file.
 - [x] The player's sprite and bounding box are centered on the player's position
 
 ### Animations
@@ -187,11 +187,12 @@ Spacebar: Shoot
 
 #### Brick Tiles
 
-- [x] Brick tiles are given the 'Brick' Animation
+- [x] Brick tiles are given the 'Brick' Animation when created
 - [x] When a brick tile collides with a bullet, or is hit by a player from below:
   - [x] Its animation should change to 'Explosion' (non-repeat) **when a bullet hits the brick, or change to 'Debris' (non-repeat) when the player hit the brick from below**
   - [x] Non-repeating animation entities are destroyed when hasEnded() is true
   - [x] Its CBoundingBox component should be removed
+  - [x] **A 'Debris' or 'Explosion' sound effect is played on destruction**
 
 #### Question Tiles
 
@@ -199,6 +200,23 @@ Spacebar: Shoot
 - [x] When a Question tile is hit by a player from below, 2 things happen:
   - [x] A temporary lifespan entity with the 'Coin' animation should appear for 30 frames, 64 pixels above the location of the Question entity
   - [x] **The player cannot interact interact anymore with the Question tile (i.e. re-trigger the coin animation) by changing its Animation component**
+  - [x] **A 'Coin' sound effect is played on collision**
+
+#### **Spike Tiles**
+
+- [x] **Spike tiles are given the 'Spike' Animation when created**
+- [x] **When the player collides with a spike, he is teleported back to the beginning of the level**
+- [x] **Spike tiles uses a BoundingConvex component, representing a convex polygon**
+- [x] **Collision detection and resolution with a spike is done via the Separated Axis Theorem (SAT)**
+- [x] **A 'Hurt' sound effect is played on collision**
+
+### **Flagpole Tiles**
+
+- [x] **Flagpole tiles are given the 'Flagpole' Animation when created**
+- [x] **The flagpole has a particular hitbox, only the block on the bottom can be collided with**
+- [x] **When the player hits the flagpole's block from the top, he is teleported back to the beginning of the level**
+- [x] **A text should appear on screen indicating the player finished the level**
+- [x] **A 'Win' sound effect is played when the player finishes the level**
 
 ### GUI
 
@@ -215,7 +233,9 @@ Spacebar: Shoot
 ### Bonus
 
 - [x] ~~Any special effects which do not alter game play can be added for up to 5% bonus marks on the assignment.~~ **Added musics and sound effects**
-- [ ] You may develop a 'special weapon' that has special effects which can also contribute to another 5% bonus marks available on the assignment.
+- [x] ~~You may develop a 'special weapon' that has special effects which can also contribute to another 5% bonus marks available on the assignment.~~ **Added the Spike tile, and an associated hitbox component CBoundingConvex**
+- [x] **Added audio volume control**
+- [x] **Added the Flagpole tile**
 
 ### Misc
 
@@ -304,9 +324,16 @@ All (GX, GY) positions given in the level specification file are given in 'grid'
 #### Decoration Entity Specification
 
 - Dec N X Y  
-  - Animation Name     N      std::string (Animation asset name for this tile)  
+  - Animation Name     N      std::string (Animation asset name for this dec)  
   - X Grid X Pos       X      float  
   - Y Grid Y Pos       Y      float  
+
+#### **Spike Entity Specification**
+
+- **Spike N X Y**
+  - **Animation Name    N     std::string (Animation asset name for this spike)**
+  - **X Grid X Pos      X     float**
+  - **Y Grid Y Pos      Y     float**
 
 #### Player Specification
 
@@ -317,7 +344,7 @@ All (GX, GY) positions given in the level specification file are given in 'grid'
   - Jump Speed            SY      float  
   - Max Speed             SM      float  
   - Gravity               GY      float  
-  - ~~Bullet Animation      B       std::string (Animation asset to use for bullets)~~
+  - Bullet Animation      B       std::string (Animation asset to use for bullets)
 
 ### Assignment Hints
 
@@ -366,6 +393,10 @@ I recommend approaching this assignment in the following order, which will help 
 
 - [**Pixabay**](https://pixabay.com/sound-effects)
 - [**jsfxr**](https://sfxr.me/)
+
+### Textures
+
+- [**Super Mario Bros NES Assets - The Spriters Resources**](https://www.spriters-resource.com/fullview/52571/)
 
 ## License
 
