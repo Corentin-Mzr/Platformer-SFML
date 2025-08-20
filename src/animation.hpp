@@ -3,6 +3,11 @@
 #include <string>
 #include <SFML/Graphics/Sprite.hpp>
 
+enum class OriginAnchor {
+    Center,
+    BottomLeft
+};
+
 /**
  * @brief Represents a texture-based animation made of one or more frames.
  * 
@@ -57,7 +62,7 @@ public:
     const std::string &get_name() const noexcept;
 
     /**
-     * @brief Return the animation's texture size
+     * @brief Return the animation's based texture size
      */
     [[nodiscard]] 
     const sf::Vector2i &get_size() const noexcept;
@@ -73,6 +78,10 @@ public:
      */
     [[nodiscard]]
     sf::Sprite &get_sprite();
+
+    void set_scale(const sf::Vector2f &s);
+
+    void set_origin(OriginAnchor a);
 
 private:
     std::optional<sf::Sprite> m_sprite{};

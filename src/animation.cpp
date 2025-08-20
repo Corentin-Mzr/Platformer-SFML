@@ -51,3 +51,39 @@ sf::Sprite &Animation::get_sprite()
     /* Can throw error */
     return m_sprite.value();
 }
+
+void Animation::set_scale(const sf::Vector2f &s)
+{
+    if (m_sprite)
+    {
+        m_sprite->setScale(s);
+    }
+}
+
+void Animation::set_origin(OriginAnchor a)
+{
+    if (!m_sprite)
+    {
+        return;
+    }
+
+    switch (a)
+    {
+        case OriginAnchor::Center:
+        {
+            m_sprite->setOrigin(sf::Vector2f{0.5f * m_size.x, 0.5f * m_size.y});
+            break;
+        }
+
+        case OriginAnchor::BottomLeft:
+        {
+            m_sprite->setOrigin(sf::Vector2f{0.0f, static_cast<float>(m_size.y)});
+            break;
+        }
+
+        default:
+        {
+            break;
+        }
+    }
+}
