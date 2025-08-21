@@ -8,12 +8,14 @@ var searchData=
   ['m_5fmusic_5fvolume_5',['m_music_volume',['../struct_game_engine_1_1_game_settings.html#a04ec4cd533b2308cd449e692820ddd3f',1,'GameEngine::GameSettings']]],
   ['m_5fpaused_6',['m_paused',['../class_scene.html#a9831c81afc52aeaac474275fcaa5bf95',1,'Scene']]],
   ['m_5fpi_7',['M_PI',['../misc_8hpp.html#ae71449b1cc6e6250b91f539153a7a0d3',1,'misc.hpp']]],
-  ['m_5fsound_5fvolume_8',['m_sound_volume',['../struct_game_engine_1_1_game_settings.html#ab75e8a248fa6083ba829ce20fa887bd5',1,'GameEngine::GameSettings']]],
-  ['main_9',['main',['../main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main.cpp']]],
-  ['main_2ecpp_10',['main.cpp',['../main_8cpp.html',1,'']]],
-  ['max_5fduration_11',['max_duration',['../struct_c_jump.html#abe3d4ef30a628bec5912e41676b60a96',1,'CJump']]],
-  ['misc_2ecpp_12',['misc.cpp',['../misc_8cpp.html',1,'']]],
-  ['misc_2ehpp_13',['misc.hpp',['../misc_8hpp.html',1,'']]],
-  ['musicconfig_14',['MusicConfig',['../struct_music_config.html',1,'']]],
-  ['musicmap_15',['MusicMap',['../asset__manager_8hpp.html#a69e7d58c527b883a99cc421dacf0e90b',1,'asset_manager.hpp']]]
+  ['m_5fplayer_5fconf_8',['m_player_conf',['../class_scene_play.html#a096cad09c57cc509ac795fb5857fb34f',1,'ScenePlay']]],
+  ['m_5fsound_5fvolume_9',['m_sound_volume',['../struct_game_engine_1_1_game_settings.html#ab75e8a248fa6083ba829ce20fa887bd5',1,'GameEngine::GameSettings']]],
+  ['main_10',['main',['../main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main.cpp']]],
+  ['main_2ecpp_11',['main.cpp',['../main_8cpp.html',1,'']]],
+  ['max_5fduration_12',['max_duration',['../struct_c_jump.html#abe3d4ef30a628bec5912e41676b60a96',1,'CJump']]],
+  ['max_5fspeed_13',['max_speed',['../struct_scene_play_1_1_player_config.html#a2b741312c2f1ac2befcb18bfe0f6ae99',1,'ScenePlay::PlayerConfig']]],
+  ['misc_2ecpp_14',['misc.cpp',['../misc_8cpp.html',1,'']]],
+  ['misc_2ehpp_15',['misc.hpp',['../misc_8hpp.html',1,'']]],
+  ['musicconfig_16',['MusicConfig',['../struct_music_config.html',1,'']]],
+  ['musicmap_17',['MusicMap',['../asset__manager_8hpp.html#a69e7d58c527b883a99cc421dacf0e90b',1,'asset_manager.hpp']]]
 ];

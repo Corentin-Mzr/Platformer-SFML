@@ -17,7 +17,6 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="custom.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -92,7 +91,9 @@ $(document).ready(function(){initNavTree('class_scene_play.html',''); initResiza
 
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="class_scene_play-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">ScenePlay Class Reference</div></div>
 </div><!--header-->
@@ -110,9 +111,14 @@ Inheritance diagram for ScenePlay:</div>
 <div class="dynheader">
 Collaboration diagram for ScenePlay:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_scene_play__coll__graph.svg" width="283" height="295"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_scene_play__coll__graph.svg" width="388" height="310"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_scene_play_1_1_player_config.html">PlayerConfig</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a2af540e315036a02210eb384030636c7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_play.html#a2af540e315036a02210eb384030636c7">ScenePlay</a> (<a class="el" href="class_game_engine.html">GameEngine</a> *game, const std::string &amp;level_path)</td></tr>
@@ -165,6 +171,11 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a57cb3355e62a3c4dc2843049a528ebc0 inherit pub_methods_class_scene"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="scene_8hpp.html#a6612a9116a94cd939ead01e7f8c92161">ActionMap</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#a57cb3355e62a3c4dc2843049a528ebc0">get_action_map</a> () const noexcept</td></tr>
 <tr class="memdesc:a57cb3355e62a3c4dc2843049a528ebc0 inherit pub_methods_class_scene"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the scene action map.  <br /></td></tr>
 <tr class="separator:a57cb3355e62a3c4dc2843049a528ebc0 inherit pub_methods_class_scene"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a096cad09c57cc509ac795fb5857fb34f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_scene_play_1_1_player_config.html">PlayerConfig</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene_play.html#a096cad09c57cc509ac795fb5857fb34f">m_player_conf</a> {}</td></tr>
+<tr class="separator:a096cad09c57cc509ac795fb5857fb34f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -237,11 +248,11 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="scene__play_8cpp_source.html#l00011">11</a> of file <a class="el" href="scene__play_8cpp_source.html">scene_play.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   11</span>                                                                  : <a class="code hl_function" href="class_scene.html#abcc488f2b0972a15d6c31623f0fe5aca">Scene</a>(game), m_grid_text(m_font)</div>
-<div class="line"><span class="lineno">   12</span>{</div>
-<div class="line"><span class="lineno">   13</span>    init(level_path);</div>
-<div class="line"><span class="lineno">   14</span>}</div>
+<p class="definition">Definition at line <a class="el" href="scene__play_8cpp_source.html#l00012">12</a> of file <a class="el" href="scene__play_8cpp_source.html">scene_play.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   12</span>                                                                  : <a class="code hl_function" href="class_scene.html#abcc488f2b0972a15d6c31623f0fe5aca">Scene</a>(game), m_grid_text(m_font)</div>
+<div class="line"><span class="lineno">   13</span>{</div>
+<div class="line"><span class="lineno">   14</span>    init(level_path);</div>
+<div class="line"><span class="lineno">   15</span>}</div>
 <div class="ttc" id="aclass_scene_html_abcc488f2b0972a15d6c31623f0fe5aca"><div class="ttname"><a href="class_scene.html#abcc488f2b0972a15d6c31623f0fe5aca">Scene::Scene</a></div><div class="ttdeci">Scene() noexcept=default</div></div>
 </div><!-- fragment -->
 </div>
@@ -274,21 +285,21 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="class_scene.html#a7faff47f5c1b1ebc986f768c9b9732ec">Scene</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="scene__play_8cpp_source.html#l00016">16</a> of file <a class="el" href="scene__play_8cpp_source.html">scene_play.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   17</span>{</div>
-<div class="line"><span class="lineno">   18</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="class_scene.html#a9831c81afc52aeaac474275fcaa5bf95">m_paused</a>) [[likely]]</div>
-<div class="line"><span class="lineno">   19</span>    {</div>
-<div class="line"><span class="lineno">   20</span>        <a class="code hl_variable" href="class_scene.html#ae8a06a69249a03d5ba586c50b7909108">m_entities</a>.<a class="code hl_function" href="class_entity_manager.html#ac1bc153fbb5cb74286d2eccb4fcdbaa0">update</a>();</div>
-<div class="line"><span class="lineno">   21</span>        system_movement();</div>
-<div class="line"><span class="lineno">   22</span>        system_sound();</div>
-<div class="line"><span class="lineno">   23</span>        system_lifespan();</div>
-<div class="line"><span class="lineno">   24</span>        system_collision();</div>
-<div class="line"><span class="lineno">   25</span>        system_animation();</div>
-<div class="line"><span class="lineno">   26</span>        <a class="code hl_variable" href="class_scene.html#a25dd98c0b37a139108da6dc1ff4afd40">m_current_frame</a>++;</div>
-<div class="line"><span class="lineno">   27</span>    }</div>
-<div class="line"><span class="lineno">   28</span>    system_gui();</div>
-<div class="line"><span class="lineno">   29</span>    system_render();</div>
-<div class="line"><span class="lineno">   30</span>}</div>
+<p class="definition">Definition at line <a class="el" href="scene__play_8cpp_source.html#l00017">17</a> of file <a class="el" href="scene__play_8cpp_source.html">scene_play.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   18</span>{</div>
+<div class="line"><span class="lineno">   19</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="class_scene.html#a9831c81afc52aeaac474275fcaa5bf95">m_paused</a>) [[likely]]</div>
+<div class="line"><span class="lineno">   20</span>    {</div>
+<div class="line"><span class="lineno">   21</span>        <a class="code hl_variable" href="class_scene.html#ae8a06a69249a03d5ba586c50b7909108">m_entities</a>.<a class="code hl_function" href="class_entity_manager.html#ac1bc153fbb5cb74286d2eccb4fcdbaa0">update</a>();</div>
+<div class="line"><span class="lineno">   22</span>        system_movement();</div>
+<div class="line"><span class="lineno">   23</span>        system_sound();</div>
+<div class="line"><span class="lineno">   24</span>        system_lifespan();</div>
+<div class="line"><span class="lineno">   25</span>        system_collision();</div>
+<div class="line"><span class="lineno">   26</span>        system_animation();</div>
+<div class="line"><span class="lineno">   27</span>        <a class="code hl_variable" href="class_scene.html#a25dd98c0b37a139108da6dc1ff4afd40">m_current_frame</a>++;</div>
+<div class="line"><span class="lineno">   28</span>    }</div>
+<div class="line"><span class="lineno">   29</span>    system_gui();</div>
+<div class="line"><span class="lineno">   30</span>    system_render();</div>
+<div class="line"><span class="lineno">   31</span>}</div>
 <div class="ttc" id="aclass_entity_manager_html_ac1bc153fbb5cb74286d2eccb4fcdbaa0"><div class="ttname"><a href="class_entity_manager.html#ac1bc153fbb5cb74286d2eccb4fcdbaa0">EntityManager::update</a></div><div class="ttdeci">void update() noexcept</div><div class="ttdoc">Update entities.</div><div class="ttdef"><b>Definition</b> <a href="entity__manager_8cpp_source.html#l00027">entity_manager.cpp:27</a></div></div>
 <div class="ttc" id="aclass_scene_html_a25dd98c0b37a139108da6dc1ff4afd40"><div class="ttname"><a href="class_scene.html#a25dd98c0b37a139108da6dc1ff4afd40">Scene::m_current_frame</a></div><div class="ttdeci">unsigned m_current_frame</div><div class="ttdef"><b>Definition</b> <a href="scene_8hpp_source.html#l00144">scene.hpp:144</a></div></div>
 <div class="ttc" id="aclass_scene_html_a9831c81afc52aeaac474275fcaa5bf95"><div class="ttname"><a href="class_scene.html#a9831c81afc52aeaac474275fcaa5bf95">Scene::m_paused</a></div><div class="ttdeci">bool m_paused</div><div class="ttdef"><b>Definition</b> <a href="scene_8hpp_source.html#l00145">scene.hpp:145</a></div></div>
@@ -300,6 +311,23 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><iframe scrolling="no" frameborder="0" src="class_scene_play_abbd1d0c802d4024721face8f5e77e796_cgraph.svg" width="343" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a096cad09c57cc509ac795fb5857fb34f" name="a096cad09c57cc509ac795fb5857fb34f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a096cad09c57cc509ac795fb5857fb34f">&#9670;&#160;</a></span>m_player_conf</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_scene_play_1_1_player_config.html">PlayerConfig</a> ScenePlay::m_player_conf {}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="scene__play_8hpp_source.html#l00028">28</a> of file <a class="el" href="scene__play_8hpp_source.html">scene_play.hpp</a>.</p>
 
 </div>
 </div>

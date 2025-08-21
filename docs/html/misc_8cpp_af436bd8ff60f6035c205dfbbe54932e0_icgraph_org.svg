@@ -20,7 +20,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="namespace_physics.html#ab17f884bb569635f6fc4b88da5c76fc2" target="_top" xlink:title="Get the current overlap between two entities bounding boxes. Entities collide iff ox &gt; 0 &amp;&amp; oy &gt; 0.">
+<g id="a_Node000002"><a xlink:href="namespace_physics.html#ab17f884bb569635f6fc4b88da5c76fc2" target="_top" xlink:title="Get the current overlap between two entities that have a BoundingBox component.">
 <polygon fill="white" stroke="#666666" points="109.38,-82 3.38,-82 3.38,-50 109.38,-50 109.38,-82"/>
 <text xml:space="preserve" text-anchor="start" x="11.38" y="-68.5" font-family="Helvetica,sans-Serif" font-size="10.00">Physics::get_current</text>
 <text xml:space="preserve" text-anchor="middle" x="56.38" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">_overlap</text>
@@ -39,7 +39,7 @@
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="namespace_physics.html#a4c40cc588037b53592c0dfa79f4ee641" target="_top" xlink:title="Get the previous overlap between two entities bounding boxes. Entities collide iff ox &gt; 0 &amp;&amp; oy &gt; 0.">
+<g id="a_Node000003"><a xlink:href="namespace_physics.html#a4c40cc588037b53592c0dfa79f4ee641" target="_top" xlink:title="Get the previous overlap between two entities that have a BoundingBox component.">
 <polygon fill="white" stroke="#666666" points="112.75,-32 0,-32 0,0 112.75,0 112.75,-32"/>
 <text xml:space="preserve" text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">Physics::get_previous</text>
 <text xml:space="preserve" text-anchor="middle" x="56.38" y="-6.5" font-family="Helvetica,sans-Serif" font-size="10.00">_overlap</text>

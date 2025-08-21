@@ -8,5 +8,7 @@ var class_animation =
     [ "get_sprite", "class_animation.html#ada2a18eb5b3c44334564e4bc157b2692", null ],
     [ "get_sprite", "class_animation.html#aec6f9243b051e69267b7472addea257e", null ],
     [ "has_ended", "class_animation.html#a00cf267651636f0dce6a4ec7da0a3510", null ],
+    [ "set_origin", "class_animation.html#affdd6ee18a0454e8f64da2931d2f23b9", null ],
+    [ "set_scale", "class_animation.html#ad1018110f376d0dbeb748c64e5b8ae74", null ],
     [ "update", "class_animation.html#aaf8abdd74d79bfa7c15572c4b9c60464", null ]
 ];

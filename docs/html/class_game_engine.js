@@ -13,7 +13,6 @@ var class_game_engine =
     [ "get_bullet_config", "class_game_engine.html#a37276a457c152e669d71237362e0af57", null ],
     [ "get_font_config", "class_game_engine.html#a7fef956a0fc5e80776419d1d298dfe2f", null ],
     [ "get_level_config", "class_game_engine.html#a4a3ceacb299953bceb1e07859130c3a9", null ],
-    [ "get_player_config", "class_game_engine.html#a7a311a72f0cf35ef89e5565a7ba1e3c1", null ],
     [ "get_texture_config", "class_game_engine.html#ada57db57dbf65f5d876ec71b5cc05fbf", null ],
     [ "get_view", "class_game_engine.html#a3055449e25d04a5406d55060b5bdc210", null ],
     [ "get_window", "class_game_engine.html#a579d9fb224e4d14e3a6cdc7b9536f9f3", null ],

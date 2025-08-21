@@ -9,5 +9,6 @@ var components_8hpp =
     [ "CGravity", "struct_c_gravity.html", "struct_c_gravity" ],
     [ "CState", "struct_c_state.html", "struct_c_state" ],
     [ "CJump", "struct_c_jump.html", "struct_c_jump" ],
-    [ "CSound", "struct_c_sound.html", "struct_c_sound" ]
+    [ "CSound", "struct_c_sound.html", "struct_c_sound" ],
+    [ "CBoundingConvex", "struct_c_bounding_convex.html", "struct_c_bounding_convex" ]
 ];

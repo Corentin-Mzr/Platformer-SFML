@@ -17,7 +17,6 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="custom.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -114,9 +113,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a03c08a6751ea04dd1e8a3d9149e91712"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="struct_window_config.html">WindowConfig</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_parser.html#a03c08a6751ea04dd1e8a3d9149e91712">get_window_config</a> () const noexcept</td></tr>
 <tr class="memdesc:a03c08a6751ea04dd1e8a3d9149e91712"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return window configuration (size, title etc.)  <br /></td></tr>
 <tr class="separator:a03c08a6751ea04dd1e8a3d9149e91712"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a417a8b8f6ad34e4b3176b377aa910a2e"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="struct_player_config.html">PlayerConfig</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_parser.html#a417a8b8f6ad34e4b3176b377aa910a2e">get_player_config</a> () const noexcept</td></tr>
-<tr class="memdesc:a417a8b8f6ad34e4b3176b377aa910a2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return player stats (speed etc.)  <br /></td></tr>
-<tr class="separator:a417a8b8f6ad34e4b3176b377aa910a2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a907f3bcb7762d870e5cd34afb467925e"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="struct_bullet_config.html">BulletConfig</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config_parser.html#a907f3bcb7762d870e5cd34afb467925e">get_bullet_config</a> () const noexcept</td></tr>
 <tr class="memdesc:a907f3bcb7762d870e5cd34afb467925e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return bullets stats (speed, lifespan etc.)  <br /></td></tr>
 <tr class="separator:a907f3bcb7762d870e5cd34afb467925e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -211,7 +207,7 @@ Public Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">   97</span>{</div>
 <div class="line"><span class="lineno">   98</span>    <span class="keyword">const</span> <span class="keyword">auto</span> data = toml::parse(m_filepath);</div>
 <div class="line"><span class="lineno">   99</span>    m_window_config = <a class="code hl_function" href="config__parser_8cpp.html#a895e2b6525106b61b9d0a020e460e4d0">parse_window</a>(data);</div>
-<div class="line"><span class="lineno">  100</span>    m_player_config = <a class="code hl_function" href="config__parser_8cpp.html#a9534f9c280516f6ef34b80ee4ac1588c">parse_player</a>(data);</div>
+<div class="line"><span class="lineno">  100</span>    <span class="comment">// m_player_config = parse_player(data);</span></div>
 <div class="line"><span class="lineno">  101</span>    m_bullet_config = <a class="code hl_function" href="config__parser_8cpp.html#a902a1aaa35370dda74c9d63f3c2bc2d5">parse_bullet</a>(data);</div>
 <div class="line"><span class="lineno">  102</span>    m_level_configs = <a class="code hl_function" href="config__parser_8cpp.html#a8491e13afcf4a82bf012dfbcb2285e80">parse_level</a>(data);</div>
 <div class="line"><span class="lineno">  103</span>    m_font_configs = <a class="code hl_function" href="config__parser_8cpp.html#aa79651a95e68506a7f22a4c3595ec1b8">parse_font</a>(data);</div>
@@ -226,15 +222,14 @@ Public Member Functions</h2></td></tr>
 <div class="ttc" id="aconfig__parser_8cpp_html_a8491e13afcf4a82bf012dfbcb2285e80"><div class="ttname"><a href="config__parser_8cpp.html#a8491e13afcf4a82bf012dfbcb2285e80">parse_level</a></div><div class="ttdeci">static std::vector&lt; LevelConfig &gt; parse_level(const toml::value &amp;data)</div><div class="ttdef"><b>Definition</b> <a href="config__parser_8cpp_source.html#l00052">config_parser.cpp:52</a></div></div>
 <div class="ttc" id="aconfig__parser_8cpp_html_a895e2b6525106b61b9d0a020e460e4d0"><div class="ttname"><a href="config__parser_8cpp.html#a895e2b6525106b61b9d0a020e460e4d0">parse_window</a></div><div class="ttdeci">static WindowConfig parse_window(const toml::value &amp;data)</div><div class="ttdef"><b>Definition</b> <a href="config__parser_8cpp_source.html#l00034">config_parser.cpp:34</a></div></div>
 <div class="ttc" id="aconfig__parser_8cpp_html_a902a1aaa35370dda74c9d63f3c2bc2d5"><div class="ttname"><a href="config__parser_8cpp.html#a902a1aaa35370dda74c9d63f3c2bc2d5">parse_bullet</a></div><div class="ttdeci">static BulletConfig parse_bullet(const toml::value &amp;data)</div><div class="ttdef"><b>Definition</b> <a href="config__parser_8cpp_source.html#l00046">config_parser.cpp:46</a></div></div>
-<div class="ttc" id="aconfig__parser_8cpp_html_a9534f9c280516f6ef34b80ee4ac1588c"><div class="ttname"><a href="config__parser_8cpp.html#a9534f9c280516f6ef34b80ee4ac1588c">parse_player</a></div><div class="ttdeci">static PlayerConfig parse_player(const toml::value &amp;data)</div><div class="ttdef"><b>Definition</b> <a href="config__parser_8cpp_source.html#l00040">config_parser.cpp:40</a></div></div>
 <div class="ttc" id="aconfig__parser_8cpp_html_aa79651a95e68506a7f22a4c3595ec1b8"><div class="ttname"><a href="config__parser_8cpp.html#aa79651a95e68506a7f22a4c3595ec1b8">parse_font</a></div><div class="ttdeci">static std::vector&lt; FontConfig &gt; parse_font(const toml::value &amp;data)</div><div class="ttdef"><b>Definition</b> <a href="config__parser_8cpp_source.html#l00060">config_parser.cpp:60</a></div></div>
 <div class="ttc" id="aconfig__parser_8cpp_html_accd3e8b274db23f6fa8d68572229ece4"><div class="ttname"><a href="config__parser_8cpp.html#accd3e8b274db23f6fa8d68572229ece4">parse_texture</a></div><div class="ttdeci">static std::vector&lt; TextureConfig &gt; parse_texture(const toml::value &amp;data)</div><div class="ttdef"><b>Definition</b> <a href="config__parser_8cpp_source.html#l00067">config_parser.cpp:67</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="config__parser_8cpp_source.html#l00074">parse_animation()</a>, <a class="el" href="config__parser_8cpp_source.html#l00046">parse_bullet()</a>, <a class="el" href="config__parser_8cpp_source.html#l00060">parse_font()</a>, <a class="el" href="config__parser_8cpp_source.html#l00052">parse_level()</a>, <a class="el" href="config__parser_8cpp_source.html#l00088">parse_music()</a>, <a class="el" href="config__parser_8cpp_source.html#l00040">parse_player()</a>, <a class="el" href="config__parser_8cpp_source.html#l00081">parse_sound()</a>, <a class="el" href="config__parser_8cpp_source.html#l00067">parse_texture()</a>, and <a class="el" href="config__parser_8cpp_source.html#l00034">parse_window()</a>.</p>
+<p class="reference">References <a class="el" href="config__parser_8cpp_source.html#l00074">parse_animation()</a>, <a class="el" href="config__parser_8cpp_source.html#l00046">parse_bullet()</a>, <a class="el" href="config__parser_8cpp_source.html#l00060">parse_font()</a>, <a class="el" href="config__parser_8cpp_source.html#l00052">parse_level()</a>, <a class="el" href="config__parser_8cpp_source.html#l00088">parse_music()</a>, <a class="el" href="config__parser_8cpp_source.html#l00081">parse_sound()</a>, <a class="el" href="config__parser_8cpp_source.html#l00067">parse_texture()</a>, and <a class="el" href="config__parser_8cpp_source.html#l00034">parse_window()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_config_parser_a9a399c2009bb3429a209e32fa46100a8_cgraph.svg" width="356" height="443"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_config_parser_a9a399c2009bb3429a209e32fa46100a8_cgraph.svg" width="356" height="392"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -418,43 +413,6 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  152</span>    <span class="keywordflow">return</span> m_music_configs;</div>
 <div class="line"><span class="lineno">  153</span>}</div>
 </div><!-- fragment -->
-</div>
-</div>
-<a id="a417a8b8f6ad34e4b3176b377aa910a2e" name="a417a8b8f6ad34e4b3176b377aa910a2e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a417a8b8f6ad34e4b3176b377aa910a2e">&#9670;&#160;</a></span>get_player_config()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const <a class="el" href="struct_player_config.html">PlayerConfig</a> &amp; ConfigParser::get_player_config </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Return player stats (speed etc.) </p>
-
-<p class="definition">Definition at line <a class="el" href="config__parser_8cpp_source.html#l00115">115</a> of file <a class="el" href="config__parser_8cpp_source.html">config_parser.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  116</span>{</div>
-<div class="line"><span class="lineno">  117</span>    <span class="keywordflow">return</span> m_player_config;</div>
-<div class="line"><span class="lineno">  118</span>}</div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_config_parser_a417a8b8f6ad34e4b3176b377aa910a2e_icgraph.svg" width="388" height="54"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-
 </div>
 </div>
 <a id="ada4911c814b40c6aa0acdb50ce89edaa" name="ada4911c814b40c6aa0acdb50ce89edaa"></a>

@@ -1,0 +1,5 @@
+<map id="CBoundingConvex" name="CBoundingConvex">
+<area shape="rect" id="Node000001" title="Convex Hitbox component." alt="" coords="5,80,136,107"/>
+<area shape="rect" id="Node000002" href="$struct_component.html" title="Abstract base component." alt="" coords="26,5,115,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="73,48,73,80,68,80,68,48"/>
+</map>

@@ -17,7 +17,6 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="custom.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -117,8 +116,6 @@ Functions</h2></td></tr>
 <tr class="separator:a031ca82768dc7b7e2b26c9061d0f2bd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a895e2b6525106b61b9d0a020e460e4d0"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_window_config.html">WindowConfig</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="config__parser_8cpp.html#a895e2b6525106b61b9d0a020e460e4d0">parse_window</a> (const toml::value &amp;data)</td></tr>
 <tr class="separator:a895e2b6525106b61b9d0a020e460e4d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9534f9c280516f6ef34b80ee4ac1588c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_player_config.html">PlayerConfig</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="config__parser_8cpp.html#a9534f9c280516f6ef34b80ee4ac1588c">parse_player</a> (const toml::value &amp;data)</td></tr>
-<tr class="separator:a9534f9c280516f6ef34b80ee4ac1588c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a902a1aaa35370dda74c9d63f3c2bc2d5"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_bullet_config.html">BulletConfig</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="config__parser_8cpp.html#a902a1aaa35370dda74c9d63f3c2bc2d5">parse_bullet</a> (const toml::value &amp;data)</td></tr>
 <tr class="separator:a902a1aaa35370dda74c9d63f3c2bc2d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8491e13afcf4a82bf012dfbcb2285e80"><td class="memItemLeft" align="right" valign="top">static std::vector&lt; <a class="el" href="struct_level_config.html">LevelConfig</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="config__parser_8cpp.html#a8491e13afcf4a82bf012dfbcb2285e80">parse_level</a> (const toml::value &amp;data)</td></tr>
@@ -316,42 +313,6 @@ Here is the caller graph for this function:</div>
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><iframe scrolling="no" frameborder="0" src="config__parser_8cpp_a044237f330e2f2b84e0455d062e7153c_icgraph.svg" width="336" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-
-</div>
-</div>
-<a id="a9534f9c280516f6ef34b80ee4ac1588c" name="a9534f9c280516f6ef34b80ee4ac1588c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9534f9c280516f6ef34b80ee4ac1588c">&#9670;&#160;</a></span>parse_player()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static <a class="el" href="struct_player_config.html">PlayerConfig</a> parse_player </td>
-          <td>(</td>
-          <td class="paramtype">const toml::value &amp;&#160;</td>
-          <td class="paramname"><em>data</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="config__parser_8cpp_source.html#l00040">40</a> of file <a class="el" href="config__parser_8cpp_source.html">config_parser.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   41</span>{</div>
-<div class="line"><span class="lineno">   42</span>    <span class="keywordflow">return</span> parse_section&lt;PlayerConfig&gt;(data, <span class="stringliteral">&quot;player&quot;</span>);</div>
-<div class="line"><span class="lineno">   43</span>}</div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="config__parser_8cpp_a9534f9c280516f6ef34b80ee4ac1588c_icgraph.svg" width="336" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>

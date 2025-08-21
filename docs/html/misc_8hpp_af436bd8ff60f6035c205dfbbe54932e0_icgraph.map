@@ -1,7 +1,7 @@
 <map id="absolute_vec" name="absolute_vec">
 <area shape="rect" id="Node000001" title="Absolute value of each element of a vector." alt="" coords="204,47,302,73"/>
-<area shape="rect" id="Node000002" href="$namespace_physics.html#ab17f884bb569635f6fc4b88da5c76fc2" title="Get the current overlap between two entities bounding boxes. Entities collide iff ox &gt; 0 &amp;&amp; oy &gt; 0." alt="" coords="10,5,151,48"/>
+<area shape="rect" id="Node000002" href="$namespace_physics.html#ab17f884bb569635f6fc4b88da5c76fc2" title="Get the current overlap between two entities that have a BoundingBox component." alt="" coords="10,5,151,48"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="188,50,151,43,152,38,189,45"/>
-<area shape="rect" id="Node000003" href="$namespace_physics.html#a4c40cc588037b53592c0dfa79f4ee641" title="Get the previous overlap between two entities bounding boxes. Entities collide iff ox &gt; 0 &amp;&amp; oy &gt; 0." alt="" coords="5,72,156,115"/>
+<area shape="rect" id="Node000003" href="$namespace_physics.html#a4c40cc588037b53592c0dfa79f4ee641" title="Get the previous overlap between two entities that have a BoundingBox component." alt="" coords="5,72,156,115"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="189,75,157,81,156,76,188,70"/>
 </map>

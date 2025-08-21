@@ -1,8 +1,4 @@
 var searchData=
 [
-  ['path_0',['path',['../struct_level_config.html#ae34d742f0b67d8f81493d2216a46eb51',1,'LevelConfig::path'],['../struct_font_config.html#a36f34c2927d6e7703114ba6ff7fe0dca',1,'FontConfig::path'],['../struct_texture_config.html#a5044624d652df494ed558f5f777652a1',1,'TextureConfig::path'],['../struct_sound_config.html#a86c7cdd44bdb5060abcd44f92092c156',1,'SoundConfig::path'],['../struct_music_config.html#a7649595ec00427a4229650f365b0eee1',1,'MusicConfig::path']]],
-  ['played_1',['played',['../struct_c_sound.html#ad1681b0cfe1372c2aeae488cfcfe8d27',1,'CSound']]],
-  ['pos_2',['pos',['../struct_c_transform.html#a71fadf150d02374dc0bfc482f3efda53',1,'CTransform']]],
-  ['previous_5fpos_3',['previous_pos',['../struct_c_transform.html#a0f22898b62698b04fcf058e532f9549a',1,'CTransform']]],
-  ['previous_5fstate_4',['previous_state',['../struct_c_state.html#a4413a21de3ba1fd334800b5a678f2b9c',1,'CState']]]
+  ['name_0',['name',['../struct_action.html#a340cef47a6c26d3deeaa6492eb0a7196',1,'Action::name'],['../struct_level_config.html#ad67b70f7af45ff02af8990e5b1b37cc1',1,'LevelConfig::name'],['../struct_font_config.html#aeef7a10b895e476f29e89ece7d58fba1',1,'FontConfig::name'],['../struct_texture_config.html#a10edf6ecd457b4f6d1d786d169aacc7e',1,'TextureConfig::name'],['../struct_animation_config.html#a70c212641fcd65f57f338d4cbfc13c92',1,'AnimationConfig::name'],['../struct_sound_config.html#af51008abb0c1de527ef129c27e600aef',1,'SoundConfig::name'],['../struct_music_config.html#a4f02a091e1ca63eb1ab72f962cdb691e',1,'MusicConfig::name']]]
 ];

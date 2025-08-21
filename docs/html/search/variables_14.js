@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['y_0',['y',['../struct_player_config.html#a979b5c302a5a07cc825493601423717d',1,'PlayerConfig']]]
+  ['width_0',['width',['../struct_window_config.html#aebb1141e1f1cd9bc0f16c2bf693d0d97',1,'WindowConfig']]]
 ];

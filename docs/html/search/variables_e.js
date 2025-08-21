@@ -1,11 +1,9 @@
 var searchData=
 [
-  ['scale_0',['scale',['../struct_c_transform.html#a3ed7132e069efdd28300dd221f2fee5e',1,'CTransform']]],
-  ['settings_1',['settings',['../class_game_engine.html#a4d9539454b8803d3b5ea95b989415797',1,'GameEngine']]],
-  ['shoot_2',['shoot',['../struct_c_input.html#ad4c254ee073ceeb527d99b5c51a00f42',1,'CInput']]],
-  ['size_3',['size',['../struct_c_bounding_box.html#a567fadd1ec52438d70ca2210b47e2260',1,'CBoundingBox']]],
-  ['sound_4',['sound',['../struct_c_sound.html#abbdd0f0c9da41f5c363a4bdc4c736543',1,'CSound']]],
-  ['speed_5',['speed',['../struct_player_config.html#a56485f048b6c6e6d8b66dc55f0fffdb9',1,'PlayerConfig::speed'],['../struct_bullet_config.html#a14f9dd80c1382ce514f5ca99cf69c905',1,'BulletConfig::speed'],['../struct_animation_config.html#a748879ac77ced1681720cf83c66b4dbb',1,'AnimationConfig::speed']]],
-  ['start_5fframe_6',['start_frame',['../struct_c_jump.html#ae99b18bad015f6aded610cb693bed9ed',1,'CJump']]],
-  ['state_7',['state',['../struct_c_state.html#ae0859ede1f90393aa32a18dfb3bc184f',1,'CState']]]
+  ['path_0',['path',['../struct_level_config.html#ae34d742f0b67d8f81493d2216a46eb51',1,'LevelConfig::path'],['../struct_font_config.html#a36f34c2927d6e7703114ba6ff7fe0dca',1,'FontConfig::path'],['../struct_texture_config.html#a5044624d652df494ed558f5f777652a1',1,'TextureConfig::path'],['../struct_sound_config.html#a86c7cdd44bdb5060abcd44f92092c156',1,'SoundConfig::path'],['../struct_music_config.html#a7649595ec00427a4229650f365b0eee1',1,'MusicConfig::path']]],
+  ['played_1',['played',['../struct_c_sound.html#ad1681b0cfe1372c2aeae488cfcfe8d27',1,'CSound']]],
+  ['points_2',['points',['../struct_c_bounding_convex.html#a974512c81c739560932f23f000d3918f',1,'CBoundingConvex']]],
+  ['pos_3',['pos',['../struct_c_transform.html#a71fadf150d02374dc0bfc482f3efda53',1,'CTransform']]],
+  ['previous_5fpos_4',['previous_pos',['../struct_c_transform.html#a0f22898b62698b04fcf058e532f9549a',1,'CTransform']]],
+  ['previous_5fstate_5',['previous_state',['../struct_c_state.html#a4413a21de3ba1fd334800b5a678f2b9c',1,'CState']]]
 ];

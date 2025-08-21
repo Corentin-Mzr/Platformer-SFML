@@ -17,7 +17,6 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="custom.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -147,14 +146,55 @@ $(document).ready(function(){initNavTree('animation_8cpp_source.html',''); initR
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="comment">/* Can throw error */</span></div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordflow">return</span> m_sprite.value();</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>}</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="class_animation.html#ad1018110f376d0dbeb748c64e5b8ae74">   55</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_animation.html#ad1018110f376d0dbeb748c64e5b8ae74">Animation::set_scale</a>(<span class="keyword">const</span> sf::Vector2f &amp;s)</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>{</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordflow">if</span> (m_sprite)</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    {</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        m_sprite-&gt;setScale(s);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    }</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>}</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="class_animation.html#affdd6ee18a0454e8f64da2931d2f23b9">   63</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_animation.html#affdd6ee18a0454e8f64da2931d2f23b9">Animation::set_origin</a>(<a class="code hl_enumeration" href="animation_8hpp.html#ab9ca4398d1a0688042958bc795962267">OriginAnchor</a> a)</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>{</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordflow">if</span> (!m_sprite)</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    {</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    }</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keywordflow">switch</span> (a)</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    {</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="animation_8hpp.html#ab9ca4398d1a0688042958bc795962267a4f1f6016fc9f3f2353c0cc7c67b292bd">OriginAnchor::Center</a>:</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        {</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>            m_sprite-&gt;setOrigin(sf::Vector2f{0.5f * m_size.x, 0.5f * m_size.y});</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        }</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="animation_8hpp.html#ab9ca4398d1a0688042958bc795962267a98e5a1c44509157ebcaf46c515c78875">OriginAnchor::BottomLeft</a>:</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        {</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>            m_sprite-&gt;setOrigin(sf::Vector2f{0.0f, <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(m_size.y)});</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        }</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <span class="keywordflow">default</span>:</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        {</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        }</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    }</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>}</div>
 <div class="ttc" id="aanimation_8hpp_html"><div class="ttname"><a href="animation_8hpp.html">animation.hpp</a></div></div>
-<div class="ttc" id="aclass_animation_html"><div class="ttname"><a href="class_animation.html">Animation</a></div><div class="ttdoc">Represents a texture-based animation made of one or more frames.</div><div class="ttdef"><b>Definition</b> <a href="animation_8hpp_source.html#l00016">animation.hpp:17</a></div></div>
+<div class="ttc" id="aanimation_8hpp_html_ab9ca4398d1a0688042958bc795962267"><div class="ttname"><a href="animation_8hpp.html#ab9ca4398d1a0688042958bc795962267">OriginAnchor</a></div><div class="ttdeci">OriginAnchor</div><div class="ttdef"><b>Definition</b> <a href="animation_8hpp_source.html#l00006">animation.hpp:6</a></div></div>
+<div class="ttc" id="aanimation_8hpp_html_ab9ca4398d1a0688042958bc795962267a4f1f6016fc9f3f2353c0cc7c67b292bd"><div class="ttname"><a href="animation_8hpp.html#ab9ca4398d1a0688042958bc795962267a4f1f6016fc9f3f2353c0cc7c67b292bd">OriginAnchor::Center</a></div><div class="ttdeci">@ Center</div></div>
+<div class="ttc" id="aanimation_8hpp_html_ab9ca4398d1a0688042958bc795962267a98e5a1c44509157ebcaf46c515c78875"><div class="ttname"><a href="animation_8hpp.html#ab9ca4398d1a0688042958bc795962267a98e5a1c44509157ebcaf46c515c78875">OriginAnchor::BottomLeft</a></div><div class="ttdeci">@ BottomLeft</div></div>
+<div class="ttc" id="aclass_animation_html"><div class="ttname"><a href="class_animation.html">Animation</a></div><div class="ttdoc">Represents a texture-based animation made of one or more frames.</div><div class="ttdef"><b>Definition</b> <a href="animation_8hpp_source.html#l00021">animation.hpp:22</a></div></div>
 <div class="ttc" id="aclass_animation_html_a00cf267651636f0dce6a4ec7da0a3510"><div class="ttname"><a href="class_animation.html#a00cf267651636f0dce6a4ec7da0a3510">Animation::has_ended</a></div><div class="ttdeci">bool has_ended() const noexcept</div><div class="ttdoc">Return true if animation reaches the last frame.</div><div class="ttdef"><b>Definition</b> <a href="animation_8cpp_source.html#l00028">animation.cpp:28</a></div></div>
-<div class="ttc" id="aclass_animation_html_a1eb3b1c303a56a63899d36acd59df57d"><div class="ttname"><a href="class_animation.html#a1eb3b1c303a56a63899d36acd59df57d">Animation::get_size</a></div><div class="ttdeci">const sf::Vector2i &amp; get_size() const noexcept</div><div class="ttdoc">Return the animation's texture size.</div><div class="ttdef"><b>Definition</b> <a href="animation_8cpp_source.html#l00038">animation.cpp:38</a></div></div>
+<div class="ttc" id="aclass_animation_html_a1eb3b1c303a56a63899d36acd59df57d"><div class="ttname"><a href="class_animation.html#a1eb3b1c303a56a63899d36acd59df57d">Animation::get_size</a></div><div class="ttdeci">const sf::Vector2i &amp; get_size() const noexcept</div><div class="ttdoc">Return the animation's based texture size.</div><div class="ttdef"><b>Definition</b> <a href="animation_8cpp_source.html#l00038">animation.cpp:38</a></div></div>
 <div class="ttc" id="aclass_animation_html_a2025656b0a7e15efd04d9050800113e4"><div class="ttname"><a href="class_animation.html#a2025656b0a7e15efd04d9050800113e4">Animation::Animation</a></div><div class="ttdeci">Animation() noexcept=default</div><div class="ttdoc">Default constructor.</div></div>
 <div class="ttc" id="aclass_animation_html_aaf8abdd74d79bfa7c15572c4b9c60464"><div class="ttname"><a href="class_animation.html#aaf8abdd74d79bfa7c15572c4b9c60464">Animation::update</a></div><div class="ttdeci">void update() noexcept</div><div class="ttdoc">Update the animation.</div><div class="ttdef"><b>Definition</b> <a href="animation_8cpp_source.html#l00016">animation.cpp:16</a></div></div>
+<div class="ttc" id="aclass_animation_html_ad1018110f376d0dbeb748c64e5b8ae74"><div class="ttname"><a href="class_animation.html#ad1018110f376d0dbeb748c64e5b8ae74">Animation::set_scale</a></div><div class="ttdeci">void set_scale(const sf::Vector2f &amp;s)</div><div class="ttdef"><b>Definition</b> <a href="animation_8cpp_source.html#l00055">animation.cpp:55</a></div></div>
 <div class="ttc" id="aclass_animation_html_aec4961f32ef55ea0b3ceff94ace8c1f1"><div class="ttname"><a href="class_animation.html#aec4961f32ef55ea0b3ceff94ace8c1f1">Animation::get_name</a></div><div class="ttdeci">const std::string &amp; get_name() const noexcept</div><div class="ttdoc">Return animation's name.</div><div class="ttdef"><b>Definition</b> <a href="animation_8cpp_source.html#l00033">animation.cpp:33</a></div></div>
 <div class="ttc" id="aclass_animation_html_aec6f9243b051e69267b7472addea257e"><div class="ttname"><a href="class_animation.html#aec6f9243b051e69267b7472addea257e">Animation::get_sprite</a></div><div class="ttdeci">const sf::Sprite &amp; get_sprite() const</div><div class="ttdoc">Return the animation's sprite.</div><div class="ttdef"><b>Definition</b> <a href="animation_8cpp_source.html#l00043">animation.cpp:43</a></div></div>
+<div class="ttc" id="aclass_animation_html_affdd6ee18a0454e8f64da2931d2f23b9"><div class="ttname"><a href="class_animation.html#affdd6ee18a0454e8f64da2931d2f23b9">Animation::set_origin</a></div><div class="ttdeci">void set_origin(OriginAnchor a)</div><div class="ttdef"><b>Definition</b> <a href="animation_8cpp_source.html#l00063">animation.cpp:63</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

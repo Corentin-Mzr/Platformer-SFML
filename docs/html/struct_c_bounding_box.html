@@ -17,7 +17,6 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="custom.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -119,9 +118,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:afdaa6b027557bcc2dd835946600d39a7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_c_bounding_box.html#afdaa6b027557bcc2dd835946600d39a7">CBoundingBox</a> () noexcept=default</td></tr>
 <tr class="memdesc:afdaa6b027557bcc2dd835946600d39a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor.  <br /></td></tr>
 <tr class="separator:afdaa6b027557bcc2dd835946600d39a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8777482d014423a9e39c74093bf7517d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_c_bounding_box.html#a8777482d014423a9e39c74093bf7517d">CBoundingBox</a> (const sf::Vector2f &amp;s) noexcept</td></tr>
-<tr class="memdesc:a8777482d014423a9e39c74093bf7517d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a BoundingBox <a class="el" href="struct_component.html" title="Abstract base component.">Component</a>.  <br /></td></tr>
-<tr class="separator:a8777482d014423a9e39c74093bf7517d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a732ddd09d6b0570350b2b3529811e8eb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_c_bounding_box.html#a732ddd09d6b0570350b2b3529811e8eb">CBoundingBox</a> (const sf::Vector2f &amp;s, const sf::Vector2f &amp;o={0.0f, 0.0f}) noexcept</td></tr>
+<tr class="memdesc:a732ddd09d6b0570350b2b3529811e8eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a BoundingBox <a class="el" href="struct_component.html" title="Abstract base component.">Component</a>.  <br /></td></tr>
+<tr class="separator:a732ddd09d6b0570350b2b3529811e8eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_struct_component"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_struct_component')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="struct_component.html">Component</a></td></tr>
 <tr class="memitem:ab9bbf5a8ea94a89c9dde6076cf64d6eb inherit pub_methods_struct_component"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_component.html#ab9bbf5a8ea94a89c9dde6076cf64d6eb">~Component</a> () noexcept=0</td></tr>
 <tr class="separator:ab9bbf5a8ea94a89c9dde6076cf64d6eb inherit pub_methods_struct_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -132,6 +131,8 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a567fadd1ec52438d70ca2210b47e2260"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6076a0f4e2dae3c02cd5ef23a50ccd09"><td class="memItemLeft" align="right" valign="top">sf::Vector2f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_c_bounding_box.html#a6076a0f4e2dae3c02cd5ef23a50ccd09">half_size</a> {}</td></tr>
 <tr class="separator:a6076a0f4e2dae3c02cd5ef23a50ccd09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab148685dff1748a6b8db13665e398dec"><td class="memItemLeft" align="right" valign="top">sf::Vector2f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_c_bounding_box.html#ab148685dff1748a6b8db13665e398dec">offset</a> {}</td></tr>
+<tr class="separator:ab148685dff1748a6b8db13665e398dec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_attribs_struct_component"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_struct_component')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="struct_component.html">Component</a></td></tr>
 <tr class="memitem:abccf25dc54468905abc867c38982a161 inherit pub_attribs_struct_component"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_component.html#abccf25dc54468905abc867c38982a161">exists</a> {false}</td></tr>
 <tr class="separator:abccf25dc54468905abc867c38982a161 inherit pub_attribs_struct_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -168,8 +169,8 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a8777482d014423a9e39c74093bf7517d" name="a8777482d014423a9e39c74093bf7517d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8777482d014423a9e39c74093bf7517d">&#9670;&#160;</a></span>CBoundingBox() <span class="overload">[2/2]</span></h2>
+<a id="a732ddd09d6b0570350b2b3529811e8eb" name="a732ddd09d6b0570350b2b3529811e8eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a732ddd09d6b0570350b2b3529811e8eb">&#9670;&#160;</a></span>CBoundingBox() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -181,8 +182,18 @@ Public Attributes</h2></td></tr>
           <td class="memname">CBoundingBox::CBoundingBox </td>
           <td>(</td>
           <td class="paramtype">const sf::Vector2f &amp;&#160;</td>
-          <td class="paramname"><em>s</em></td><td>)</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const sf::Vector2f &amp;&#160;</td>
+          <td class="paramname"><em>o</em> = <code>{0.0f,&#160;0.0f}</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -196,16 +207,18 @@ Public Attributes</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">s</td><td>Box size </td></tr>
+    <tr><td class="paramname">o</td><td>Box offset, relative to the sprite origin </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="components_8hpp_source.html#l00118">118</a> of file <a class="el" href="components_8hpp_source.html">components.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  118</span>                                                        : <a class="code hl_variable" href="struct_c_bounding_box.html#a567fadd1ec52438d70ca2210b47e2260">size</a>(s), <a class="code hl_variable" href="struct_c_bounding_box.html#a6076a0f4e2dae3c02cd5ef23a50ccd09">half_size</a>(0.5f * s)</div>
-<div class="line"><span class="lineno">  119</span>    {</div>
-<div class="line"><span class="lineno">  120</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="components_8hpp_source.html#l00120">120</a> of file <a class="el" href="components_8hpp_source.html">components.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  120</span>                                                                     {0.0f, 0.0f}) <span class="keyword">noexcept</span> : <a class="code hl_variable" href="struct_c_bounding_box.html#a567fadd1ec52438d70ca2210b47e2260">size</a>(s), <a class="code hl_variable" href="struct_c_bounding_box.html#a6076a0f4e2dae3c02cd5ef23a50ccd09">half_size</a>(0.5f * s), <a class="code hl_variable" href="struct_c_bounding_box.html#ab148685dff1748a6b8db13665e398dec">offset</a>(o)</div>
+<div class="line"><span class="lineno">  121</span>    {</div>
+<div class="line"><span class="lineno">  122</span>    }</div>
 <div class="ttc" id="astruct_c_bounding_box_html_a567fadd1ec52438d70ca2210b47e2260"><div class="ttname"><a href="struct_c_bounding_box.html#a567fadd1ec52438d70ca2210b47e2260">CBoundingBox::size</a></div><div class="ttdeci">sf::Vector2f size</div><div class="ttdef"><b>Definition</b> <a href="components_8hpp_source.html#l00105">components.hpp:105</a></div></div>
 <div class="ttc" id="astruct_c_bounding_box_html_a6076a0f4e2dae3c02cd5ef23a50ccd09"><div class="ttname"><a href="struct_c_bounding_box.html#a6076a0f4e2dae3c02cd5ef23a50ccd09">CBoundingBox::half_size</a></div><div class="ttdeci">sf::Vector2f half_size</div><div class="ttdef"><b>Definition</b> <a href="components_8hpp_source.html#l00106">components.hpp:106</a></div></div>
+<div class="ttc" id="astruct_c_bounding_box_html_ab148685dff1748a6b8db13665e398dec"><div class="ttname"><a href="struct_c_bounding_box.html#ab148685dff1748a6b8db13665e398dec">CBoundingBox::offset</a></div><div class="ttdeci">sf::Vector2f offset</div><div class="ttdef"><b>Definition</b> <a href="components_8hpp_source.html#l00107">components.hpp:107</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -223,6 +236,22 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="components_8hpp_source.html#l00106">106</a> of file <a class="el" href="components_8hpp_source.html">components.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ab148685dff1748a6b8db13665e398dec" name="ab148685dff1748a6b8db13665e398dec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab148685dff1748a6b8db13665e398dec">&#9670;&#160;</a></span>offset</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">sf::Vector2f CBoundingBox::offset {}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="components_8hpp_source.html#l00107">107</a> of file <a class="el" href="components_8hpp_source.html">components.hpp</a>.</p>
 
 </div>
 </div>

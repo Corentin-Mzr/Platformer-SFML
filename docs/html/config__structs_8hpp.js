@@ -1,7 +1,6 @@
 var config__structs_8hpp =
 [
     [ "WindowConfig", "struct_window_config.html", "struct_window_config" ],
-    [ "PlayerConfig", "struct_player_config.html", "struct_player_config" ],
     [ "BulletConfig", "struct_bullet_config.html", "struct_bullet_config" ],
     [ "LevelConfig", "struct_level_config.html", "struct_level_config" ],
     [ "FontConfig", "struct_font_config.html", "struct_font_config" ],

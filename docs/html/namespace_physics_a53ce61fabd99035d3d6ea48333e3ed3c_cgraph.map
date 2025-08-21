@@ -1,0 +1,5 @@
+<map id="Physics::get_current_overlap_between_convex_and_box" name="Physics::get_current_overlap_between_convex_and_box">
+<area shape="rect" id="Node000001" title="Get the current overlap between two entities, one has a BoundingConvex component, the other has a Bou..." alt="" coords="5,5,181,64"/>
+<area shape="rect" id="Node000002" href="$namespace_physics.html#aff53e0abac6d446d36de2257116e22d6" title="Get the current overlap between two entities that have a BoundingConvex component." alt="" coords="229,13,372,56"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="181,32,213,32,213,37,181,37"/>
+</map>

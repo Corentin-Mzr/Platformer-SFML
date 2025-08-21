@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['left_0',['left',['../struct_c_input.html#a41c53a00dc79b4dbf9b5cfceec607a82',1,'CInput']]],
-  ['lifespan_1',['lifespan',['../struct_c_life_span.html#a497849ac659e9680234c7db4d37d24d3',1,'CLifeSpan::lifespan'],['../struct_bullet_config.html#aac47726ad7609a8cb870b25acb23b9ef',1,'BulletConfig::lifespan']]],
-  ['loop_2',['loop',['../struct_c_sound.html#a14ccff8072c663189b4144888f5b50b1',1,'CSound']]]
+  ['jump_0',['jump',['../struct_scene_play_1_1_player_config.html#a5a9d6669d049c112fcf95893fb68103f',1,'ScenePlay::PlayerConfig']]],
+  ['jumping_1',['jumping',['../struct_c_jump.html#a2f7c616a672a0ed78adb304581d211cc',1,'CJump']]]
 ];

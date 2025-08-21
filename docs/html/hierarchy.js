@@ -8,6 +8,7 @@ var hierarchy =
     [ "Component", "struct_component.html", [
       [ "CAnimation", "struct_c_animation.html", null ],
       [ "CBoundingBox", "struct_c_bounding_box.html", null ],
+      [ "CBoundingConvex", "struct_c_bounding_convex.html", null ],
       [ "CGravity", "struct_c_gravity.html", null ],
       [ "CInput", "struct_c_input.html", null ],
       [ "CJump", "struct_c_jump.html", null ],
@@ -24,7 +25,7 @@ var hierarchy =
     [ "GameEngine::GameSettings", "struct_game_engine_1_1_game_settings.html", null ],
     [ "LevelConfig", "struct_level_config.html", null ],
     [ "MusicConfig", "struct_music_config.html", null ],
-    [ "PlayerConfig", "struct_player_config.html", null ],
+    [ "ScenePlay::PlayerConfig", "struct_scene_play_1_1_player_config.html", null ],
     [ "Scene", "class_scene.html", [
       [ "SceneMenu", "class_scene_menu.html", null ],
       [ "ScenePlay", "class_scene_play.html", null ]

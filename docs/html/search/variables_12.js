@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['width_0',['width',['../struct_window_config.html#aebb1141e1f1cd9bc0f16c2bf693d0d97',1,'WindowConfig']]]
+  ['up_0',['up',['../struct_c_input.html#ad6f668e269277cbe6388331cef5b469f',1,'CInput']]]
 ];

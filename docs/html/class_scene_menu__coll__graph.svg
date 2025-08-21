@@ -67,7 +67,7 @@
 <!-- Node4 -->
 <g id="Node000004" class="node">
 <title>Node4</title>
-<g id="a_Node000004"><a xlink:href="struct_game_engine_1_1_game_settings.html" target="_top" xlink:title=" ">
+<g id="a_Node000004"><a xlink:href="struct_game_engine_1_1_game_settings.html" target="_top" xlink:title="Basic options struct.">
 <polygon fill="white" stroke="#666666" points="140.5,-213 0,-213 0,-193 140.5,-193 140.5,-213"/>
 <text xml:space="preserve" text-anchor="middle" x="70.25" y="-199.5" font-family="Helvetica,sans-Serif" font-size="10.00">GameEngine::GameSettings</text>
 </a>

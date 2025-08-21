@@ -17,7 +17,6 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="custom.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -99,7 +98,7 @@ $(document).ready(function(){initNavTree('entity_8hpp_source.html',''); initResi
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;tuple&gt;</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="components_8hpp.html">components.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="entity_8hpp.html#a818e4ce041bc1d085788080cfac80326">    6</a></span><span class="keyword">using </span><a class="code hl_typedef" href="entity_8hpp.html#a818e4ce041bc1d085788080cfac80326">ComponentTuple</a> = std::tuple&lt;CTransform, CLifeSpan, CInput, CBoundingBox, CAnimation, CGravity, CState, CJump, CSound&gt;;</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="entity_8hpp.html#aea00bfbf617bf91ea947e7223195808e">    6</a></span><span class="keyword">using </span><a class="code hl_typedef" href="entity_8hpp.html#aea00bfbf617bf91ea947e7223195808e">ComponentTuple</a> = std::tuple&lt;CTransform, CLifeSpan, CInput, CBoundingBox, CAnimation, CGravity, CState, CJump, CSound, CBoundingConvex&gt;;</div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="class_entity.html">   28</a></span><span class="keyword">class </span><a class="code hl_class" href="class_entity.html">Entity</a></div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>{</div>
@@ -147,7 +146,7 @@ $(document).ready(function(){initNavTree('entity_8hpp_source.html',''); initResi
 <div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <a class="code hl_class" href="class_entity.html">Entity</a> &amp;operator=(<a class="code hl_class" href="class_entity.html">Entity</a> &amp;&amp;) noexcept = delete;</div>
 <div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
 <div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>private:</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <a class="code hl_typedef" href="entity_8hpp.html#a818e4ce041bc1d085788080cfac80326">ComponentTuple</a> m_components{};</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <a class="code hl_typedef" href="entity_8hpp.html#aea00bfbf617bf91ea947e7223195808e">ComponentTuple</a> m_components{};</div>
 <div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    <span class="keywordtype">bool</span> m_alive{<span class="keyword">true</span>};</div>
 <div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    <span class="keyword">const</span> std::string m_tag{<span class="stringliteral">&quot;default&quot;</span>};</div>
 <div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    <span class="keyword">const</span> <span class="keywordtype">size_t</span> m_id{};</div>
@@ -197,7 +196,7 @@ $(document).ready(function(){initNavTree('entity_8hpp_source.html',''); initResi
 <div class="ttc" id="aclass_entity_html_af8a8e91b02244746df1dd566d3bd5036"><div class="ttname"><a href="class_entity.html#af8a8e91b02244746df1dd566d3bd5036">Entity::add</a></div><div class="ttdeci">void add(Args &amp;&amp;...args)</div><div class="ttdoc">Add a component to the entity.</div><div class="ttdef"><b>Definition</b> <a href="entity_8hpp_source.html#l00119">entity.hpp:119</a></div></div>
 <div class="ttc" id="aclass_entity_manager_html"><div class="ttname"><a href="class_entity_manager.html">EntityManager</a></div><div class="ttdoc">Manages all entities within a scene.</div><div class="ttdef"><b>Definition</b> <a href="entity__manager_8hpp_source.html#l00036">entity_manager.hpp:37</a></div></div>
 <div class="ttc" id="acomponents_8hpp_html"><div class="ttname"><a href="components_8hpp.html">components.hpp</a></div></div>
-<div class="ttc" id="aentity_8hpp_html_a818e4ce041bc1d085788080cfac80326"><div class="ttname"><a href="entity_8hpp.html#a818e4ce041bc1d085788080cfac80326">ComponentTuple</a></div><div class="ttdeci">std::tuple&lt; CTransform, CLifeSpan, CInput, CBoundingBox, CAnimation, CGravity, CState, CJump, CSound &gt; ComponentTuple</div><div class="ttdef"><b>Definition</b> <a href="entity_8hpp_source.html#l00006">entity.hpp:6</a></div></div>
+<div class="ttc" id="aentity_8hpp_html_aea00bfbf617bf91ea947e7223195808e"><div class="ttname"><a href="entity_8hpp.html#aea00bfbf617bf91ea947e7223195808e">ComponentTuple</a></div><div class="ttdeci">std::tuple&lt; CTransform, CLifeSpan, CInput, CBoundingBox, CAnimation, CGravity, CState, CJump, CSound, CBoundingConvex &gt; ComponentTuple</div><div class="ttdef"><b>Definition</b> <a href="entity_8hpp_source.html#l00006">entity.hpp:6</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -17,7 +17,6 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="custom.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -124,7 +123,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:aec4961f32ef55ea0b3ceff94ace8c1f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return animation's name.  <br /></td></tr>
 <tr class="separator:aec4961f32ef55ea0b3ceff94ace8c1f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1eb3b1c303a56a63899d36acd59df57d"><td class="memItemLeft" align="right" valign="top">const sf::Vector2i &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_animation.html#a1eb3b1c303a56a63899d36acd59df57d">get_size</a> () const noexcept</td></tr>
-<tr class="memdesc:a1eb3b1c303a56a63899d36acd59df57d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the animation's texture size.  <br /></td></tr>
+<tr class="memdesc:a1eb3b1c303a56a63899d36acd59df57d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the animation's based texture size.  <br /></td></tr>
 <tr class="separator:a1eb3b1c303a56a63899d36acd59df57d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aec6f9243b051e69267b7472addea257e"><td class="memItemLeft" align="right" valign="top">const sf::Sprite &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_animation.html#aec6f9243b051e69267b7472addea257e">get_sprite</a> () const</td></tr>
 <tr class="memdesc:aec6f9243b051e69267b7472addea257e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the animation's sprite.  <br /></td></tr>
@@ -132,6 +131,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ada2a18eb5b3c44334564e4bc157b2692"><td class="memItemLeft" align="right" valign="top">sf::Sprite &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_animation.html#ada2a18eb5b3c44334564e4bc157b2692">get_sprite</a> ()</td></tr>
 <tr class="memdesc:ada2a18eb5b3c44334564e4bc157b2692"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the animation's sprite.  <br /></td></tr>
 <tr class="separator:ada2a18eb5b3c44334564e4bc157b2692"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1018110f376d0dbeb748c64e5b8ae74"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_animation.html#ad1018110f376d0dbeb748c64e5b8ae74">set_scale</a> (const sf::Vector2f &amp;s)</td></tr>
+<tr class="separator:ad1018110f376d0dbeb748c64e5b8ae74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:affdd6ee18a0454e8f64da2931d2f23b9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_animation.html#affdd6ee18a0454e8f64da2931d2f23b9">set_origin</a> (<a class="el" href="animation_8hpp.html#ab9ca4398d1a0688042958bc795962267">OriginAnchor</a> a)</td></tr>
+<tr class="separator:affdd6ee18a0454e8f64da2931d2f23b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represents a texture-based animation made of one or more frames. </p>
@@ -139,7 +142,7 @@ Public Member Functions</h2></td></tr>
 <p>An animation can be a single frame or multiple frames arranged in the texture. The <a class="el" href="class_animation.html#aaf8abdd74d79bfa7c15572c4b9c60464" title="Update the animation.">update()</a> function changes the animation frame based on the defined speed.</p>
 <dl class="section note"><dt>Note</dt><dd><a class="el" href="class_animation.html" title="Represents a texture-based animation made of one or more frames.">Animation</a> speed cannot not be zero. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="animation_8hpp_source.html#l00016">16</a> of file <a class="el" href="animation_8hpp_source.html">animation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="animation_8hpp_source.html#l00021">21</a> of file <a class="el" href="animation_8hpp_source.html">animation.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a2025656b0a7e15efd04d9050800113e4" name="a2025656b0a7e15efd04d9050800113e4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2025656b0a7e15efd04d9050800113e4">&#9670;&#160;</a></span>Animation() <span class="overload">[1/3]</span></h2>
@@ -342,7 +345,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Return the animation's texture size. </p>
+<p>Return the animation's based texture size. </p>
 
 <p class="definition">Definition at line <a class="el" href="animation_8cpp_source.html#l00038">38</a> of file <a class="el" href="animation_8cpp_source.html">animation.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   39</span>{</div>
@@ -430,6 +433,82 @@ Public Member Functions</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   29</span>{</div>
 <div class="line"><span class="lineno">   30</span>    <span class="keywordflow">return</span> m_current_frame == m_frame_count;</div>
 <div class="line"><span class="lineno">   31</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="affdd6ee18a0454e8f64da2931d2f23b9" name="affdd6ee18a0454e8f64da2931d2f23b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#affdd6ee18a0454e8f64da2931d2f23b9">&#9670;&#160;</a></span>set_origin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Animation::set_origin </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="animation_8hpp.html#ab9ca4398d1a0688042958bc795962267">OriginAnchor</a>&#160;</td>
+          <td class="paramname"><em>a</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="animation_8cpp_source.html#l00063">63</a> of file <a class="el" href="animation_8cpp_source.html">animation.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   64</span>{</div>
+<div class="line"><span class="lineno">   65</span>    <span class="keywordflow">if</span> (!m_sprite)</div>
+<div class="line"><span class="lineno">   66</span>    {</div>
+<div class="line"><span class="lineno">   67</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   68</span>    }</div>
+<div class="line"><span class="lineno">   69</span> </div>
+<div class="line"><span class="lineno">   70</span>    <span class="keywordflow">switch</span> (a)</div>
+<div class="line"><span class="lineno">   71</span>    {</div>
+<div class="line"><span class="lineno">   72</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="animation_8hpp.html#ab9ca4398d1a0688042958bc795962267a4f1f6016fc9f3f2353c0cc7c67b292bd">OriginAnchor::Center</a>:</div>
+<div class="line"><span class="lineno">   73</span>        {</div>
+<div class="line"><span class="lineno">   74</span>            m_sprite-&gt;setOrigin(sf::Vector2f{0.5f * m_size.x, 0.5f * m_size.y});</div>
+<div class="line"><span class="lineno">   75</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   76</span>        }</div>
+<div class="line"><span class="lineno">   77</span> </div>
+<div class="line"><span class="lineno">   78</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="animation_8hpp.html#ab9ca4398d1a0688042958bc795962267a98e5a1c44509157ebcaf46c515c78875">OriginAnchor::BottomLeft</a>:</div>
+<div class="line"><span class="lineno">   79</span>        {</div>
+<div class="line"><span class="lineno">   80</span>            m_sprite-&gt;setOrigin(sf::Vector2f{0.0f, <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(m_size.y)});</div>
+<div class="line"><span class="lineno">   81</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   82</span>        }</div>
+<div class="line"><span class="lineno">   83</span> </div>
+<div class="line"><span class="lineno">   84</span>        <span class="keywordflow">default</span>:</div>
+<div class="line"><span class="lineno">   85</span>        {</div>
+<div class="line"><span class="lineno">   86</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   87</span>        }</div>
+<div class="line"><span class="lineno">   88</span>    }</div>
+<div class="line"><span class="lineno">   89</span>}</div>
+<div class="ttc" id="aanimation_8hpp_html_ab9ca4398d1a0688042958bc795962267a4f1f6016fc9f3f2353c0cc7c67b292bd"><div class="ttname"><a href="animation_8hpp.html#ab9ca4398d1a0688042958bc795962267a4f1f6016fc9f3f2353c0cc7c67b292bd">OriginAnchor::Center</a></div><div class="ttdeci">@ Center</div></div>
+<div class="ttc" id="aanimation_8hpp_html_ab9ca4398d1a0688042958bc795962267a98e5a1c44509157ebcaf46c515c78875"><div class="ttname"><a href="animation_8hpp.html#ab9ca4398d1a0688042958bc795962267a98e5a1c44509157ebcaf46c515c78875">OriginAnchor::BottomLeft</a></div><div class="ttdeci">@ BottomLeft</div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="animation_8hpp.html#ab9ca4398d1a0688042958bc795962267a98e5a1c44509157ebcaf46c515c78875">BottomLeft</a>, and <a class="el" href="animation_8hpp.html#ab9ca4398d1a0688042958bc795962267a4f1f6016fc9f3f2353c0cc7c67b292bd">Center</a>.</p>
+
+</div>
+</div>
+<a id="ad1018110f376d0dbeb748c64e5b8ae74" name="ad1018110f376d0dbeb748c64e5b8ae74"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1018110f376d0dbeb748c64e5b8ae74">&#9670;&#160;</a></span>set_scale()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Animation::set_scale </td>
+          <td>(</td>
+          <td class="paramtype">const sf::Vector2f &amp;&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="animation_8cpp_source.html#l00055">55</a> of file <a class="el" href="animation_8cpp_source.html">animation.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   56</span>{</div>
+<div class="line"><span class="lineno">   57</span>    <span class="keywordflow">if</span> (m_sprite)</div>
+<div class="line"><span class="lineno">   58</span>    {</div>
+<div class="line"><span class="lineno">   59</span>        m_sprite-&gt;setScale(s);</div>
+<div class="line"><span class="lineno">   60</span>    }</div>
+<div class="line"><span class="lineno">   61</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>

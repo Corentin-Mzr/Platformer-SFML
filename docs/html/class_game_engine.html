@@ -17,7 +17,6 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="custom.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -113,6 +112,7 @@ Collaboration diagram for GameEngine:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_game_engine_1_1_game_settings.html">GameSettings</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Basic options struct.  <a href="struct_game_engine_1_1_game_settings.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -141,6 +141,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:ab01970da2c68fefbf48b98c59d5627ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Run the game.  <br /></td></tr>
 <tr class="separator:ab01970da2c68fefbf48b98c59d5627ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a40f5e6eed382782e3e632555ff4cf7e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_engine.html#a40f5e6eed382782e3e632555ff4cf7e1">quit</a> () noexcept</td></tr>
+<tr class="memdesc:a40f5e6eed382782e3e632555ff4cf7e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Quit the game.  <br /></td></tr>
 <tr class="separator:a40f5e6eed382782e3e632555ff4cf7e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8945236b075a8e237ae3cc6d7fd1ce13"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_engine.html#a8945236b075a8e237ae3cc6d7fd1ce13">change_scene</a> (const std::string &amp;name, const std::shared_ptr&lt; <a class="el" href="class_scene.html">Scene</a> &gt; &amp;scene, bool end_current=false) noexcept</td></tr>
 <tr class="memdesc:a8945236b075a8e237ae3cc6d7fd1ce13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change current scene to the given scene.  <br /></td></tr>
@@ -160,9 +161,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac10a8a32240768ca5af7d5769748651c"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="struct_window_config.html">WindowConfig</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_engine.html#ac10a8a32240768ca5af7d5769748651c">get_window_config</a> () const noexcept</td></tr>
 <tr class="memdesc:ac10a8a32240768ca5af7d5769748651c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the window configuration (size, title etc.)  <br /></td></tr>
 <tr class="separator:ac10a8a32240768ca5af7d5769748651c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7a311a72f0cf35ef89e5565a7ba1e3c1"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="struct_player_config.html">PlayerConfig</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_engine.html#a7a311a72f0cf35ef89e5565a7ba1e3c1">get_player_config</a> () const noexcept</td></tr>
-<tr class="memdesc:a7a311a72f0cf35ef89e5565a7ba1e3c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return player info.  <br /></td></tr>
-<tr class="separator:a7a311a72f0cf35ef89e5565a7ba1e3c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a37276a457c152e669d71237362e0af57"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="struct_bullet_config.html">BulletConfig</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_engine.html#a37276a457c152e669d71237362e0af57">get_bullet_config</a> () const noexcept</td></tr>
 <tr class="memdesc:a37276a457c152e669d71237362e0af57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return bullet info.  <br /></td></tr>
 <tr class="separator:a37276a457c152e669d71237362e0af57"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -197,7 +195,7 @@ Public Attributes</h2></td></tr>
 <ul>
 <li><a class="el" href="class_game_engine.html#ab01970da2c68fefbf48b98c59d5627ae" title="Run the game.">run()</a>: Start the main game loop</li>
 <li><a class="el" href="class_game_engine.html#ae03241b464040b659b6a91f27920e8c3" title="Update the game each frame.">update()</a>: Update the game logic</li>
-<li><a class="el" href="class_game_engine.html#a40f5e6eed382782e3e632555ff4cf7e1">quit()</a>: Stop the game</li>
+<li><a class="el" href="class_game_engine.html#a40f5e6eed382782e3e632555ff4cf7e1" title="Quit the game.">quit()</a>: Stop the game</li>
 <li>change_scene(name, scene, end_current): Switch between scenes</li>
 </ul>
 <p>The class provides access to:</p>
@@ -210,7 +208,7 @@ Public Attributes</h2></td></tr>
 <dd>
 Should be constructed from a TOML config file </dd>
 <dd>
-Holds <a class="el" href="struct_game_engine_1_1_game_settings.html">GameSettings</a> for volume control </dd>
+Holds <a class="el" href="struct_game_engine_1_1_game_settings.html" title="Basic options struct.">GameSettings</a> for volume control </dd>
 <dd>
 Manages scene lifecycle and user inputs </dd></dl>
 
@@ -648,46 +646,6 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="a7a311a72f0cf35ef89e5565a7ba1e3c1" name="a7a311a72f0cf35ef89e5565a7ba1e3c1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7a311a72f0cf35ef89e5565a7ba1e3c1">&#9670;&#160;</a></span>get_player_config()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const <a class="el" href="struct_player_config.html">PlayerConfig</a> &amp; GameEngine::get_player_config </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Return player info. </p>
-
-<p class="definition">Definition at line <a class="el" href="game__engine_8cpp_source.html#l00183">183</a> of file <a class="el" href="game__engine_8cpp_source.html">game_engine.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  184</span>{</div>
-<div class="line"><span class="lineno">  185</span>    <span class="keywordflow">return</span> m_config.<a class="code hl_function" href="class_config_parser.html#a417a8b8f6ad34e4b3176b377aa910a2e">get_player_config</a>();</div>
-<div class="line"><span class="lineno">  186</span>}</div>
-<div class="ttc" id="aclass_config_parser_html_a417a8b8f6ad34e4b3176b377aa910a2e"><div class="ttname"><a href="class_config_parser.html#a417a8b8f6ad34e4b3176b377aa910a2e">ConfigParser::get_player_config</a></div><div class="ttdeci">const PlayerConfig &amp; get_player_config() const noexcept</div><div class="ttdoc">Return player stats (speed etc.)</div><div class="ttdef"><b>Definition</b> <a href="config__parser_8cpp_source.html#l00115">config_parser.cpp:115</a></div></div>
-</div><!-- fragment -->
-<p class="reference">References <a class="el" href="config__parser_8cpp_source.html#l00115">ConfigParser::get_player_config()</a>.</p>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_game_engine_a7a311a72f0cf35ef89e5565a7ba1e3c1_cgraph.svg" width="388" height="54"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-
-</div>
-</div>
 <a id="ada57db57dbf65f5d876ec71b5cc05fbf" name="ada57db57dbf65f5d876ec71b5cc05fbf"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ada57db57dbf65f5d876ec71b5cc05fbf">&#9670;&#160;</a></span>get_texture_config()</h2>
 
@@ -990,7 +948,8 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Quit the game </p>
+
+<p>Quit the game. </p>
 
 <p class="definition">Definition at line <a class="el" href="game__engine_8cpp_source.html#l00082">82</a> of file <a class="el" href="game__engine_8cpp_source.html">game_engine.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   83</span>{</div>
@@ -1091,7 +1050,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="game__engine_8hpp_source.html#l00054">54</a> of file <a class="el" href="game__engine_8hpp_source.html">game_engine.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game__engine_8hpp_source.html#l00056">56</a> of file <a class="el" href="game__engine_8hpp_source.html">game_engine.hpp</a>.</p>
 
 </div>
 </div>

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['texture_0',['texture',['../struct_animation_config.html#a8922ce0035f311ac82c77a21ec2366d5',1,'AnimationConfig']]],
-  ['title_1',['title',['../struct_window_config.html#a76d73570d327c6b6c439bc5cbc4b1b11',1,'WindowConfig']]],
-  ['type_2',['type',['../struct_action.html#aa49b36d58f556d4d71633305cf968538',1,'Action']]]
+  ['radius_0',['radius',['../struct_bullet_config.html#a7c804dc75483dfe7251ddfdd0dc2b99b',1,'BulletConfig']]],
+  ['repeat_1',['repeat',['../struct_c_animation.html#a041fb9073bf09a103a6925aab5d28809',1,'CAnimation']]],
+  ['right_2',['right',['../struct_c_input.html#a578806529dc33bc9d80029e0d17e9231',1,'CInput']]]
 ];

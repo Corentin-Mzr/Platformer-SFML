@@ -17,7 +17,6 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="custom.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -108,8 +107,11 @@ $(document).ready(function(){initNavTree('config__parser_8hpp_source.html',''); 
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    [[nodiscard]]</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    const <a class="code hl_struct" href="struct_window_config.html">WindowConfig</a> &amp;<a class="code hl_function" href="class_config_parser.html#a03c08a6751ea04dd1e8a3d9149e91712">get_window_config</a>() const noexcept;</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    [[nodiscard]]</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    const <a class="code hl_struct" href="struct_player_config.html">PlayerConfig</a> &amp;<a class="code hl_function" href="class_config_parser.html#a417a8b8f6ad34e4b3176b377aa910a2e">get_player_config</a>() const noexcept;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="comment">// /**</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="comment">//  * @brief Return player stats (speed etc.)</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="comment">//  */</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="comment">// [[nodiscard]]</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="comment">// const PlayerConfig &amp;get_player_config() const noexcept;</span></div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    [[nodiscard]]</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    const <a class="code hl_struct" href="struct_bullet_config.html">BulletConfig</a> &amp;<a class="code hl_function" href="class_config_parser.html#a907f3bcb7762d870e5cd34afb467925e">get_bullet_config</a>() const noexcept;</div>
@@ -135,7 +137,7 @@ $(document).ready(function(){initNavTree('config__parser_8hpp_source.html',''); 
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>private:</div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    std::filesystem::path m_filepath{};</div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <a class="code hl_struct" href="struct_window_config.html">WindowConfig</a> m_window_config{};</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <a class="code hl_struct" href="struct_player_config.html">PlayerConfig</a> m_player_config{};</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="comment">// PlayerConfig m_player_config{};</span></div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    <a class="code hl_struct" href="struct_bullet_config.html">BulletConfig</a> m_bullet_config{};</div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    std::vector&lt;LevelConfig&gt; m_level_configs{};</div>
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    std::vector&lt;FontConfig&gt; m_font_configs{};</div>
@@ -147,7 +149,6 @@ $(document).ready(function(){initNavTree('config__parser_8hpp_source.html',''); 
 <div class="ttc" id="aclass_config_parser_html"><div class="ttname"><a href="class_config_parser.html">ConfigParser</a></div><div class="ttdoc">Loads and stores game config data from a TOML file.</div><div class="ttdef"><b>Definition</b> <a href="config__parser_8hpp_source.html#l00018">config_parser.hpp:19</a></div></div>
 <div class="ttc" id="aclass_config_parser_html_a03c08a6751ea04dd1e8a3d9149e91712"><div class="ttname"><a href="class_config_parser.html#a03c08a6751ea04dd1e8a3d9149e91712">ConfigParser::get_window_config</a></div><div class="ttdeci">const WindowConfig &amp; get_window_config() const noexcept</div><div class="ttdoc">Return window configuration (size, title etc.)</div><div class="ttdef"><b>Definition</b> <a href="config__parser_8cpp_source.html#l00110">config_parser.cpp:110</a></div></div>
 <div class="ttc" id="aclass_config_parser_html_a0afb3fed2977873884e7291916a9b5bf"><div class="ttname"><a href="class_config_parser.html#a0afb3fed2977873884e7291916a9b5bf">ConfigParser::get_level_config</a></div><div class="ttdeci">const std::vector&lt; LevelConfig &gt; &amp; get_level_config() const noexcept</div><div class="ttdoc">Return levels info (level name, data file)</div><div class="ttdef"><b>Definition</b> <a href="config__parser_8cpp_source.html#l00125">config_parser.cpp:125</a></div></div>
-<div class="ttc" id="aclass_config_parser_html_a417a8b8f6ad34e4b3176b377aa910a2e"><div class="ttname"><a href="class_config_parser.html#a417a8b8f6ad34e4b3176b377aa910a2e">ConfigParser::get_player_config</a></div><div class="ttdeci">const PlayerConfig &amp; get_player_config() const noexcept</div><div class="ttdoc">Return player stats (speed etc.)</div><div class="ttdef"><b>Definition</b> <a href="config__parser_8cpp_source.html#l00115">config_parser.cpp:115</a></div></div>
 <div class="ttc" id="aclass_config_parser_html_a48ec2eec60d1e9d6b5a07346547d0a78"><div class="ttname"><a href="class_config_parser.html#a48ec2eec60d1e9d6b5a07346547d0a78">ConfigParser::ConfigParser</a></div><div class="ttdeci">ConfigParser() noexcept=default</div><div class="ttdoc">Default constructor.</div></div>
 <div class="ttc" id="aclass_config_parser_html_a53045c6e49ff6a52624894ef3f14b4fd"><div class="ttname"><a href="class_config_parser.html#a53045c6e49ff6a52624894ef3f14b4fd">ConfigParser::get_music_config</a></div><div class="ttdeci">const std::vector&lt; MusicConfig &gt; &amp; get_music_config() const noexcept</div><div class="ttdoc">Return musics info (sound name, file)</div><div class="ttdef"><b>Definition</b> <a href="config__parser_8cpp_source.html#l00150">config_parser.cpp:150</a></div></div>
 <div class="ttc" id="aclass_config_parser_html_a788b06fbf99fc9d7c35b0f52d4eaf004"><div class="ttname"><a href="class_config_parser.html#a788b06fbf99fc9d7c35b0f52d4eaf004">ConfigParser::get_font_config</a></div><div class="ttdeci">const std::vector&lt; FontConfig &gt; &amp; get_font_config() const noexcept</div><div class="ttdoc">Return fonts info (font name, file)</div><div class="ttdef"><b>Definition</b> <a href="config__parser_8cpp_source.html#l00130">config_parser.cpp:130</a></div></div>
@@ -161,7 +162,6 @@ $(document).ready(function(){initNavTree('config__parser_8hpp_source.html',''); 
 <div class="ttc" id="astruct_font_config_html"><div class="ttname"><a href="struct_font_config.html">FontConfig</a></div><div class="ttdef"><b>Definition</b> <a href="config__structs_8hpp_source.html#l00042">config_structs.hpp:43</a></div></div>
 <div class="ttc" id="astruct_level_config_html"><div class="ttname"><a href="struct_level_config.html">LevelConfig</a></div><div class="ttdef"><b>Definition</b> <a href="config__structs_8hpp_source.html#l00035">config_structs.hpp:36</a></div></div>
 <div class="ttc" id="astruct_music_config_html"><div class="ttname"><a href="struct_music_config.html">MusicConfig</a></div><div class="ttdef"><b>Definition</b> <a href="config__structs_8hpp_source.html#l00072">config_structs.hpp:73</a></div></div>
-<div class="ttc" id="astruct_player_config_html"><div class="ttname"><a href="struct_player_config.html">PlayerConfig</a></div><div class="ttdef"><b>Definition</b> <a href="config__structs_8hpp_source.html#l00017">config_structs.hpp:18</a></div></div>
 <div class="ttc" id="astruct_sound_config_html"><div class="ttname"><a href="struct_sound_config.html">SoundConfig</a></div><div class="ttdef"><b>Definition</b> <a href="config__structs_8hpp_source.html#l00065">config_structs.hpp:66</a></div></div>
 <div class="ttc" id="astruct_texture_config_html"><div class="ttname"><a href="struct_texture_config.html">TextureConfig</a></div><div class="ttdef"><b>Definition</b> <a href="config__structs_8hpp_source.html#l00049">config_structs.hpp:50</a></div></div>
 <div class="ttc" id="astruct_window_config_html"><div class="ttname"><a href="struct_window_config.html">WindowConfig</a></div><div class="ttdef"><b>Definition</b> <a href="config__structs_8hpp_source.html#l00007">config_structs.hpp:8</a></div></div>

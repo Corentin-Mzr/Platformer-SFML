@@ -17,7 +17,6 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="custom.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -98,12 +97,13 @@ $(document).ready(function(){initNavTree('physics_8hpp.html',''); initResizable(
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;memory&gt;</code><br />
+<code>#include &lt;limits&gt;</code><br />
 <code>#include &lt;SFML/System/Vector2.hpp&gt;</code><br />
 <code>#include &quot;<a class="el" href="entity_8hpp_source.html">entity.hpp</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for physics.hpp:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="physics_8hpp__incl.svg" width="618" height="336"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="physics_8hpp__incl.svg" width="100%" height="552"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
@@ -121,11 +121,17 @@ Namespaces</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ab17f884bb569635f6fc4b88da5c76fc2"><td class="memItemLeft" align="right" valign="top">sf::Vector2f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_physics.html#ab17f884bb569635f6fc4b88da5c76fc2">Physics::get_current_overlap</a> (const std::shared_ptr&lt; <a class="el" href="class_entity.html">Entity</a> &gt; &amp;a, const std::shared_ptr&lt; <a class="el" href="class_entity.html">Entity</a> &gt; &amp;b) noexcept</td></tr>
-<tr class="memdesc:ab17f884bb569635f6fc4b88da5c76fc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current overlap between two entities bounding boxes. Entities collide iff ox &gt; 0 &amp;&amp; oy &gt; 0.  <br /></td></tr>
+<tr class="memdesc:ab17f884bb569635f6fc4b88da5c76fc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current overlap between two entities that have a BoundingBox component.  <br /></td></tr>
 <tr class="separator:ab17f884bb569635f6fc4b88da5c76fc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c40cc588037b53592c0dfa79f4ee641"><td class="memItemLeft" align="right" valign="top">sf::Vector2f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_physics.html#a4c40cc588037b53592c0dfa79f4ee641">Physics::get_previous_overlap</a> (const std::shared_ptr&lt; <a class="el" href="class_entity.html">Entity</a> &gt; &amp;a, const std::shared_ptr&lt; <a class="el" href="class_entity.html">Entity</a> &gt; &amp;b) noexcept</td></tr>
-<tr class="memdesc:a4c40cc588037b53592c0dfa79f4ee641"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the previous overlap between two entities bounding boxes. Entities collide iff ox &gt; 0 &amp;&amp; oy &gt; 0.  <br /></td></tr>
+<tr class="memdesc:a4c40cc588037b53592c0dfa79f4ee641"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the previous overlap between two entities that have a BoundingBox component.  <br /></td></tr>
 <tr class="separator:a4c40cc588037b53592c0dfa79f4ee641"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff53e0abac6d446d36de2257116e22d6"><td class="memItemLeft" align="right" valign="top">sf::Vector2f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_physics.html#aff53e0abac6d446d36de2257116e22d6">Physics::get_convex_current_overlap</a> (const std::shared_ptr&lt; <a class="el" href="class_entity.html">Entity</a> &gt; &amp;a, const std::shared_ptr&lt; <a class="el" href="class_entity.html">Entity</a> &gt; &amp;b) noexcept</td></tr>
+<tr class="memdesc:aff53e0abac6d446d36de2257116e22d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current overlap between two entities that have a BoundingConvex component.  <br /></td></tr>
+<tr class="separator:aff53e0abac6d446d36de2257116e22d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53ce61fabd99035d3d6ea48333e3ed3c"><td class="memItemLeft" align="right" valign="top">sf::Vector2f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_physics.html#a53ce61fabd99035d3d6ea48333e3ed3c">Physics::get_current_overlap_between_convex_and_box</a> (const std::shared_ptr&lt; <a class="el" href="class_entity.html">Entity</a> &gt; &amp;a, const std::shared_ptr&lt; <a class="el" href="class_entity.html">Entity</a> &gt; &amp;b) noexcept</td></tr>
+<tr class="memdesc:a53ce61fabd99035d3d6ea48333e3ed3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current overlap between two entities, one has a BoundingConvex component, the other has a BoundingBox component.  <br /></td></tr>
+<tr class="separator:a53ce61fabd99035d3d6ea48333e3ed3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->
