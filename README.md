@@ -8,13 +8,26 @@ Uses an implementation of an Entity-Component-System (ECS) architecture
 
 ## Gameplay
 
-WIP
+### Menu
+
+![Menu](gameplay_examples/menu.png)
+
+### Level
+
+![Gameplay](gameplay_examples/gameplay.png)
+
+### Victory
+
+![Victory](gameplay_examples/win.png)
 
 ## Table of contents
 
 - [MegaMario SFML C++](#megamario-sfml-c)
 - [Description](#description)
 - [Gameplay](#gameplay)
+  - [Menu](#menu)
+  - [Level](#level)
+  - [Victory](#victory)
 - [Table of Contents](#table-of-contents)
 - [Installation](#installation)
   - [Prerequisites](#prerequisites)
